@@ -26,3 +26,4 @@ pokefirered(FR) and pokeemerald(EM) tutorials on the github wikis
 * (EM) [Disabling Union Room check when entering Pokémon Centers](https://github.com/pret/pokeemerald/wiki/Disabling-Union-Room-check-when-entering-Pok%C3%A9mon-Centers)
 * (EM) [Push B in wild battle moves to Run](https://github.com/pret/pokeemerald/wiki/Push-B-in-wild-battle-moves-to-Run)
 * (EM) [Prompt for reusing Repels](https://github.com/pret/pokeemerald/wiki/Prompt-for-reusing-Repels)
+* (EM) [Physical Special Split Icons In Battle](https://github.com/Jaizu/pokeemerald-public/commit/7eafd6e150ddfc91b2ea2cb52a18b5141a61d46e)
