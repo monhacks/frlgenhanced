@@ -24,3 +24,4 @@ pokefirered(FR) and pokeemerald(EM) tutorials on the github wikis
 * (EM) [Allow running indoors](https://github.com/pret/pokeemerald/wiki/Allow-running-indoors)
 * (EM) [Extra save space with two lines of code](https://github.com/pret/pokeemerald/wiki/Extra-save-space-with-two-lines-of-code)
 * (EM) [Disabling Union Room check when entering Pokémon Centers](https://github.com/pret/pokeemerald/wiki/Disabling-Union-Room-check-when-entering-Pok%C3%A9mon-Centers)
+* (EM) [Push B in wild battle moves to Run](https://github.com/pret/pokeemerald/wiki/Push-B-in-wild-battle-moves-to-Run)
