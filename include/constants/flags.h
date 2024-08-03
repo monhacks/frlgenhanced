@@ -772,9 +772,9 @@
 #define FLAG_0x2E9                                       0x2E9
 #define FLAG_0x2EA                                       0x2EA
 #define FLAG_0x2EB                                       0x2EB
-#define FLAG_REVIVED_DOME                                0x2EC
-#define FLAG_REVIVED_HELIX                               0x2ED
-#define FLAG_REVIVED_AMBER                               0x2EE
+#define FLAG_0x2EC                                       0x2EC
+#define FLAG_0x2ED                                       0x2ED
+#define FLAG_0x2EE                                       0x2EE
 #define FLAG_GOT_HM06                                    0x2EF
 #define FLAG_SHOWN_MYSTIC_TICKET                         0x2F0
 #define FLAG_SHOWN_AURORA_TICKET                         0x2F1

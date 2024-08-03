@@ -1864,4 +1864,5 @@
 	fadescreen FADE_TO_BLACK
 	special ChooseItemFromBag
 	waitstate
+	lock
 	.endm
