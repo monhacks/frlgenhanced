@@ -35,6 +35,8 @@
 #include "wallclock.h"
 #include "dynamic_placeholder_text_util.h"
 #include "new_menu_helpers.h"
+#include "item.h"
+#include "item_menu.h"
 #include "constants/songs.h"
 #include "constants/items.h"
 #include "constants/maps.h"
@@ -2569,4 +2571,19 @@ static void Task_WingFlapSound(u8 taskId)
     }
     if (data[0] == gSpecialVar_0x8004 - 1)
         DestroyTask(taskId);
+}
+
+void ChooseItemFromBag(void)
+{
+    switch (VarGet(VAR_TEMP_1))
+    {
+        case POCKET_ITEMS:
+        case POCKET_KEY_ITEMS:
+        case POCKET_POKE_BALLS:
+        case POCKET_TM_CASE:
+        case POCKET_BERRY_POUCH:
+            GoToBagMenu(ITEMMENULOCATION_CHOOSE_ITEM, VarGet(VAR_TEMP_1) - 1, CB2_ReturnToFieldContinueScript);
+        default:
+            break;
+    }
 }

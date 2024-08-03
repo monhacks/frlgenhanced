@@ -6,6 +6,7 @@ Lunos aka LOuroboros
 * [Adding the Fairy Type](https://www.pokecommunity.com/showpost.php?p=10325868)
 * [Modifying the table of items of the Pickup ability](https://www.pokecommunity.com/showpost.php?p=9987541&postcount=11)
 * [Let the Player only buy TMs and HMs once](https://www.pokecommunity.com/showpost.php?p=10182590&postcount=117)
+* [Special that lets the Player choose an item from the bag](https://www.pokecommunity.com/showpost.php?p=10463639)
 
 AsparagusEduardo
 * ["Move Pokemon" as first PSS option](https://www.pokecommunity.com/showpost.php?p=10065761)

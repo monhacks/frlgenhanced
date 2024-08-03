@@ -267,7 +267,8 @@ static const TaskFunc sItemContextTaskFuncs[] = {
     [ITEMMENULOCATION_ITEMPC] = Task_ItemContext_Deposit,
     [ITEMMENULOCATION_PCBOX]  = Task_ItemContext_PcBoxGive,
     [ITEMMENULOCATION_BATTLE] = Task_ItemContext_FieldOrBattle,
-    [ITEMMENULOCATION_OLD_MAN] = NULL
+    [ITEMMENULOCATION_OLD_MAN] = NULL,
+    [ITEMMENULOCATION_CHOOSE_ITEM] = ItemMenu_StartFadeToExitCallback
 };
 
 static const struct YesNoFuncTable sYesNoMenu_Toss = {
@@ -328,13 +329,15 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback bagCallback)
             sBagMenuDisplay->pocketSwitchMode = 1;
         else if (location == ITEMMENULOCATION_OLD_MAN)
             sBagMenuDisplay->pocketSwitchMode = 2;
+        else if (location == ITEMMENULOCATION_CHOOSE_ITEM)
+            sBagMenuDisplay->pocketSwitchMode = TRUE;
         else
             sBagMenuDisplay->pocketSwitchMode = 0;
         for (i = 0; i < 4; i++)
         {
             sBagMenuDisplay->data[i] = 0;
         }
-        if (pocket == OPEN_BAG_ITEMS || pocket == OPEN_BAG_KEYITEMS || pocket == OPEN_BAG_POKEBALLS)
+        if (pocket == OPEN_BAG_ITEMS || pocket == OPEN_BAG_KEYITEMS || pocket == OPEN_BAG_POKEBALLS || pocket == OPEN_BAG_TMCASE || pocket == OPEN_BAG_BERRYPOUCH)
             gBagMenuState.pocket = pocket;
         gTextFlags.autoScroll = FALSE;
         gSpecialVar_ItemId = ITEM_NONE;
