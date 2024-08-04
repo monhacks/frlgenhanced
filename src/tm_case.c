@@ -987,7 +987,8 @@ static void Task_SelectedTMHM_Field(u8 taskId)
     Free(strbuf);
     if (IS_HM(gSpecialVar_ItemId))
     {
-        PlaceHMTileInWindow(WIN_SELECTED_MSG, 0, 2);
+        if (gSpecialVar_ItemId >= ITEM_HM01 && gSpecialVar_ItemId <= ITEM_HM08)
+            PlaceHMTileInWindow(WIN_SELECTED_MSG, 0, 2);
         CopyWindowToVram(WIN_SELECTED_MSG, COPYWIN_GFX);
     }
 
