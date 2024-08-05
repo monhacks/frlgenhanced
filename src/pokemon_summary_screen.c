@@ -140,12 +140,14 @@ static void PokeSum_UpdateMonMarkingsAnim(void);
 static s8 SeekToNextMonInSingleParty(s8 direction);
 static s8 SeekToNextMonInMultiParty(s8 direction);
 
+static void MoveSelectionDisplaySplitIcon(bool8 printBlank);
+
 struct PokemonSummaryScreenData
 {
     u16 bg1TilemapBuffer[0x800];
     u16 bg2TilemapBuffer[0x800];
     u16 bg3TilemapBuffer[0x800];
-    u8 ALIGNED(4) windowIds[7];
+    u8 ALIGNED(4) windowIds[8];
 
     u8 ALIGNED(4) unk3008;
     u8 ALIGNED(4) ballIconSpriteId;
@@ -346,6 +348,11 @@ static const u32 sTextMovesPalette[] = INCBIN_U32("graphics/summary_screen/text_
 static const u16 sMoveSelectionCursorPals[] = INCBIN_U16("graphics/summary_screen/move_selection_cursor.gbapal");
 static const u32 sMoveSelectionCursorTiles_Left[] = INCBIN_U32("graphics/summary_screen/move_selection_cursor_left.4bpp.lz");
 static const u32 sMoveSelectionCursorTiles_Right[] = INCBIN_U32("graphics/summary_screen/move_selection_cursor_right.4bpp.lz");
+
+// static const u16 sSPlitIcons_Pal[] = INCBIN_U16("graphics/battle_interface/split_icons_battle.gbapal");
+// static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/battle_interface/split_icons_battle.4bpp");
+static const u16 sSPlitIcons_Pal[] = INCBIN_U16("graphics/summary_screen/split_icons.gbapal");
+static const u8 sSplitIcons_Gfx[] = INCBIN_U8("graphics/summary_screen/split_icons.4bpp");
 
 static const struct OamData sMoveSelectionCursorOamData =
 {
@@ -928,6 +935,19 @@ static const struct WindowTemplate sWindowTemplates_Moves[] =
         .paletteNum = 6,
         .baseBlock = 0x01d2
     },
+};
+
+static const struct WindowTemplate sWindowTemplates_Split[] =
+{
+    {
+        .bg = 1,
+        .tilemapLeft = 11,
+        .tilemapTop = 7,
+        .width = 2,
+        .height = 2,
+        .paletteNum = 10,
+        .baseBlock = 0x0216
+    }
 };
 
 static const struct WindowTemplate sWindowTemplates_Dummy[] = 
@@ -2929,6 +2949,7 @@ static void PokeSum_PrintSelectedMoveStats(void)
 {
     if (sMoveSelectionCursorPos < 5)
     {
+        MoveSelectionDisplaySplitIcon(TRUE);
         if (sMonSummaryScreen->mode != PSS_MODE_SELECT_MOVE && sMoveSelectionCursorPos == 4)
             return;
 
@@ -2947,7 +2968,24 @@ static void PokeSum_PrintSelectedMoveStats(void)
                                      0, 0,
                                      sLevelNickTextColors[0], TEXT_SKIP_DRAW,
                                      gMoveDescriptionPointers[sMonSummaryScreen->moveIds[sMoveSelectionCursorPos] - 1]);
+
+        MoveSelectionDisplaySplitIcon(FALSE);
     }
+}
+
+static void MoveSelectionDisplaySplitIcon(bool8 printBlank)
+{
+    u32 moveCategory;
+
+    moveCategory = gBattleMoves[sMonSummaryScreen->moveIds[sMoveSelectionCursorPos]].category;
+    LoadPalette(sSPlitIcons_Pal, 10 * 0x10, 0x20);
+    if (!printBlank)
+        BlitBitmapToWindow(sMonSummaryScreen->windowIds[7], sSplitIcons_Gfx + 0x80 * moveCategory, 0, 0, 16, 16);
+    else
+        BlitBitmapToWindow(sMonSummaryScreen->windowIds[7], sSplitIcons_Gfx + 0x80 * 3, 0, 0, 16, 16);
+    // BlitBitmapRectToWindow(sMonSummaryScreen->windowIds[7], sSplitIcons_Gfx + 0x80 * moveCategory, 0, 3, 12, 11, 0, 0, 16, 16);
+    PutWindowTilemap(sMonSummaryScreen->windowIds[7]);
+    CopyWindowToVram(sMonSummaryScreen->windowIds[7], 3);
 }
 
 static void PokeSum_PrintAbilityDataOrMoveTypes(void)
@@ -3239,6 +3277,8 @@ static void PokeSum_CreateWindows(void)
         default:
             break;
         }
+    
+    sMonSummaryScreen->windowIds[7] = AddWindow(&sWindowTemplates_Split[0]);
 }
 
 static void PokeSum_AddWindows(u8 curPageIndex)
@@ -3247,7 +3287,7 @@ static void PokeSum_AddWindows(u8 curPageIndex)
     u32 bgPriority1 = GetGpuReg(REG_OFFSET_BG1CNT) & 3;
     u32 bgPriority2 = GetGpuReg(REG_OFFSET_BG2CNT) & 3;
 
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < 8; i++)
         sMonSummaryScreen->windowIds[i] = 0xff;
 
     if ((sMonSummaryScreen->pageFlipDirection == 1 && sMonSummaryScreen->curPageIndex != PSS_PAGE_MOVES_INFO)
@@ -3285,13 +3325,15 @@ static void PokeSum_AddWindows(u8 curPageIndex)
             sMonSummaryScreen->windowIds[i + 3] = AddWindow(&sWindowTemplates_Moves[i]);
             break;
         }
+    
+    sMonSummaryScreen->windowIds[7] = AddWindow(&sWindowTemplates_Split[0]);
 }
 
 static void PokeSum_RemoveWindows(u8 curPageIndex)
 {
     u8 i;
 
-    for (i = 0; i < 7; i++)
+    for (i = 0; i < 8; i++)
         RemoveWindow(sMonSummaryScreen->windowIds[i]);
 
 }
