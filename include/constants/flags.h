@@ -728,21 +728,21 @@
 #define FLAG_FOUGHT_MOLTRES                              0x2BD
 #define FLAG_FOUGHT_ARTICUNO                             0x2BE
 #define FLAG_FOUGHT_ZAPDOS                               0x2BF
-#define FLAG_TUTOR_DOUBLE_EDGE                           0x2C0
-#define FLAG_TUTOR_THUNDER_WAVE                          0x2C1
-#define FLAG_TUTOR_ROCK_SLIDE                            0x2C2
-#define FLAG_TUTOR_EXPLOSION                             0x2C3
-#define FLAG_TUTOR_MEGA_PUNCH                            0x2C4
-#define FLAG_TUTOR_MEGA_KICK                             0x2C5
-#define FLAG_TUTOR_DREAM_EATER                           0x2C6
-#define FLAG_TUTOR_SOFT_BOILED                           0x2C7
-#define FLAG_TUTOR_SUBSTITUTE                            0x2C8
-#define FLAG_TUTOR_SWORDS_DANCE                          0x2C9
-#define FLAG_TUTOR_SEISMIC_TOSS                          0x2CA
-#define FLAG_TUTOR_COUNTER                               0x2CB
-#define FLAG_TUTOR_METRONOME                             0x2CC
-#define FLAG_TUTOR_MIMIC                                 0x2CD
-#define FLAG_TUTOR_BODY_SLAM                             0x2CE
+#define FLAG_0x2C0                                       0x2C0  // prev. FLAG_TUTOR_DOUBLE_EDGE
+#define FLAG_0x2C1                                       0x2C1  // prev. FLAG_TUTOR_THUNDER_WAVE
+#define FLAG_0x2C2                                       0x2C2  // prev. FLAG_TUTOR_ROCK_SLIDE
+#define FLAG_0x2C3                                       0x2C3  // prev. FLAG_TUTOR_EXPLOSION
+#define FLAG_0x2C4                                       0x2C4  // prev. FLAG_TUTOR_MEGA_PUNCH
+#define FLAG_0x2C5                                       0x2C5  // prev. FLAG_TUTOR_MEGA_KICK
+#define FLAG_0x2C6                                       0x2C6  // prev. FLAG_TUTOR_DREAM_EATER
+#define FLAG_0x2C7                                       0x2C7  // prev. FLAG_TUTOR_SOFT_BOILED
+#define FLAG_0x2C8                                       0x2C8  // prev. FLAG_TUTOR_SUBSTITUTE
+#define FLAG_0x2C9                                       0x2C9  // prev. FLAG_TUTOR_SWORDS_DANCE
+#define FLAG_0x2CA                                       0x2CA  // prev. FLAG_TUTOR_SEISMIC_TOSS
+#define FLAG_0x2CB                                       0x2CB  // prev. FLAG_TUTOR_COUNTER
+#define FLAG_0x2CC                                       0x2CC  // prev. FLAG_TUTOR_METRONOME
+#define FLAG_0x2CD                                       0x2CD  // prev. FLAG_TUTOR_MIMIC
+#define FLAG_0x2CE                                       0x2CE  // prev. FLAG_TUTOR_BODY_SLAM
 #define FLAG_VISITED_OAKS_LAB                            0x2CF
 #define FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1              0x2D0
 #define FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2              0x2D1
@@ -758,10 +758,10 @@
 #define FLAG_NO_ROOM_FOR_TOGEPI_EGG                      0x2DB
 #define FLAG_RECOVERED_SAPPHIRE                          0x2DC
 #define FLAG_GOT_RUBY                                    0x2DD
-#define FLAG_TUTOR_FRENZY_PLANT                          0x2DE
-#define FLAG_TUTOR_BLAST_BURN                            0x2DF
-#define FLAG_TUTOR_HYDRO_CANNON                          0x2E0
-#define FLAG_LEARNED_ALL_MOVES_AT_CAPE_BRINK             0x2E1
+#define FLAG_0x2DE                                       0x2DE  // prev. FLAG_TUTOR_FRENZY_PLANT
+#define FLAG_0x2DF                                       0x2DF  // prev. FLAG_TUTOR_BLAST_BURN
+#define FLAG_0x2E0                                       0x2E0  // prev. FLAG_TUTOR_HYDRO_CANNON
+#define FLAG_0x2E1                                       0x2E1  // prev. FLAG_LEARNED_ALL_MOVES_AT_CAPE_BRINK
 #define FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL            0x2E2
 #define FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE             0x2E3
 #define FLAG_FOUGHT_DEOXYS                               0x2E4
@@ -772,9 +772,9 @@
 #define FLAG_0x2E9                                       0x2E9
 #define FLAG_0x2EA                                       0x2EA
 #define FLAG_0x2EB                                       0x2EB
-#define FLAG_0x2EC                                       0x2EC
-#define FLAG_0x2ED                                       0x2ED
-#define FLAG_0x2EE                                       0x2EE
+#define FLAG_0x2EC                                       0x2EC  // prev. FLAG_REVIVED_HELIX_FOSSIL
+#define FLAG_0x2ED                                       0x2ED  // prev. FLAG_REVIVED_DOME_FOSSIL
+#define FLAG_0x2EE                                       0x2EE  // prev. FLAG_REVIVED_OLD_AMBER
 #define FLAG_GOT_HM06                                    0x2EF
 #define FLAG_SHOWN_MYSTIC_TICKET                         0x2F0
 #define FLAG_SHOWN_AURORA_TICKET                         0x2F1

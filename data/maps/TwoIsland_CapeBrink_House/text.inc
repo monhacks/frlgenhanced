@@ -38,16 +38,3 @@ Text_TaughtMove::
 Text_MakeBestUseOfMove::
     .string "I implore you to make the best\n"
     .string "use of that move and gain power!$"
-
-Text_PassedOnEverythingIKnow::
-    .string "Gasp, gasp, gasp…\p"
-    .string "I have no regrets now.\n"
-    .string "I've passed on everything I know.\p"
-    .string "Now I can live out my life knowing\n"
-    .string "my work is done.$"
-
-Text_FeelRejuvenated::
-    .string "After I passed on my knowledge to\n"
-    .string "you, I felt so much relief.\p"
-    .string "In fact, I feel rejuvenated,\n"
-    .string "as if I were younger again!$"

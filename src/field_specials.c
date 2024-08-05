@@ -2229,10 +2229,16 @@ void StopPokemonLeagueLightingEffectTask(void)
     }
 }
 
-static const u8 sCapeBrinkCompatibleSpecies[] = {
+static const u16 sCapeBrinkCompatibleSpecies[] = {
     SPECIES_VENUSAUR,
     SPECIES_CHARIZARD,
-    SPECIES_BLASTOISE
+    SPECIES_BLASTOISE,
+    SPECIES_MEGANIUM,
+    SPECIES_TYPHLOSION,
+    SPECIES_FERALIGATR,
+    SPECIES_SCEPTILE,
+    SPECIES_BLAZIKEN,
+    SPECIES_SWAMPERT
 };
 
 bool8 CapeBrinkGetMoveToTeachLeadPokemon(void)
@@ -2257,25 +2263,27 @@ bool8 CapeBrinkGetMoveToTeachLeadPokemon(void)
     }
     if (i == NELEMS(sCapeBrinkCompatibleSpecies) || GetMonData(&gPlayerParty[leadMonSlot], MON_DATA_FRIENDSHIP) != 255)
         return FALSE;
-    if (tutorMonId == 0)
+    switch (tutorMonId)
     {
-        StringCopy(gStringVar2, gMoveNames[MOVE_FRENZY_PLANT]);
-        gSpecialVar_0x8005 = MOVETUTOR_FRENZY_PLANT;
-        if (FlagGet(FLAG_TUTOR_FRENZY_PLANT) == TRUE)
-            return FALSE;
-    }
-    else if (tutorMonId == 1)
-    {
-        StringCopy(gStringVar2, gMoveNames[MOVE_BLAST_BURN]);
-        gSpecialVar_0x8005 = MOVETUTOR_BLAST_BURN;
-        if (FlagGet(FLAG_TUTOR_BLAST_BURN) == TRUE)
-            return FALSE;
-    }
-    else
-    {
-        StringCopy(gStringVar2, gMoveNames[MOVE_HYDRO_CANNON]);
-        gSpecialVar_0x8005 = MOVETUTOR_HYDRO_CANNON;
-        if (FlagGet(FLAG_TUTOR_HYDRO_CANNON) == TRUE)
+        case 0: // Venusaur
+        case 3: // Meganium
+        case 6: // Sceptile
+            StringCopy(gStringVar2, gMoveNames[MOVE_FRENZY_PLANT]);
+            gSpecialVar_0x8005 = MOVETUTOR_FRENZY_PLANT;
+            break;
+        case 1: // Charizard
+        case 4: // Typhlosion
+        case 7: // Blaziken
+            StringCopy(gStringVar2, gMoveNames[MOVE_BLAST_BURN]);
+            gSpecialVar_0x8005 = MOVETUTOR_BLAST_BURN;
+            break;
+        case 2: // Blastoise
+        case 5: // Feraligatr
+        case 8: // Swampert
+            StringCopy(gStringVar2, gMoveNames[MOVE_HYDRO_CANNON]);
+            gSpecialVar_0x8005 = MOVETUTOR_HYDRO_CANNON;
+            break;
+        default:
             return FALSE;
     }
     if (GetMonData(&gPlayerParty[leadMonSlot], MON_DATA_MOVE1) != MOVE_NONE)
@@ -2288,28 +2296,6 @@ bool8 CapeBrinkGetMoveToTeachLeadPokemon(void)
         numMovesKnown++;
     gSpecialVar_0x8006 = numMovesKnown;
     return TRUE;
-}
-
-bool8 HasLearnedAllMovesFromCapeBrinkTutor(void)
-{
-    // 8005 is set by CapeBrinkGetMoveToTeachLeadPokemon
-    u8 r4 = 0;
-    if (gSpecialVar_0x8005 == MOVETUTOR_FRENZY_PLANT)
-        FlagSet(FLAG_TUTOR_FRENZY_PLANT);
-    else if (gSpecialVar_0x8005 == MOVETUTOR_BLAST_BURN)
-        FlagSet(FLAG_TUTOR_BLAST_BURN);
-    else
-        FlagSet(FLAG_TUTOR_HYDRO_CANNON);
-    if (FlagGet(FLAG_TUTOR_FRENZY_PLANT) == TRUE)
-        r4++;
-    if (FlagGet(FLAG_TUTOR_BLAST_BURN) == TRUE)
-        r4++;
-    if (FlagGet(FLAG_TUTOR_HYDRO_CANNON) == TRUE)
-        r4++;
-    if (r4 == 3)
-        return TRUE;
-    else
-        return FALSE;
 }
 
 bool8 CutMoveRuinValleyCheck(void)
