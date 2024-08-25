@@ -2575,7 +2575,7 @@ u8 GetNatureTextColor(s8 natureMod)
 
 static void PrintSkillsPage(void)
 {
-    const s8 *natureMod = sNatureStatTable[GetNature(&sMonSummaryScreen->currentMon)];
+    const s8 *natureMod = sNatureStatTable[GetNature(&sMonSummaryScreen->currentMon, TRUE)];
     u8 hpIv, atkIv, defIv, spAtkIv, spDefIv, spdIv;
     
     hpIv = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_HP_IV);
@@ -2703,6 +2703,7 @@ static void PokeSum_PrintTrainerMemo(void)
 static void PokeSum_PrintTrainerMemo_Mon_HeldByOT(void)
 {
     u8 nature;
+    u8 hiddenNature;
     u8 level;
     u8 metLocation;
     u8 levelStr[5];
@@ -2710,8 +2711,11 @@ static void PokeSum_PrintTrainerMemo_Mon_HeldByOT(void)
     u8 natureMetOrHatchedAtLevelStr[152];
 
     DynamicPlaceholderTextUtil_Reset();
-    nature = GetNature(&sMonSummaryScreen->currentMon);
+    nature = GetNature(&sMonSummaryScreen->currentMon, FALSE);
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gNatureNamePointers[nature]);
+    hiddenNature = GetNature(&sMonSummaryScreen->currentMon, TRUE);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(3, gNatureNamePointers[hiddenNature]);
+
     level = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_MET_LEVEL);
 
     if (level == 0)
@@ -2740,15 +2744,15 @@ static void PokeSum_PrintTrainerMemo_Mon_HeldByOT(void)
     {
         if (GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_MODERN_FATEFUL_ENCOUNTER) == TRUE)
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterHatched_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterHatched_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterHatched);
         }
         else
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_Hatched_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_Hatched_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_Hatched);
         }
@@ -2757,15 +2761,15 @@ static void PokeSum_PrintTrainerMemo_Mon_HeldByOT(void)
     {
         if (metLocation == METLOC_FATEFUL_ENCOUNTER)
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet);
         }
         else
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_Met_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_Met_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_Met);
         }
@@ -2777,6 +2781,7 @@ static void PokeSum_PrintTrainerMemo_Mon_HeldByOT(void)
 static void PokeSum_PrintTrainerMemo_Mon_NotHeldByOT(void)
 {
     u8 nature;
+    u8 hiddenNature;
     u8 level;
     u8 metLocation;
     u8 levelStr[5];
@@ -2784,8 +2789,10 @@ static void PokeSum_PrintTrainerMemo_Mon_NotHeldByOT(void)
     u8 natureMetOrHatchedAtLevelStr[152];
 
     DynamicPlaceholderTextUtil_Reset();
-    nature = GetNature(&sMonSummaryScreen->currentMon);
+    nature = GetNature(&sMonSummaryScreen->currentMon, FALSE);
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gNatureNamePointers[nature]);
+    hiddenNature = GetNature(&sMonSummaryScreen->currentMon, TRUE);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(3, gNatureNamePointers[hiddenNature]);
 
     level = GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_MET_LEVEL);
 
@@ -2807,15 +2814,15 @@ static void PokeSum_PrintTrainerMemo_Mon_NotHeldByOT(void)
 
         if (metLocation == METLOC_FATEFUL_ENCOUNTER)
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet);
         }
         else
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_MetInATrade_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_MetInATrade_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_MetInATrade);
         }
@@ -2837,15 +2844,15 @@ static void PokeSum_PrintTrainerMemo_Mon_NotHeldByOT(void)
     {
         if (GetMonData(&sMonSummaryScreen->currentMon, MON_DATA_MODERN_FATEFUL_ENCOUNTER) == TRUE)
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyFatefulEncounterHatched_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyFatefulEncounterHatched_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyFatefulEncounterHatched);
         }
         else
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyMet_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyMet_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyMet);
         }
@@ -2854,15 +2861,15 @@ static void PokeSum_PrintTrainerMemo_Mon_NotHeldByOT(void)
     {
         if (metLocation == METLOC_FATEFUL_ENCOUNTER)
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_FatefulEncounterMet);
         }
         else
         {
-            if (PokeSum_IsMonBoldOrGentle(nature))
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyMet_BoldGentleGrammar);
+            if (hiddenNature != HIDDEN_NATURE_NONE)
+                DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyMet_HiddenNature);
             else
                 DynamicPlaceholderTextUtil_ExpandPlaceholders(natureMetOrHatchedAtLevelStr, gText_PokeSum_ApparentlyMet);
         }

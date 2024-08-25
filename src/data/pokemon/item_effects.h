@@ -3,35 +3,9 @@ static const u8 sItemEffect_Potion[7] = {
     [6] = 20, // Amount of HP to recover
 };
 
-static const u8 sItemEffect_Antidote[6] = {
-    [3] = ITEM3_POISON,
-};
-
-static const u8 sItemEffect_BurnHeal[6] = {
-    [3] = ITEM3_BURN,
-};
-
-static const u8 sItemEffect_IceHeal[6] = {
-    [3] = ITEM3_FREEZE,
-};
-
-static const u8 sItemEffect_Awakening[6] = {
-    [3] = ITEM3_SLEEP,
-};
-
-static const u8 sItemEffect_ParalyzeHeal[6] = {
-    [3] = ITEM3_PARALYSIS,
-};
-
-static const u8 sItemEffect_FullRestore[7] = {
-    [3] = ITEM3_STATUS_ALL,
+static const u8 sItemEffect_SuperPotion[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = ITEM6_HEAL_HP_FULL,
-};
-
-static const u8 sItemEffect_MaxPotion[7] = {
-    [4] = ITEM4_HEAL_HP,
-    [6] = ITEM6_HEAL_HP_FULL,
+    [6] = 50, // Amount of HP to recover
 };
 
 static const u8 sItemEffect_HyperPotion[7] = {
@@ -39,13 +13,15 @@ static const u8 sItemEffect_HyperPotion[7] = {
     [6] = 200, // Amount of HP to recover
 };
 
-static const u8 sItemEffect_SuperPotion[7] = {
+static const u8 sItemEffect_MaxPotion[7] = {
     [4] = ITEM4_HEAL_HP,
-    [6] = 50, // Amount of HP to recover
+    [6] = ITEM6_HEAL_HP_FULL,
 };
 
-static const u8 sItemEffect_FullHeal[6] = {
+static const u8 sItemEffect_FullRestore[7] = {
     [3] = ITEM3_STATUS_ALL,
+    [4] = ITEM4_HEAL_HP,
+    [6] = ITEM6_HEAL_HP_FULL,
 };
 
 static const u8 sItemEffect_Revive[7] = {
@@ -56,11 +32,6 @@ static const u8 sItemEffect_Revive[7] = {
 static const u8 sItemEffect_MaxRevive[7] = {
     [4] = ITEM4_REVIVE | ITEM4_HEAL_HP,
     [6] = ITEM6_HEAL_HP_FULL,
-};
-
-static const u8 sItemEffect_FreshWater[7] = {
-    [4] = ITEM4_HEAL_HP,
-    [6] = 50, // Amount of HP to recover
 };
 
 static const u8 sItemEffect_SodaPop[7] = {
@@ -113,6 +84,30 @@ static const u8 sItemEffect_RevivalHerb[10] = {
     [9] = -20, // Friendship change, high
 };
 
+static const u8 sItemEffect_Antidote[6] = {
+    [3] = ITEM3_POISON,
+};
+
+static const u8 sItemEffect_ParalyzeHeal[6] = {
+    [3] = ITEM3_PARALYSIS,
+};
+
+static const u8 sItemEffect_BurnHeal[6] = {
+    [3] = ITEM3_BURN,
+};
+
+static const u8 sItemEffect_IceHeal[6] = {
+    [3] = ITEM3_FREEZE,
+};
+
+static const u8 sItemEffect_Awakening[6] = {
+    [3] = ITEM3_SLEEP,
+};
+
+static const u8 sItemEffect_FullHeal[6] = {
+    [3] = ITEM3_STATUS_ALL,
+};
+
 static const u8 sItemEffect_Ether[7] = {
     [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL,
     [6] = 10, // Amount of PP to recover
@@ -131,27 +126,6 @@ static const u8 sItemEffect_Elixir[7] = {
 static const u8 sItemEffect_MaxElixir[7] = {
     [4] = ITEM4_HEAL_PP_ALL,
     [6] = ITEM6_HEAL_PP_FULL,
-};
-
-static const u8 sItemEffect_LavaCookie[6] = {
-    [3] = ITEM3_STATUS_ALL,
-};
-
-static const u8 sItemEffect_BlueFlute[6] = {
-    [3] = ITEM3_SLEEP,
-};
-
-static const u8 sItemEffect_YellowFlute[6] = {
-    [3] = ITEM3_CONFUSION,
-};
-
-static const u8 sItemEffect_RedFlute[6] = {
-    [0] = ITEM0_INFATUATION,
-};
-
-static const u8 sItemEffect_BerryJuice[7] = {
-    [4] = ITEM4_HEAL_HP,
-    [6] = 20, // Amount of HP to recover
 };
 
 static const u8 sItemEffect_SacredAsh[7] = {
@@ -185,16 +159,76 @@ static const u8 sItemEffect_Iron[10] = {
     VITAMIN_FRIENDSHIP_CHANGE(7),
 };
 
+static const u8 sItemEffect_Calcium[10] = {
+    [5] = ITEM5_EV_SPATK | ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV,
+    VITAMIN_FRIENDSHIP_CHANGE(7),
+};
+
+static const u8 sItemEffect_Zinc[10] = {
+    [5] = ITEM5_EV_SPDEF | ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV,
+    VITAMIN_FRIENDSHIP_CHANGE(7),
+};
+
 static const u8 sItemEffect_Carbos[10] = {
     [5] = ITEM5_EV_SPEED | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_ADD_EV,
     VITAMIN_FRIENDSHIP_CHANGE(7),
 };
 
-static const u8 sItemEffect_Calcium[10] = {
-    [5] = ITEM5_EV_SPATK | ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_ADD_EV,
-    VITAMIN_FRIENDSHIP_CHANGE(7),
+static const u8 sItemEffect_PPUp[9] = {
+    [4] = ITEM4_PP_UP,
+    [5] = ITEM5_FRIENDSHIP_ALL,
+    VITAMIN_FRIENDSHIP_CHANGE(6),
+};
+
+static const u8 sItemEffect_PPMax[9] = {
+    [5] = ITEM5_PP_MAX | ITEM5_FRIENDSHIP_ALL,
+    VITAMIN_FRIENDSHIP_CHANGE(6),
+};
+
+#define FEATHER_FRIENDSHIP_CHANGE(i)             \
+    [(i) + 0] = 3, /* Friendship change, low */  \
+    [(i) + 1] = 2, /* Friendship change, mid */  \
+    [(i) + 2] = 1  /* Friendship change, high */
+
+static const u8 sItemEffect_HealthFeather[10] = {
+    [4] = ITEM4_EV_HP,
+    [5] = ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV_MINOR,
+    FEATHER_FRIENDSHIP_CHANGE(7),
+};
+
+static const u8 sItemEffect_MuscleFeather[10] = {
+    [4] = ITEM4_EV_ATK,
+    [5] = ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV_MINOR,
+    FEATHER_FRIENDSHIP_CHANGE(7),
+};
+
+static const u8 sItemEffect_ResistFeather[10] = {
+    [5] = ITEM5_EV_DEF | ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV_MINOR,
+    FEATHER_FRIENDSHIP_CHANGE(7),
+};
+
+static const u8 sItemEffect_GeniusFeather[10] = {
+    [5] = ITEM5_EV_SP_ATK | ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV_MINOR,
+    FEATHER_FRIENDSHIP_CHANGE(7),
+};
+
+static const u8 sItemEffect_CleverFeather[10] = {
+    [5] = ITEM5_EV_SP_DEF | ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV_MINOR,
+    FEATHER_FRIENDSHIP_CHANGE(7),
+};
+
+static const u8 sItemEffect_SwiftFeather[10] = {
+    [5] = ITEM5_EV_SPEED | ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_ADD_EV_MINOR,
+    FEATHER_FRIENDSHIP_CHANGE(7),
 };
 
 static const u8 sItemEffect_RareCandy[10] = {
@@ -205,38 +239,21 @@ static const u8 sItemEffect_RareCandy[10] = {
     VITAMIN_FRIENDSHIP_CHANGE(7),
 };
 
-static const u8 sItemEffect_PPUp[9] = {
-    [4] = ITEM4_PP_UP,
-    [5] = ITEM5_FRIENDSHIP_ALL,
-    VITAMIN_FRIENDSHIP_CHANGE(6),
+static const u8 sItemEffect_BlueFlute[6] = {
+    [3] = ITEM3_SLEEP,
 };
 
-static const u8 sItemEffect_Zinc[10] = {
-    [5] = ITEM5_EV_SPDEF | ITEM5_FRIENDSHIP_ALL,
-    [6] = ITEM6_ADD_EV,
-    VITAMIN_FRIENDSHIP_CHANGE(7),
+static const u8 sItemEffect_YellowFlute[6] = {
+    [3] = ITEM3_CONFUSION,
 };
 
-static const u8 sItemEffect_PPMax[9] = {
-    [5] = ITEM5_PP_MAX | ITEM5_FRIENDSHIP_ALL,
-    VITAMIN_FRIENDSHIP_CHANGE(6),
+static const u8 sItemEffect_RedFlute[6] = {
+    [0] = ITEM0_INFATUATION,
 };
 
 #define STAT_BOOST_FRIENDSHIP_CHANGE      \
     [6] = 1, /* Friendship change, low */ \
     [7] = 1  /* Friendship change, mid */
-
-static const u8 sItemEffect_GuardSpec[8] = {
-    [3] = ITEM3_GUARD_SPEC,
-    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
-    STAT_BOOST_FRIENDSHIP_CHANGE
-};
-
-static const u8 sItemEffect_DireHit[8] = {
-    [0] = 2 << 4, // ITEM0_DIRE_HIT
-    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
-    STAT_BOOST_FRIENDSHIP_CHANGE
-};
 
 static const u8 sItemEffect_XAttack[8] = {
     [0] = 1, // ITEM0_X_ATTACK
@@ -244,8 +261,20 @@ static const u8 sItemEffect_XAttack[8] = {
     STAT_BOOST_FRIENDSHIP_CHANGE
 };
 
-static const u8 sItemEffect_XDefend[8] = {
-    [1] = 1 << 4, /// ITEM1_X_DEFEND
+static const u8 sItemEffect_XDefense[8] = {
+    [1] = 1 << 4, /// ITEM1_X_DEFENSE
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    STAT_BOOST_FRIENDSHIP_CHANGE,
+};
+
+static const u8 sItemEffect_XSpAtk[8] = {
+    [2] = 1, // ITEM2_X_SPATK
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    STAT_BOOST_FRIENDSHIP_CHANGE,
+};
+
+static const u8 sItemEffect_XSpDef[8] = {
+    [2] = 1 << 2, // ITEM2_X_SPDEF
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     STAT_BOOST_FRIENDSHIP_CHANGE,
 };
@@ -262,10 +291,16 @@ static const u8 sItemEffect_XAccuracy[8] = {
     STAT_BOOST_FRIENDSHIP_CHANGE,
 };
 
-static const u8 sItemEffect_XSpecial[8] = {
-    [2] = 1, // ITEM2_X_SPATK
+static const u8 sItemEffect_DireHit[8] = {
+    [0] = 2 << 4, // ITEM0_DIRE_HIT
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
-    STAT_BOOST_FRIENDSHIP_CHANGE,
+    STAT_BOOST_FRIENDSHIP_CHANGE
+};
+
+static const u8 sItemEffect_GuardSpec[8] = {
+    [3] = ITEM3_GUARD_SPEC,
+    [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
+    STAT_BOOST_FRIENDSHIP_CHANGE
 };
 
 static const u8 sItemEffect_EvoItem[6] = {
@@ -317,75 +352,112 @@ static const u8 sItemEffect_SitrusBerry[7] = {
 
 const u8 *const gItemEffectTable[] =
 {
-    [ITEM_POTION - ITEM_POTION]        = sItemEffect_Potion,
-    [ITEM_ANTIDOTE - ITEM_POTION]      = sItemEffect_Antidote,
-    [ITEM_BURN_HEAL - ITEM_POTION]     = sItemEffect_BurnHeal,
-    [ITEM_ICE_HEAL - ITEM_POTION]      = sItemEffect_IceHeal,
-    [ITEM_AWAKENING - ITEM_POTION]     = sItemEffect_Awakening,
-    [ITEM_PARALYZE_HEAL - ITEM_POTION] = sItemEffect_ParalyzeHeal,
-    [ITEM_FULL_RESTORE - ITEM_POTION]  = sItemEffect_FullRestore,
-    [ITEM_MAX_POTION - ITEM_POTION]    = sItemEffect_MaxPotion,
-    [ITEM_HYPER_POTION - ITEM_POTION]  = sItemEffect_HyperPotion,
-    [ITEM_SUPER_POTION - ITEM_POTION]  = sItemEffect_SuperPotion,
-    [ITEM_FULL_HEAL - ITEM_POTION]     = sItemEffect_FullHeal,
-    [ITEM_REVIVE - ITEM_POTION]        = sItemEffect_Revive,
-    [ITEM_MAX_REVIVE - ITEM_POTION]    = sItemEffect_MaxRevive,
-    [ITEM_FRESH_WATER - ITEM_POTION]   = sItemEffect_FreshWater,
-    [ITEM_SODA_POP - ITEM_POTION]      = sItemEffect_SodaPop,
-    [ITEM_LEMONADE - ITEM_POTION]      = sItemEffect_Lemonade,
-    [ITEM_MOOMOO_MILK - ITEM_POTION]   = sItemEffect_MoomooMilk,
-    [ITEM_ENERGY_POWDER - ITEM_POTION] = sItemEffect_EnergyPowder,
-    [ITEM_ENERGY_ROOT - ITEM_POTION]   = sItemEffect_EnergyRoot,
-    [ITEM_HEAL_POWDER - ITEM_POTION]   = sItemEffect_HealPowder,
-    [ITEM_REVIVAL_HERB - ITEM_POTION]  = sItemEffect_RevivalHerb,
-    [ITEM_ETHER - ITEM_POTION]         = sItemEffect_Ether,
-    [ITEM_MAX_ETHER - ITEM_POTION]     = sItemEffect_MaxEther,
-    [ITEM_ELIXIR - ITEM_POTION]        = sItemEffect_Elixir,
-    [ITEM_MAX_ELIXIR - ITEM_POTION]    = sItemEffect_MaxElixir,
-    [ITEM_LAVA_COOKIE - ITEM_POTION]   = sItemEffect_LavaCookie,
-    [ITEM_BLUE_FLUTE - ITEM_POTION]    = sItemEffect_BlueFlute,
-    [ITEM_YELLOW_FLUTE - ITEM_POTION]  = sItemEffect_YellowFlute,
-    [ITEM_RED_FLUTE - ITEM_POTION]     = sItemEffect_RedFlute,
-    [ITEM_BERRY_JUICE - ITEM_POTION]   = sItemEffect_BerryJuice,
-    [ITEM_SACRED_ASH - ITEM_POTION]    = sItemEffect_SacredAsh,
-    [ITEM_HP_UP - ITEM_POTION]         = sItemEffect_HPUp,
-    [ITEM_PROTEIN - ITEM_POTION]       = sItemEffect_Protein,
-    [ITEM_IRON - ITEM_POTION]          = sItemEffect_Iron,
-    [ITEM_CARBOS - ITEM_POTION]        = sItemEffect_Carbos,
-    [ITEM_CALCIUM - ITEM_POTION]       = sItemEffect_Calcium,
-    [ITEM_RARE_CANDY - ITEM_POTION]    = sItemEffect_RareCandy,
-    [ITEM_PP_UP - ITEM_POTION]         = sItemEffect_PPUp,
-    [ITEM_ZINC - ITEM_POTION]          = sItemEffect_Zinc,
-    [ITEM_PP_MAX - ITEM_POTION]        = sItemEffect_PPMax,
-    [ITEM_GUARD_SPEC - ITEM_POTION]    = sItemEffect_GuardSpec,
-    [ITEM_DIRE_HIT - ITEM_POTION]      = sItemEffect_DireHit,
-    [ITEM_X_ATTACK - ITEM_POTION]      = sItemEffect_XAttack,
-    [ITEM_X_DEFEND - ITEM_POTION]      = sItemEffect_XDefend,
-    [ITEM_X_SPEED - ITEM_POTION]       = sItemEffect_XSpeed,
-    [ITEM_X_ACCURACY - ITEM_POTION]    = sItemEffect_XAccuracy,
-    [ITEM_X_SPECIAL - ITEM_POTION]     = sItemEffect_XSpecial,
-    [ITEM_SUN_STONE - ITEM_POTION]     = sItemEffect_EvoItem,
-    [ITEM_MOON_STONE - ITEM_POTION]    = sItemEffect_EvoItem,
-    [ITEM_FIRE_STONE - ITEM_POTION]    = sItemEffect_EvoItem,
-    [ITEM_THUNDER_STONE - ITEM_POTION] = sItemEffect_EvoItem,
-    [ITEM_WATER_STONE - ITEM_POTION]   = sItemEffect_EvoItem,
-    [ITEM_LEAF_STONE - ITEM_POTION]    = sItemEffect_EvoItem,
-    [ITEM_CHERI_BERRY - ITEM_POTION]   = sItemEffect_CheriBerry,
-    [ITEM_CHESTO_BERRY - ITEM_POTION]  = sItemEffect_ChestoBerry,
-    [ITEM_PECHA_BERRY - ITEM_POTION]   = sItemEffect_PechaBerry,
-    [ITEM_RAWST_BERRY - ITEM_POTION]   = sItemEffect_RawstBerry,
-    [ITEM_ASPEAR_BERRY - ITEM_POTION]  = sItemEffect_AspearBerry,
-    [ITEM_LEPPA_BERRY - ITEM_POTION]   = sItemEffect_LeppaBerry,
-    [ITEM_ORAN_BERRY - ITEM_POTION]    = sItemEffect_OranBerry,
-    [ITEM_PERSIM_BERRY - ITEM_POTION]  = sItemEffect_PersimBerry,
-    [ITEM_LUM_BERRY - ITEM_POTION]     = sItemEffect_LumBerry,
-    [ITEM_SITRUS_BERRY - ITEM_POTION]  = sItemEffect_SitrusBerry,
-    [LAST_BERRY_INDEX - ITEM_POTION]   = NULL,
-    [ITEM_LINKING_CORD - ITEM_POTION]  = sItemEffect_EvoItem,
-    [ITEM_KINGS_ROCK - ITEM_POTION]    = sItemEffect_EvoItem,
-    [ITEM_METAL_COAT - ITEM_POTION]    = sItemEffect_EvoItem,
+    [ITEM_POTION - ITEM_POTION]          = sItemEffect_Potion,
+    [ITEM_SUPER_POTION - ITEM_POTION]    = sItemEffect_SuperPotion,
+    [ITEM_HYPER_POTION - ITEM_POTION]    = sItemEffect_HyperPotion,
+    [ITEM_MAX_POTION - ITEM_POTION]      = sItemEffect_MaxPotion,
+    [ITEM_FULL_RESTORE - ITEM_POTION]    = sItemEffect_FullRestore,
+    [ITEM_REVIVE - ITEM_POTION]          = sItemEffect_Revive,
+    [ITEM_MAX_REVIVE - ITEM_POTION]      = sItemEffect_MaxRevive,
+    [ITEM_FRESH_WATER - ITEM_POTION]     = sItemEffect_SuperPotion,
+    [ITEM_SODA_POP - ITEM_POTION]        = sItemEffect_SodaPop,
+    [ITEM_LEMONADE - ITEM_POTION]        = sItemEffect_Lemonade,
+    [ITEM_MOOMOO_MILK - ITEM_POTION]     = sItemEffect_MoomooMilk,
+    [ITEM_ENERGY_POWDER - ITEM_POTION]   = sItemEffect_EnergyPowder,
+    [ITEM_ENERGY_ROOT - ITEM_POTION]     = sItemEffect_EnergyRoot,
+    [ITEM_HEAL_POWDER - ITEM_POTION]     = sItemEffect_HealPowder,
+    [ITEM_REVIVAL_HERB - ITEM_POTION]    = sItemEffect_RevivalHerb,
+    [ITEM_ANTIDOTE - ITEM_POTION]        = sItemEffect_Antidote,
+    [ITEM_PARALYZE_HEAL - ITEM_POTION]   = sItemEffect_ParalyzeHeal,
+    [ITEM_BURN_HEAL - ITEM_POTION]       = sItemEffect_BurnHeal,
+    [ITEM_ICE_HEAL - ITEM_POTION]        = sItemEffect_IceHeal,
+    [ITEM_AWAKENING - ITEM_POTION]       = sItemEffect_Awakening,
+    [ITEM_FULL_HEAL - ITEM_POTION]       = sItemEffect_FullHeal,
+    [ITEM_ETHER - ITEM_POTION]           = sItemEffect_Ether,
+    [ITEM_MAX_ETHER - ITEM_POTION]       = sItemEffect_MaxEther,
+    [ITEM_ELIXIR - ITEM_POTION]          = sItemEffect_Elixir,
+    [ITEM_MAX_ELIXIR - ITEM_POTION]      = sItemEffect_MaxElixir,
+    [ITEM_BERRY_JUICE - ITEM_POTION]     = sItemEffect_Potion,
+    [ITEM_SACRED_ASH - ITEM_POTION]      = sItemEffect_SacredAsh,
+    [ITEM_SWEET_HEART - ITEM_POTION]     = sItemEffect_Potion,
+
+    [ITEM_RAGE_CANDY_BAR - ITEM_POTION]  = sItemEffect_Potion,
+    [ITEM_LAVA_COOKIE - ITEM_POTION]     = sItemEffect_FullHeal,
+    [ITEM_OLD_GATEAU - ITEM_POTION]      = sItemEffect_FullHeal,
+    [ITEM_CASTELIACONE - ITEM_POTION]    = sItemEffect_FullHeal,
+    [ITEM_LUMIOSE_GALETTE - ITEM_POTION] = sItemEffect_FullHeal,
+    [ITEM_SHALOUR_SABLE - ITEM_POTION]   = sItemEffect_FullHeal,
+
+    [ITEM_HP_UP - ITEM_POTION]           = sItemEffect_HPUp,
+    [ITEM_PROTEIN - ITEM_POTION]         = sItemEffect_Protein,
+    [ITEM_IRON - ITEM_POTION]            = sItemEffect_Iron,
+    [ITEM_CALCIUM - ITEM_POTION]         = sItemEffect_Calcium,
+    [ITEM_ZINC - ITEM_POTION]            = sItemEffect_Zinc,
+    [ITEM_CARBOS - ITEM_POTION]          = sItemEffect_Carbos,
+    [ITEM_PP_UP - ITEM_POTION]           = sItemEffect_PPUp,
+    [ITEM_PP_MAX - ITEM_POTION]          = sItemEffect_PPMax,
+
+    [ITEM_HEALTH_FEATHER - ITEM_POTION]  = sItemEffect_HealthFeather,
+    [ITEM_MUSCLE_FEATHER - ITEM_POTION]  = sItemEffect_MuscleFeather,
+    [ITEM_RESIST_FEATHER - ITEM_POTION]  = sItemEffect_ResistFeather,
+    [ITEM_GENIUS_FEATHER - ITEM_POTION]  = sItemEffect_GeniusFeather,
+    [ITEM_CLEVER_FEATHER - ITEM_POTION]  = sItemEffect_CleverFeather,
+    [ITEM_SWIFT_FEATHER - ITEM_POTION]   = sItemEffect_SwiftFeather,
+
+    [ITEM_RARE_CANDY - ITEM_POTION]      = sItemEffect_RareCandy,
+
+    [ITEM_BLUE_FLUTE - ITEM_POTION]      = sItemEffect_BlueFlute,
+    [ITEM_YELLOW_FLUTE - ITEM_POTION]    = sItemEffect_YellowFlute,
+    [ITEM_RED_FLUTE - ITEM_POTION]       = sItemEffect_RedFlute,
+
+    [ITEM_X_ATTACK - ITEM_POTION]        = sItemEffect_XAttack,
+    [ITEM_X_DEFENSE - ITEM_POTION]       = sItemEffect_XDefense,
+    [ITEM_X_SP_ATK - ITEM_POTION]        = sItemEffect_XSpAtk,
+    [ITEM_X_SP_DEF - ITEM_POTION]        = sItemEffect_XSpDef,
+    [ITEM_X_SPEED - ITEM_POTION]         = sItemEffect_XSpeed,
+    [ITEM_X_ACCURACY - ITEM_POTION]      = sItemEffect_XAccuracy,
+    [ITEM_DIRE_HIT - ITEM_POTION]        = sItemEffect_DireHit,
+    [ITEM_GUARD_SPEC - ITEM_POTION]      = sItemEffect_GuardSpec,
+
+    [ITEM_FIRE_STONE - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_WATER_STONE - ITEM_POTION]     = sItemEffect_EvoItem,
+    [ITEM_THUNDER_STONE - ITEM_POTION]   = sItemEffect_EvoItem,
+    [ITEM_LEAF_STONE - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_ICE_STONE - ITEM_POTION]       = sItemEffect_EvoItem,
+    [ITEM_SUN_STONE - ITEM_POTION]       = sItemEffect_EvoItem,
+    [ITEM_MOON_STONE - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_SHINY_STONE - ITEM_POTION]     = sItemEffect_EvoItem,
+    [ITEM_DUSK_STONE - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_DAWN_STONE - ITEM_POTION]      = sItemEffect_EvoItem,
     [ITEM_DRAGON_SCALE - ITEM_POTION]    = sItemEffect_EvoItem,
-    [ITEM_UP_GRADE - ITEM_POTION]    = sItemEffect_EvoItem,
-    [ITEM_DEEP_SEA_TOOTH - ITEM_POTION]    = sItemEffect_EvoItem,
-    [ITEM_DEEP_SEA_SCALE - ITEM_POTION]    = sItemEffect_EvoItem,
+    [ITEM_UPGRADE - ITEM_POTION]         = sItemEffect_EvoItem,
+    [ITEM_PROTECTOR - ITEM_POTION]       = sItemEffect_EvoItem,
+    [ITEM_ELECTIRIZER - ITEM_POTION]     = sItemEffect_EvoItem,
+    [ITEM_MAGMARIZER - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_DUBIOUS_DISC - ITEM_POTION]    = sItemEffect_EvoItem,
+    [ITEM_REAPER_CLOTH - ITEM_POTION]    = sItemEffect_EvoItem,
+    [ITEM_PRISM_SCALE - ITEM_POTION]     = sItemEffect_EvoItem,
+    [ITEM_WHIPPED_DREAM - ITEM_POTION]   = sItemEffect_EvoItem,
+    [ITEM_SACHET - ITEM_POTION]          = sItemEffect_EvoItem,
+    [ITEM_OVAL_STONE - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_LINKING_CORD - ITEM_POTION]    = sItemEffect_EvoItem,
+
+    [ITEM_DEEP_SEA_SCALE - ITEM_POTION]  = sItemEffect_EvoItem,
+    [ITEM_DEEP_SEA_TOOTH - ITEM_POTION]  = sItemEffect_EvoItem,
+    [ITEM_METAL_COAT - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_KINGS_ROCK - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_RAZOR_CLAW - ITEM_POTION]      = sItemEffect_EvoItem,
+    [ITEM_RAZOR_FANG - ITEM_POTION]      = sItemEffect_EvoItem,
+
+    [ITEM_CHERI_BERRY - ITEM_POTION]     = sItemEffect_CheriBerry,
+    [ITEM_CHESTO_BERRY - ITEM_POTION]    = sItemEffect_ChestoBerry,
+    [ITEM_PECHA_BERRY - ITEM_POTION]     = sItemEffect_PechaBerry,
+    [ITEM_RAWST_BERRY - ITEM_POTION]     = sItemEffect_RawstBerry,
+    [ITEM_ASPEAR_BERRY - ITEM_POTION]    = sItemEffect_AspearBerry,
+    [ITEM_LEPPA_BERRY - ITEM_POTION]     = sItemEffect_LeppaBerry,
+    [ITEM_ORAN_BERRY - ITEM_POTION]      = sItemEffect_OranBerry,
+    [ITEM_PERSIM_BERRY - ITEM_POTION]    = sItemEffect_PersimBerry,
+    [ITEM_LUM_BERRY - ITEM_POTION]       = sItemEffect_LumBerry,
+    [ITEM_SITRUS_BERRY - ITEM_POTION]    = sItemEffect_SitrusBerry,
+    [LAST_BERRY_INDEX - ITEM_POTION]     = NULL,
 };

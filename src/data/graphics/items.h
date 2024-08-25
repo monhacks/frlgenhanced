@@ -636,6 +636,7 @@ const u32 gItemIconPalette_GhostTMHM[]    = INCBIN_U32("graphics/items/icon_pale
 const u32 gItemIconPalette_RockTMHM[]     = INCBIN_U32("graphics/items/icon_palettes/rock_tm_hm.gbapal.lz");
 const u32 gItemIconPalette_FlyingTMHM[]   = INCBIN_U32("graphics/items/icon_palettes/flying_tm_hm.gbapal.lz");
 const u32 gItemIconPalette_FairyTMHM[]	  = INCBIN_U32("graphics/items/icon_palettes/fairy_tm_hm.gbapal.lz");
+const u32 gItemIconPalette_BugTMHM[]      = INCBIN_U32("graphics/items/icon_palettes/bug_tm_hm.gbapal.lz");
 
 // FireRed/LeafGreen key items
 
@@ -713,7 +714,13 @@ const u32 gItemIconPalette_Ruby[] = INCBIN_U32("graphics/items/icon_palettes/rub
 const u32 gItemIcon_Gem[] = INCBIN_U32("graphics/items/icons/gem.4bpp.lz");
 const u32 gItemIconPalette_Sapphire[] = INCBIN_U32("graphics/items/icon_palettes/sapphire.gbapal.lz");
 
-// new items for frlg_combined
+const u32 gItemIcon_Mint[] = INCBIN_U32("graphics/items/icons/mint.4bpp.lz");
+const u32 gItemIconPalette_RedMint[] = INCBIN_U32("graphics/items/icon_palettes/red_mint.gbapal.lz");
+const u32 gItemIconPalette_BlueMint[] = INCBIN_U32("graphics/items/icon_palettes/blue_mint.gbapal.lz");
+const u32 gItemIconPalette_PinkMint[] = INCBIN_U32("graphics/items/icon_palettes/pink_mint.gbapal.lz");
+const u32 gItemIconPalette_GreenMint[] = INCBIN_U32("graphics/items/icon_palettes/green_mint.gbapal.lz");
+const u32 gItemIconPalette_LightBlueMint[] = INCBIN_U32("graphics/items/icon_palettes/light_blue_mint.gbapal.lz");
+const u32 gItemIconPalette_YellowMint[] = INCBIN_U32("graphics/items/icon_palettes/yellow_mint.gbapal.lz");
 
 const u32 gItemIcon_LinkingCord[] = INCBIN_U32("graphics/items/icons/linking_cord.4bpp.lz");
 const u32 gItemIconPalette_LinkingCord[] = INCBIN_U32("graphics/items/icon_palettes/linking_cord.gbapal.lz");

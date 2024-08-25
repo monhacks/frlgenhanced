@@ -924,3 +924,24 @@ void ItemUse_SetQuestLogEvent(u8 eventId, struct Pokemon *pokemon, u16 itemId, u
     SetQuestLogEvent(eventId, (void *)data);
     Free(data);
 }
+
+void FieldUseFunc_AbilityCapsule(u8 taskId)
+{
+
+}
+
+void FieldUseFunc_AbilityPatch(u8 taskId)
+{
+    
+}
+
+void FieldUseFunc_Mint(u8 taskId)
+{
+    gItemUseCB = ItemUseCB_Mints;
+    SetUpItemUseCallback(taskId);
+}
+
+void FieldUseFunc_ReduceEV(u8 taskId)
+{
+    
+}

@@ -9,10 +9,11 @@
 
 // field 1 masks
 #define ITEM1_X_SPEED           0x0F
-#define ITEM1_X_DEFEND          0xF0
+#define ITEM1_X_DEFENSE         0xF0
 
 // field 2 masks
-#define ITEM2_X_SPATK           0x0F
+#define ITEM2_X_SPATK           0x03
+#define ITEM2_X_SPDEF			0x0C
 #define ITEM2_X_ACCURACY        0xF0
 
 // field 3 masks
@@ -64,6 +65,7 @@
 // Amount of EV modified by ITEM4_EV_HP, ITEM4_EV_ATK, ITEM5_EV_DEF, ITEM5_EV_SPEED, ITEM5_EV_SPDEF and ITEM5_EV_SPATK
 #define ITEM6_ADD_EV       10
 #define ITEM6_SUBTRACT_EV -10
+#define ITEM6_ADD_EV_MINOR	1	// used by EV Feathers
 
 // Used for GetItemEffectType.
 #define ITEM_EFFECT_X_ITEM 0

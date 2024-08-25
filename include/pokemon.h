@@ -12,7 +12,9 @@ struct PokemonSubstruct0
     u32 experience;
     u8 ppBonuses;
     u8 friendship;
-    u16 filler;
+    u8 hiddenNature:5;  // 25 natures
+    u8 filler1:3;
+    u8 filler2;
 };
 
 struct PokemonSubstruct1
@@ -44,36 +46,36 @@ struct PokemonSubstruct3
 
  /* 0x02 */ u16 metLevel:7;
  /* 0x02 */ u16 metGame:4;
- /* 0x03 */ u16 pokeball:4;
- /* 0x03 */ u16 otGender:1;
+ /* 0x03 */ u16 pokeball:5;
 
+ /* 0x04 */ u32 otGender:1;
  /* 0x04 */ u32 hpIV:5;
  /* 0x04 */ u32 attackIV:5;
  /* 0x05 */ u32 defenseIV:5;
- /* 0x05 */ u32 speedIV:5;
- /* 0x05 */ u32 spAttackIV:5;
- /* 0x06 */ u32 spDefenseIV:5;
+ /* 0x06 */ u32 speedIV:5;
+ /* 0x06 */ u32 spAttackIV:5;
+ /* 0x07 */ u32 spDefenseIV:5;
  /* 0x07 */ u32 isEgg:1;
- /* 0x07 */ u32 abilityNum:1;
 
+ /* 0x08 */ u32 abilityNum:2;
  /* 0x08 */ u32 coolRibbon:3;               // Stores the highest contest rank achieved in the Cool category.
  /* 0x08 */ u32 beautyRibbon:3;             // Stores the highest contest rank achieved in the Beauty category.
- /* 0x08 */ u32 cuteRibbon:3;               // Stores the highest contest rank achieved in the Cute category.
+ /* 0x09 */ u32 cuteRibbon:3;               // Stores the highest contest rank achieved in the Cute category.
  /* 0x09 */ u32 smartRibbon:3;              // Stores the highest contest rank achieved in the Smart category.
  /* 0x09 */ u32 toughRibbon:3;              // Stores the highest contest rank achieved in the Tough category.
- /* 0x09 */ u32 championRibbon:1;           // Given when defeating the Champion. Because both RSE and FRLG use it, later generations don't specify from which region it comes from.
+ /* 0x0A */ u32 championRibbon:1;           // Given when defeating the Champion. Because both RSE and FRLG use it, later generations don't specify from which region it comes from.
  /* 0x0A */ u32 winningRibbon:1;            // Given at the Battle Tower's Level 50 challenge by winning a set of seven battles that extends the current streak to 56 or more.
  /* 0x0A */ u32 victoryRibbon:1;            // Given at the Battle Tower's Level 100 challenge by winning a set of seven battles that extends the current streak to 56 or more.
  /* 0x0A */ u32 artistRibbon:1;             // Given at the Contest Hall by winning a Master Rank contest with at least 800 points, and agreeing to have the Pokémon's portrait placed in the museum after being offered.
  /* 0x0A */ u32 effortRibbon:1;             // Given at Slateport's market to Pokémon with maximum EVs.
  /* 0x0A */ u32 marineRibbon:1;             // Never distributed.
  /* 0x0A */ u32 landRibbon:1;               // Never distributed.
- /* 0x0A */ u32 skyRibbon:1;                // Never distributed.
- /* 0x0A */ u32 countryRibbon:1;            // Distributed during Pokémon Festa '04 and '05 to tournament winners.
+ /* 0x0B */ u32 skyRibbon:1;                // Never distributed.
+ /* 0x0B */ u32 countryRibbon:1;            // Distributed during Pokémon Festa '04 and '05 to tournament winners.
  /* 0x0B */ u32 nationalRibbon:1;           // Given to purified Shadow Pokémon in Colosseum/XD.
  /* 0x0B */ u32 earthRibbon:1;              // Given to teams that have beaten Mt. Battle's 100-battle challenge in Colosseum/XD.
  /* 0x0B */ u32 worldRibbon:1;              // Distributed during Pokémon Festa '04 and '05 to tournament winners.
- /* 0x0B */ u32 unusedRibbons:4;            // Discarded in Gen 4.
+ /* 0x0B */ u32 unusedRibbons:2;            // Discarded in Gen 4.
 
  // The functionality of this bit changed in FRLG:
  // In RS, this bit does nothing, is never set, & is accidentally unset when hatching Eggs.
@@ -229,7 +231,7 @@ struct SpeciesInfo
  /* 0x12 */ u8 friendship;
  /* 0x13 */ u8 growthRate;
  /* 0x14 */ u8 eggGroups[2];
- /* 0x16 */ u8 abilities[2];
+ /* 0x16 */ u8 abilities[3];
  /* 0x18 */ u8 safariZoneFleeRate;
  /* 0x19 */ u8 bodyColor : 7;
             u8 noFlip : 1;
@@ -374,7 +376,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 moveIndex);
 u8 GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit);
 const u8 *Battle_PrintStatBoosterEffectMessage(u16 itemId);
-u8 GetNature(struct Pokemon *mon);
+u8 GetNature(struct Pokemon *mon, bool32 checkHidden);
 u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem);
 u16 NationalPokedexNumToSpecies(u16 nationalNum);
 u16 SpeciesToNationalPokedexNum(u16 species);

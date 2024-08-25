@@ -935,7 +935,7 @@ static void PrintSafariMonInfo(u8 healthboxSpriteId, struct Pokemon *mon)
 
     barFontGfx = &gMonSpritesGfxPtr->barFontGfx[0x520 + (GetBattlerPosition(gSprites[healthboxSpriteId].sBattlerId) * 384)];
     var = 5;
-    nature = GetNature(mon);
+    nature = GetNature(mon, FALSE);
     StringCopy(text + 6, gNatureNamePointers[nature]);
     RenderTextHandleBold(barFontGfx, 0, text, 0, 0, 0, 0, 0);
 

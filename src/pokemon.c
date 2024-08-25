@@ -1859,6 +1859,9 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
     }
 
+    value = HIDDEN_NATURE_NONE;
+    SetBoxMonData(boxMon, MON_DATA_HIDDEN_NATURE, &value);
+
     GiveBoxMonInitialMoveset(boxMon);
 }
 
@@ -2095,7 +2098,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
     s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
-    u8 nature = GetNature(mon);                                 \
+    u8 nature = GetNature(mon, TRUE);                                 \
     n = ModifyStatByNature(nature, n, statIndex);               \
     SetMonData(mon, field, &n);                                 \
 }
@@ -3308,6 +3311,9 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 | (substruct3->worldRibbon << 26);
         }
         break;
+    case MON_DATA_HIDDEN_NATURE:
+        retVal = substruct0->hiddenNature;
+        break;
     default:
         break;
     }
@@ -3654,6 +3660,9 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         substruct3->spDefenseIV = (ivs >> 25) & MAX_IV_MASK;
         break;
     }
+    case MON_DATA_HIDDEN_NATURE:
+        SET8(substruct0->hiddenNature);
+        break;
     default:
         break;
     }
@@ -3775,14 +3784,9 @@ u8 GetMonsStateToDoubles(void)
     return (aliveCount > 1) ? PLAYER_HAS_TWO_USABLE_MONS : PLAYER_HAS_ONE_USABLE_MON;
 }
 
-u8 GetAbilityBySpecies(u16 species, bool8 abilityNum)
+u8 GetAbilityBySpecies(u16 species, u8 abilityNum)
 {
-    if (abilityNum)
-        gLastUsedAbility = gSpeciesInfo[species].abilities[1];
-    else
-        gLastUsedAbility = gSpeciesInfo[species].abilities[0];
-
-    return gLastUsedAbility;
+    return gSpeciesInfo[species].abilities[abilityNum];
 }
 
 u8 GetMonAbility(struct Pokemon *mon)
@@ -4093,11 +4097,11 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
 
         // Handle ITEM1 effects (in-battle stat boosting effects)
         case 1:
-            // X Defend
-            if ((itemEffect[cmdIndex] & ITEM1_X_DEFEND)
+            // X Defense
+            if ((itemEffect[cmdIndex] & ITEM1_X_DEFENSE)
              && gBattleMons[gActiveBattler].statStages[STAT_DEF] < MAX_STAT_STAGE)
             {
-                gBattleMons[gActiveBattler].statStages[STAT_DEF] += (itemEffect[cmdIndex] & ITEM1_X_DEFEND) >> 4;
+                gBattleMons[gActiveBattler].statStages[STAT_DEF] += (itemEffect[cmdIndex] & ITEM1_X_DEFENSE) >> 4;
                 if (gBattleMons[gActiveBattler].statStages[STAT_DEF] > MAX_STAT_STAGE)
                     gBattleMons[gActiveBattler].statStages[STAT_DEF] = MAX_STAT_STAGE;
                 retVal = FALSE;
@@ -4123,6 +4127,16 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 gBattleMons[gActiveBattler].statStages[STAT_ACC] += (itemEffect[cmdIndex] & ITEM2_X_ACCURACY) >> 4;
                 if (gBattleMons[gActiveBattler].statStages[STAT_ACC] > MAX_STAT_STAGE)
                     gBattleMons[gActiveBattler].statStages[STAT_ACC] = MAX_STAT_STAGE;
+                retVal = FALSE;
+            }
+
+            // X Sp Defense
+            if ((itemEffect[cmdIndex] & ITEM2_X_SPDEF)
+             && gBattleMons[gActiveBattler].statStages[STAT_SPDEF] < MAX_STAT_STAGE)
+            {
+                gBattleMons[gActiveBattler].statStages[STAT_SPDEF] += (itemEffect[cmdIndex] & ITEM2_X_SPDEF) >> 2;
+                if (gBattleMons[gActiveBattler].statStages[STAT_SPDEF] > MAX_STAT_STAGE)
+                    gBattleMons[gActiveBattler].statStages[STAT_SPDEF] = MAX_STAT_STAGE;
                 retVal = FALSE;
             }
 
@@ -4222,10 +4236,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         if (evCount >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
-                        if (data < EV_ITEM_RAISE_LIMIT)
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
                         {
                             // Limit the increase
-                            if (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT)
+                            if ((itemEffect[idx] == ITEM6_ADD_EV) && (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT))
                                 evDelta = EV_ITEM_RAISE_LIMIT - (data + itemEffect[idx]) + itemEffect[idx];
                             else
                                 evDelta = itemEffect[idx];
@@ -4434,10 +4448,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         if (evCount >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
-                        if (data < EV_ITEM_RAISE_LIMIT)
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
                         {
                             // Limit the increase
-                            if (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT)
+                            if ((itemEffect[idx] == ITEM6_ADD_EV) && (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT))
                                 evDelta = EV_ITEM_RAISE_LIMIT - (data + itemEffect[idx]) + itemEffect[idx];
                             else
                                 evDelta = itemEffect[idx];
@@ -4611,8 +4625,8 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
 
         // Handle ITEM1 effects (in-battle stat boosting effects)
         case 1:
-            // X Defend
-            if ((itemEffect[cmdIndex] & ITEM1_X_DEFEND)
+            // X Defense
+            if ((itemEffect[cmdIndex] & ITEM1_X_DEFENSE)
              && gBattleMons[gActiveBattler].statStages[STAT_DEF] < MAX_STAT_STAGE)
                 retVal = FALSE;
 
@@ -4627,6 +4641,11 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
             // X Accuracy
             if ((itemEffect[cmdIndex] & ITEM2_X_ACCURACY)
              && gBattleMons[gActiveBattler].statStages[STAT_ACC] < MAX_STAT_STAGE)
+                retVal = FALSE;
+
+            // X Sp Defense
+            if ((itemEffect[cmdIndex] & ITEM2_X_SPDEF)
+             && gBattleMons[gActiveBattler].statStages[STAT_SPDEF] < MAX_STAT_STAGE)
                 retVal = FALSE;
 
             // X Sp Attack
@@ -4693,7 +4712,7 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
                         if (GetMonEVCount(mon) >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
-                        if (data < EV_ITEM_RAISE_LIMIT)
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
                         {
                             idx++;
                             retVal = FALSE;
@@ -4777,7 +4796,7 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
                         if (GetMonEVCount(mon) >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
-                        if (data < EV_ITEM_RAISE_LIMIT)
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
                         {
                             retVal = FALSE;
                             idx++;
@@ -4981,7 +5000,7 @@ const u8 *Battle_PrintStatBoosterEffectMessage(u16 itemId)
     {
         if (itemEffect[i] & (ITEM0_X_ATTACK | ITEM1_X_SPEED | ITEM2_X_SPATK))
             BufferStatRoseMessage(i * 2);
-        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFEND | ITEM2_X_ACCURACY))
+        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFENSE | ITEM2_X_ACCURACY))
         {
             if (i != 0) // Dire Hit is the only ITEM0 above
             {
@@ -5004,9 +5023,12 @@ const u8 *Battle_PrintStatBoosterEffectMessage(u16 itemId)
     return gDisplayedStringBattle;
 }
 
-u8 GetNature(struct Pokemon *mon)
+u8 GetNature(struct Pokemon *mon, bool32 checkHidden)
 {
-    return GetMonData(mon, MON_DATA_PERSONALITY, NULL) % NUM_NATURES;
+    if (!checkHidden || GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL) == HIDDEN_NATURE_NONE)
+        return GetNatureFromPersonality(GetMonData(mon, MON_DATA_PERSONALITY, NULL));
+    else
+        return GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
 }
 
 static u8 GetNatureFromPersonality(u32 personality)
@@ -6010,7 +6032,7 @@ bool8 IsMonSpriteNotFlipped(u16 species)
 
 static s8 GetMonFlavorRelation(struct Pokemon *mon, u8 flavor)
 {
-    u8 nature = GetNature(mon);
+    u8 nature = GetNature(mon, FALSE);
     return sPokeblockFlavorCompatibilityTable[nature * FLAVOR_COUNT + flavor];
 }
 
@@ -6224,7 +6246,7 @@ static u16 GetDeoxysStat(struct Pokemon *mon, s32 statId)
     ivVal = GetMonData(mon, MON_DATA_HP_IV + statId, NULL);
     evVal = GetMonData(mon, MON_DATA_HP_EV + statId, NULL);
     statValue = ((sDeoxysBaseStats[statId] * 2 + ivVal + evVal / 4) * mon->level) / 100 + 5;
-    nature = GetNature(mon);
+    nature = GetNature(mon, TRUE);
     statValue = ModifyStatByNature(nature, statValue, (u8)statId);
     return statValue;
 }

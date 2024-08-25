@@ -3237,6 +3237,7 @@ extern const u32 gItemIconPalette_GhostTMHM[];
 extern const u32 gItemIconPalette_RockTMHM[];
 extern const u32 gItemIconPalette_FlyingTMHM[];
 extern const u32 gItemIconPalette_FairyTMHM[];
+extern const u32 gItemIconPalette_BugTMHM[];
 // FireRed/LeafGreen key items
 extern const u32 gItemIcon_OaksParcel[];
 extern const u32 gItemIconPalette_OaksParcel[];
@@ -3288,11 +3289,18 @@ extern const u32 gItemIconPalette_PowderJar[];
 extern const u32 gItemIcon_Gem[];
 extern const u32 gItemIconPalette_Ruby[];
 extern const u32 gItemIconPalette_Sapphire[];
-extern const u32 gItemIcon_ReturnToFieldArrow[];
-extern const u32 gItemIconPalette_ReturnToFieldArrow[];
-// new items for frlg_combined
+// Mints
+extern const u32 gItemIcon_Mint[];
+extern const u32 gItemIconPalette_RedMint[];
+extern const u32 gItemIconPalette_BlueMint[];
+extern const u32 gItemIconPalette_PinkMint[];
+extern const u32 gItemIconPalette_GreenMint[];
+extern const u32 gItemIconPalette_LightBlueMint[];
+extern const u32 gItemIconPalette_YellowMint[];
 extern const u32 gItemIcon_LinkingCord[];
 extern const u32 gItemIconPalette_LinkingCord[];
+extern const u32 gItemIcon_ReturnToFieldArrow[];
+extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 
 // battle_anim_utility_funcs
 extern const u32 gFile_graphics_battle_anims_masks_curse_sheet[];

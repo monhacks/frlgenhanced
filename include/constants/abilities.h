@@ -1,6 +1,12 @@
 #ifndef GUARD_CONSTANTS_ABILITIES_H
 #define GUARD_CONSTANTS_ABILITIES_H
 
+// Indices used for abilityNum
+#define NUM_ABILITY_FIRST	0
+#define NUM_ABILITY_SECOND	1
+#define NUM_ABILITY_HIDDEN	2
+
+// Abilites
 #define ABILITY_NONE 0
 #define ABILITY_STENCH 1
 #define ABILITY_DRIZZLE 2

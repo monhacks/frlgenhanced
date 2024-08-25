@@ -17,6 +17,9 @@ Hiroshi Sotomura
 Zeturic
 * [Wrapping Summary Screen](https://www.pokecommunity.com/showpost.php?p=10060875&postcount=27)
 
+ghoulslash
+* [Nature Mints](https://www.pokecommunity.com/showpost.php?p=10245635&postcount=191)
+
 pokefirered(FR) and pokeemerald(EM) tutorials on the github wikis
 * (EM) [Add Physical Special Split](https://github.com/pret/pokeemerald/wiki/add-physical-special-split)
 * (EM) [Update Sitrrus Berry's effect to Gen 4 standard](https://github.com/pret/pokeemerald/wiki/Update-Sitrus-Berry's-effect-to-Gen-4-standard)
