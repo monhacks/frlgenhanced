@@ -1,5 +1,6 @@
 #include "global.h"
 #include "field_weather.h"
+#include "field_weather_util.h"
 #include "overworld.h"
 #include "constants/weather.h"
 

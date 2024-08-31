@@ -248,6 +248,14 @@ u16 VarGet(u16 idx)
     return *ptr;
 }
 
+u16 VarGetIfExist(u16 idx)
+{
+    u16 *ptr = GetVarPointer(idx);
+    if (!ptr)
+        return 65535;
+    return *ptr;
+}
+
 bool8 VarSet(u16 idx, u16 val)
 {
     u16 *ptr = GetVarPointer(idx);
@@ -262,7 +270,7 @@ u8 VarGetObjectEventGraphicsId(u8 idx)
     return VarGet(VAR_OBJ_GFX_ID_0 + idx);
 }
 
-u8 *GetFlagAddr(u16 idx)
+u8 *GetFlagPointer(u16 idx)
 {
     u8 *ptr;
     if (idx == 0)
@@ -294,15 +302,23 @@ u8 *GetFlagAddr(u16 idx)
 
 bool8 FlagSet(u16 idx)
 {
-    u8 *ptr = GetFlagAddr(idx);
+    u8 *ptr = GetFlagPointer(idx);
     if (ptr != NULL)
         *ptr |= 1 << (idx & 7);
     return FALSE;
 }
 
+u8 FlagToggle(u16 idx)
+{
+    u8 *ptr = GetFlagPointer(idx);
+    if (ptr)
+        *ptr ^= 1 << (idx & 7);
+    return FALSE;
+}
+
 bool8 FlagClear(u16 idx)
 {
-    u8 *ptr = GetFlagAddr(idx);
+    u8 *ptr = GetFlagPointer(idx);
     if (ptr != NULL)
         *ptr &= ~(1 << (idx & 7));
     return FALSE;
@@ -310,7 +326,7 @@ bool8 FlagClear(u16 idx)
 
 bool8 FlagGet(u16 idx)
 {
-    u8 *ptr = GetFlagAddr(idx);
+    u8 *ptr = GetFlagPointer(idx);
     if (ptr == NULL)
         return FALSE;
     if (!(*ptr & 1 << (idx & 7)))

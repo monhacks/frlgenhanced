@@ -1,6 +1,6 @@
 #ifndef GUARD_FIELD_WEATHER_UTIL_H
 #define GUARD_FIELD_WEATHER_UTIL_H
 
-void SetWeather(u8 weather);
+void SetWeather(u32 weather);
 
 #endif //GUARD_FIELD_WEATHER_UTIL_H

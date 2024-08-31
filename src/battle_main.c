@@ -11,6 +11,7 @@
 #include "battle_setup.h"
 #include "berry.h"
 #include "data.h"
+#include "debug.h"
 #include "decompress.h"
 #include "event_data.h"
 #include "evolution_scene.h"
@@ -699,7 +700,12 @@ static void CB2_InitBattleInternal(void)
     gBattle_BG3_X = 0;
     gBattle_BG3_Y = 0;
 
+#if DEBUGGING
+    if (!gIsDebugBattle)
+        gBattleTerrain = BattleSetup_GetTerrainId();
+#else
     gBattleTerrain = BattleSetup_GetTerrainId();
+#endif
 
     InitBattleBgsVideo();
     LoadBattleTextboxAndBackground();
@@ -715,11 +721,23 @@ static void CB2_InitBattleInternal(void)
         SetMainCallback2(CB2_HandleStartMultiBattle);
     else
         SetMainCallback2(CB2_HandleStartBattle);
+    
+#if DEBUGGING
+    if (!gIsDebugBattle)
+    {
+        if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
+        {
+            CreateNPCTrainerParty(&gEnemyParty[0], gTrainerBattleOpponent_A);
+            SetWildMonHeldItem();
+        }
+    }
+#else
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
         CreateNPCTrainerParty(&gEnemyParty[0], gTrainerBattleOpponent_A);
         SetWildMonHeldItem();
     }
+#endif
 
     gMain.inBattle = TRUE;
     for (i = 0; i < PARTY_SIZE; i++)
@@ -3188,6 +3206,16 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_USE_ITEM:
+                #if DEBUGGING
+                    if (FlagGet(FLAG_SYS_NO_BAG_USE) || gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_EREADER_TRAINER))
+                    {
+                        gSelectionBattleScripts[gActiveBattler] = BattleScript_ActionSelectionItemsCantBeUsed;
+                        gBattleCommunication[gActiveBattler] = STATE_SELECTION_SCRIPT;
+                        *(gBattleStruct->selectionScriptFinished + gActiveBattler) = FALSE;
+                        *(gBattleStruct->stateIdAfterSelScript + gActiveBattler) = STATE_BEFORE_ACTION_CHOSEN;
+                        return;
+                    }
+                #else
                     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_EREADER_TRAINER))
                     {
                         gSelectionBattleScripts[gActiveBattler] = BattleScript_ActionSelectionItemsCantBeUsed;
@@ -3196,6 +3224,7 @@ static void HandleTurnActionSelectionState(void)
                         *(gBattleStruct->stateIdAfterSelScript + gActiveBattler) = STATE_BEFORE_ACTION_CHOSEN;
                         return;
                     }
+                #endif
                     else
                     {
                         BtlController_EmitChooseItem(0, gBattleStruct->battlerPartyOrders[gActiveBattler]);

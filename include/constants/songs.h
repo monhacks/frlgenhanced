@@ -355,4 +355,8 @@
 
 #define MUS_NONE                    0xFFFF
 
+#define END_SE		SE_POKE_JUMP_FAILURE
+#define START_MUS	MUS_HEAL
+#define END_MUS		MUS_TEACHY_TV_MENU
+
 #endif  // GUARD_CONSTANTS_SONGS_H

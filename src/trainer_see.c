@@ -1,5 +1,7 @@
 #include "global.h"
 #include "battle_setup.h"
+#include "debug.h"
+#include "event_data.h"
 #include "event_object_movement.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
@@ -90,6 +92,11 @@ bool8 CheckForTrainersWantingBattle(void)
     u8 i;
     if (QL_IsTrainerSightDisabled() == TRUE)
         return FALSE;
+    
+#if DEBUGGING
+    if (FlagGet(FLAG_SYS_NO_TRAINER_SEE))
+        return FALSE;
+#endif
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {

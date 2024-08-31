@@ -4034,3 +4034,30 @@ static void SetFlyWarpDestination(u16 mapsec)
     }
     ReturnToFieldFromFlyMapSelect();
 }
+
+u8 *GetMapName_HandleVersion(u8 *dest, u16 mapsec, u8 version)
+{
+    switch (version)
+    {
+        case 1 ... 6:   // R/S/E/FR/LG/WB
+            if (mapsec == METLOC_SPECIAL_EGG)
+                return StringCopy(dest, sMapNames[214]);
+            else if (mapsec == METLOC_IN_GAME_TRADE)
+                return StringCopy(dest, sMapNames[215]);
+            else if (mapsec == METLOC_FATEFUL_ENCOUNTER)
+                return StringCopy(dest, sMapNames[216]);
+            else if (mapsec < 213)
+                return StringCopy(dest, sMapNames[mapsec]);
+            // TODO: expand R/S Aqua Hideout placeholder
+        default:
+            if ((mapsec & 0xFF) == METLOC_SPECIAL_EGG)
+                return StringCopy(dest, sMapNames[214]);
+            else if ((mapsec & 0xFF) == METLOC_IN_GAME_TRADE)
+                return StringCopy(dest, sMapNames[215]);
+            else if ((mapsec & 0xFF) == METLOC_FATEFUL_ENCOUNTER)
+                return StringCopy(dest, sMapNames[216]);
+            else
+                return GetMapNameGeneric(dest, (mapsec & 0xFF));
+            // TODO: expand R/S Aqua Hideout placeholder
+    }
+}
