@@ -1,5 +1,7 @@
 #include "global.h"
 #include "battle_setup.h"
+#include "debug.h"
+#include "event_data.h"
 #include "event_object_movement.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
@@ -90,6 +92,11 @@ bool8 CheckForTrainersWantingBattle(void)
     u8 i;
     if (QL_IsTrainerSightDisabled() == TRUE)
         return FALSE;
+    
+#if DEBUGGING
+    if (FlagGet(FLAG_SYS_NO_TRAINER_SEE))
+        return FALSE;
+#endif
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
@@ -518,7 +525,7 @@ static void Task_RevealTrainer_RunTrainerSeeFuncList(u8 taskId)
     struct ObjectEvent * trainerObj;
 
     // another objEvent loaded into by loadword?
-    LoadWordFromTwoHalfwords((u16 *)&task->data[1], (uintptr_t *)&trainerObj);
+    LoadWordFromTwoHalfwords((u16 *)&task->data[1], (u32 *)&trainerObj);
     if (!task->data[7])
     {
         ObjectEventClearHeldMovement(trainerObj);

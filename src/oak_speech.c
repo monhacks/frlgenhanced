@@ -7,6 +7,7 @@
 #include "menu.h"
 #include "help_system.h"
 #include "new_menu_helpers.h"
+#include "oak_speech.h"
 #include "event_scripts.h"
 #include "scanline_effect.h"
 #include "pokeball.h"
@@ -104,7 +105,6 @@ static void ClearTrainerPic(void);
 static void CreateFadeInTask(u8, u8);
 static void CreateFadeOutTask(u8, u8);
 static void PrintNameChoiceOptions(u8, u8);
-static void GetDefaultName(u8, u8);
 
 extern const u8 gText_Controls[];
 extern const u8 gText_ABUTTONNext[];
@@ -2135,7 +2135,7 @@ static void PrintNameChoiceOptions(u8 taskId, u8 hasPlayerBeenNamed)
     CopyWindowToVram(tMenuWindowId, COPYWIN_FULL);
 }
 
-static void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
+void GetDefaultName(u8 hasPlayerBeenNamed, u8 rivalNameChoice)
 {
     const u8 *src;
     u8 *dest;

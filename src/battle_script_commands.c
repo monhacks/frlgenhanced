@@ -36,6 +36,8 @@
 #include "constants/abilities.h"
 #include "constants/pokemon.h"
 #include "constants/maps.h"
+#include "constants/flags.h"
+#include "debug.h"
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
 
@@ -810,8 +812,8 @@ static const u8 sBallCatchBonuses[] =
     [ITEM_SAFARI_BALL - ITEM_ULTRA_BALL] = 15
 };
 
-// unknown unused data
-static const u32 sUnused = 0xFF7EAE60;
+// unused
+ALIGNED(4) static const u8 sJPText_Turn[] = _("ターン");
 
 static void Cmd_attackcanceler(void)
 {
@@ -1704,6 +1706,12 @@ static void Cmd_waitanimation(void)
 
 static void Cmd_healthbarupdate(void)
 {
+#if DEBUGGING
+    u8 side = GetBattlerSide(gBattlerTarget);
+    if (FlagGet(FLAG_SYS_NO_BATTLE_DMG) && side == B_SIDE_PLAYER)
+        gMoveResultFlags |= MOVE_RESULT_NO_EFFECT;
+#endif
+
     if (gBattleControllerExecFlags)
         return;
 

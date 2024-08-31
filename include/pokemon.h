@@ -432,5 +432,9 @@ bool8 CheckBattleTypeGhost(struct Pokemon *mon, u8 bank);
 struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 battlePosition, u8 mode);
 void DestroyMonSpritesGfxManager(void);
 u8 *MonSpritesGfxManager_GetSpritePtr(u8 bufferId);
+void GiveMonInitialMoveset(struct Pokemon *mon);
+bool8 IsShinyOtIdPersonality(u32 otId, u32 personality);
+u8 GetNatureFromPersonality(u32 personality);
+u8 SendMonToPC(struct Pokemon* mon);
 
 #endif // GUARD_POKEMON_H

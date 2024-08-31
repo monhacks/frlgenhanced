@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_anim.h"
+#include "debug.h"
 #include "util.h"
 #include "item.h"
 #include "random.h"
@@ -328,36 +329,31 @@ void BattleAI_SetupAIData(void)
     }
 
     // Choose proper trainer ai scripts.
-    // Fire Red, why all the returns?!?
     if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
-    {
         AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_SAFARI;
-        return;
-    }
     else if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
-    {
         AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_ROAMING;
-        return;
-    }
     else if (!(gBattleTypeFlags & (BATTLE_TYPE_TRAINER_TOWER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_BATTLE_TOWER)) && (gTrainerBattleOpponent_A != TRAINER_SECRET_BASE))
     {
         if (gBattleTypeFlags & BATTLE_TYPE_WILD_SCRIPTED)
         {
             AI_THINKING_STRUCT->aiFlags = AI_SCRIPT_CHECK_BAD_MOVE;
-            return;
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY_FRLG)
         {
             AI_THINKING_STRUCT->aiFlags = (AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY);
-            return;
         }
     }
     else
-    {
-        AI_THINKING_STRUCT->aiFlags = (AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY);
-        return;
-    }
-    AI_THINKING_STRUCT->aiFlags = gTrainers[gTrainerBattleOpponent_A].aiFlags;
+        AI_THINKING_STRUCT->aiFlags = gTrainers[gTrainerBattleOpponent_A].aiFlags;
+    
+#if DEBUGGING
+    if (gIsDebugBattle)
+        AI_THINKING_STRUCT->aiFlags = gDebugAIFlags;
+#endif
+
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+        AI_THINKING_STRUCT->aiFlags |= AI_SCRIPT_DOUBLE_BATTLE;
 }
 
 u8 BattleAI_ChooseMoveOrAction(void)

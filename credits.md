@@ -20,6 +20,9 @@ Zeturic
 ghoulslash
 * [Nature Mints](https://www.pokecommunity.com/showpost.php?p=10245635&postcount=191)
 
+TheXaman, Ketsuban, Pyredrid, AsparagusEduardo, Ghoulslash, ExboSeed, Sierraffinity, Jaizu
+* [Fully functional debug menu with Flags, Vars, Items, custom scripts, Pokemon and more!](https://www.pokecommunity.com/showpost.php?p=10220970&postcount=175)
+
 pokefirered(FR) and pokeemerald(EM) tutorials on the github wikis
 * (EM) [Add Physical Special Split](https://github.com/pret/pokeemerald/wiki/add-physical-special-split)
 * (EM) [Update Sitrrus Berry's effect to Gen 4 standard](https://github.com/pret/pokeemerald/wiki/Update-Sitrus-Berry's-effect-to-Gen-4-standard)
