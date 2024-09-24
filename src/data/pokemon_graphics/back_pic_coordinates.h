@@ -1,3 +1,51 @@
+#define UNOWN_BACK_COORDS(backWidth, backHeight, backYOffset) \
+    {                                                         \
+        .size = MON_COORDS_SIZE(backWidth, backHeight),       \
+        .y_offset = backYOffset,                              \
+    }
+
+#define ARCEUS_BACK_COORDS               \
+    {                                    \
+        .size = MON_COORDS_SIZE(64, 64), \
+        .y_offset = 3,                   \
+    }
+
+#define GENESECT_BACK_COORDS             \
+    {                                    \
+        .size = MON_COORDS_SIZE(64, 48), \
+        .y_offset = 8,                   \
+    }
+
+#define VIVILLON_BACK_COORDS             \
+	{                                    \
+        .size = MON_COORDS_SIZE(64, 64), \
+        .y_offset = 0,                   \
+	}
+
+#define FLABEBE_BACK_COORDS              \
+	{                                    \
+        .size = MON_COORDS_SIZE(64, 40), \
+        .y_offset = 12,                  \
+	}
+
+#define FLOETTE_BACK_COORDS              \
+	{                                    \
+        .size = MON_COORDS_SIZE(64, 64), \
+        .y_offset = 2,                   \
+	}
+
+#define FLORGES_BACK_COORDS              \
+	{                                    \
+        .size = MON_COORDS_SIZE(64, 48), \
+        .y_offset = 9,                   \
+	}
+
+#define FURFROU_BACK_COORDS(backWidth, backYOffset) \
+    {                                               \
+        .size = MON_COORDS_SIZE(backWidth, 64),     \
+        .y_offset = backYOffset,                    \
+    }
+
 const struct MonCoords gMonBackPicCoords[] =
 {
     [SPECIES_NONE] =
@@ -1005,11 +1053,7 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(48, 48),
         .y_offset = 10,
     },
-    [SPECIES_UNOWN] =
-    {
-        .size = MON_COORDS_SIZE(24, 48),
-        .y_offset = 8,
-    },
+    [SPECIES_UNOWN] = UNOWN_BACK_COORDS(24, 48, 8),
     [SPECIES_WOBBUFFET] =
     {
         .size = MON_COORDS_SIZE(56, 40),
@@ -1260,131 +1304,6 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(48, 48),
         .y_offset = 8,
     },
-    [SPECIES_OLD_UNOWN_B] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_C] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_D] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_E] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_F] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_G] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_H] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_I] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_J] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_K] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_L] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_M] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_N] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_O] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_P] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_Q] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_R] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_S] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_T] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_U] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_V] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_W] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_X] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_Y] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_OLD_UNOWN_Z] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
     [SPECIES_TREECKO] =
     {
         .size = MON_COORDS_SIZE(64, 56),
@@ -1505,21 +1424,6 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 48),
         .y_offset = 8,
     },
-    [SPECIES_NINCADA] =
-    {
-        .size = MON_COORDS_SIZE(64, 24),
-        .y_offset = 20,
-    },
-    [SPECIES_NINJASK] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_SHEDINJA] =
-    {
-        .size = MON_COORDS_SIZE(56, 56),
-        .y_offset = 6,
-    },
     [SPECIES_TAILLOW] =
     {
         .size = MON_COORDS_SIZE(48, 32),
@@ -1529,21 +1433,6 @@ const struct MonCoords gMonBackPicCoords[] =
     {
         .size = MON_COORDS_SIZE(64, 48),
         .y_offset = 8,
-    },
-    [SPECIES_SHROOMISH] =
-    {
-        .size = MON_COORDS_SIZE(64, 40),
-        .y_offset = 13,
-    },
-    [SPECIES_BRELOOM] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 4,
-    },
-    [SPECIES_SPINDA] =
-    {
-        .size = MON_COORDS_SIZE(56, 56),
-        .y_offset = 4,
     },
     [SPECIES_WINGULL] =
     {
@@ -1555,6 +1444,21 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 6,
     },
+    [SPECIES_RALTS] =
+    {
+        .size = MON_COORDS_SIZE(32, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_KIRLIA] =
+    {
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_GARDEVOIR] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 4,
+    },
     [SPECIES_SURSKIT] =
     {
         .size = MON_COORDS_SIZE(64, 48),
@@ -1565,260 +1469,15 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 64),
         .y_offset = 0,
     },
-    [SPECIES_WAILMER] =
-    {
-        .size = MON_COORDS_SIZE(64, 24),
-        .y_offset = 21,
-    },
-    [SPECIES_WAILORD] =
-    {
-        .size = MON_COORDS_SIZE(64, 24),
-        .y_offset = 22,
-    },
-    [SPECIES_SKITTY] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_DELCATTY] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_KECLEON] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 6,
-    },
-    [SPECIES_BALTOY] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_CLAYDOL] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_NOSEPASS] =
+    [SPECIES_SHROOMISH] =
     {
         .size = MON_COORDS_SIZE(64, 40),
-        .y_offset = 12,
+        .y_offset = 13,
     },
-    [SPECIES_TORKOAL] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_SABLEYE] =
-    {
-        .size = MON_COORDS_SIZE(56, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_BARBOACH] =
-    {
-        .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_WHISCASH] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_LUVDISC] =
-    {
-        .size = MON_COORDS_SIZE(32, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_CORPHISH] =
-    {
-        .size = MON_COORDS_SIZE(56, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_CRAWDAUNT] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 5,
-    },
-    [SPECIES_FEEBAS] =
-    {
-        .size = MON_COORDS_SIZE(48, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_MILOTIC] =
-    {
-        .size = MON_COORDS_SIZE(48, 64),
-        .y_offset = 2,
-    },
-    [SPECIES_CARVANHA] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_SHARPEDO] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 2,
-    },
-    [SPECIES_TRAPINCH] =
-    {
-        .size = MON_COORDS_SIZE(56, 40),
-        .y_offset = 14,
-    },
-    [SPECIES_VIBRAVA] =
-    {
-        .size = MON_COORDS_SIZE(56, 32),
-        .y_offset = 17,
-    },
-    [SPECIES_FLYGON] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 2,
-    },
-    [SPECIES_MAKUHITA] =
-    {
-        .size = MON_COORDS_SIZE(56, 48),
-        .y_offset = 11,
-    },
-    [SPECIES_HARIYAMA] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_ELECTRIKE] =
-    {
-        .size = MON_COORDS_SIZE(64, 32),
-        .y_offset = 16,
-    },
-    [SPECIES_MANECTRIC] =
+    [SPECIES_BRELOOM] =
     {
         .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 4,
-    },
-    [SPECIES_NUMEL] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 11,
-    },
-    [SPECIES_CAMERUPT] =
-    {
-        .size = MON_COORDS_SIZE(64, 32),
-        .y_offset = 19,
-    },
-    [SPECIES_SPHEAL] =
-    {
-        .size = MON_COORDS_SIZE(48, 32),
-        .y_offset = 18,
-    },
-    [SPECIES_SEALEO] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_WALREIN] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 6,
-    },
-    [SPECIES_CACNEA] =
-    {
-        .size = MON_COORDS_SIZE(64, 40),
-        .y_offset = 15,
-    },
-    [SPECIES_CACTURNE] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_SNORUNT] =
-    {
-        .size = MON_COORDS_SIZE(56, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_GLALIE] =
-    {
-        .size = MON_COORDS_SIZE(64, 40),
-        .y_offset = 12,
-    },
-    [SPECIES_LUNATONE] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 5,
-    },
-    [SPECIES_SOLROCK] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 5,
-    },
-    [SPECIES_AZURILL] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_SPOINK] =
-    {
-        .size = MON_COORDS_SIZE(40, 48),
-        .y_offset = 11,
-    },
-    [SPECIES_GRUMPIG] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 4,
-    },
-    [SPECIES_PLUSLE] =
-    {
-        .size = MON_COORDS_SIZE(56, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_MINUN] =
-    {
-        .size = MON_COORDS_SIZE(56, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_MAWILE] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 4,
-    },
-    [SPECIES_MEDITITE] =
-    {
-        .size = MON_COORDS_SIZE(56, 48),
-        .y_offset = 11,
-    },
-    [SPECIES_MEDICHAM] =
-    {
-        .size = MON_COORDS_SIZE(48, 64),
-        .y_offset = 3,
-    },
-    [SPECIES_SWABLU] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 9,
-    },
-    [SPECIES_ALTARIA] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 6,
-    },
-    [SPECIES_WYNAUT] =
-    {
-        .size = MON_COORDS_SIZE(56, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_DUSKULL] =
-    {
-        .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 11,
-    },
-    [SPECIES_DUSCLOPS] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_ROSELIA] =
-    {
-        .size = MON_COORDS_SIZE(64, 48),
-        .y_offset = 8,
     },
     [SPECIES_SLAKOTH] =
     {
@@ -1835,20 +1494,20 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 48),
         .y_offset = 8,
     },
-    [SPECIES_GULPIN] =
+    [SPECIES_NINCADA] =
     {
-        .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 11,
+        .size = MON_COORDS_SIZE(64, 24),
+        .y_offset = 20,
     },
-    [SPECIES_SWALOT] =
+    [SPECIES_NINJASK] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_SHEDINJA] =
     {
         .size = MON_COORDS_SIZE(56, 56),
         .y_offset = 6,
-    },
-    [SPECIES_TROPIUS] =
-    {
-        .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 7,
     },
     [SPECIES_WHISMUR] =
     {
@@ -1865,50 +1524,45 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 64),
         .y_offset = 3,
     },
-    [SPECIES_CLAMPERL] =
+    [SPECIES_MAKUHITA] =
     {
-        .size = MON_COORDS_SIZE(64, 40),
-        .y_offset = 13,
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 11,
     },
-    [SPECIES_HUNTAIL] =
+    [SPECIES_HARIYAMA] =
     {
-        .size = MON_COORDS_SIZE(48, 64),
-        .y_offset = 2,
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
     },
-    [SPECIES_GOREBYSS] =
-    {
-        .size = MON_COORDS_SIZE(56, 56),
-        .y_offset = 5,
-    },
-    [SPECIES_ABSOL] =
-    {
-        .size = MON_COORDS_SIZE(56, 64),
-        .y_offset = 3,
-    },
-    [SPECIES_SHUPPET] =
-    {
-        .size = MON_COORDS_SIZE(56, 56),
-        .y_offset = 6,
-    },
-    [SPECIES_BANETTE] =
-    {
-        .size = MON_COORDS_SIZE(48, 40),
-        .y_offset = 12,
-    },
-    [SPECIES_SEVIPER] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 3,
-    },
-    [SPECIES_ZANGOOSE] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 1,
-    },
-    [SPECIES_RELICANTH] =
+    [SPECIES_AZURILL] =
     {
         .size = MON_COORDS_SIZE(64, 48),
         .y_offset = 10,
+    },
+    [SPECIES_NOSEPASS] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_SKITTY] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_DELCATTY] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_SABLEYE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_MAWILE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
     },
     [SPECIES_ARON] =
     {
@@ -1925,10 +1579,35 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 7,
     },
-    [SPECIES_CASTFORM] =
+    [SPECIES_MEDITITE] =
     {
-        .size = MON_COORDS_SIZE(32, 40),
-        .y_offset = 13,
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_MEDICHAM] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_ELECTRIKE] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 16,
+    },
+    [SPECIES_MANECTRIC] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_PLUSLE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_MINUN] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 8,
     },
     [SPECIES_VOLBEAT] =
     {
@@ -1939,6 +1618,156 @@ const struct MonCoords gMonBackPicCoords[] =
     {
         .size = MON_COORDS_SIZE(48, 56),
         .y_offset = 6,
+    },
+    [SPECIES_ROSELIA] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_GULPIN] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_SWALOT] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_CARVANHA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_SHARPEDO] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_WAILMER] =
+    {
+        .size = MON_COORDS_SIZE(64, 24),
+        .y_offset = 21,
+    },
+    [SPECIES_WAILORD] =
+    {
+        .size = MON_COORDS_SIZE(64, 24),
+        .y_offset = 22,
+    },
+    [SPECIES_NUMEL] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_CAMERUPT] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 19,
+    },
+    [SPECIES_TORKOAL] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_SPOINK] =
+    {
+        .size = MON_COORDS_SIZE(40, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_GRUMPIG] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_SPINDA] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_TRAPINCH] =
+    {
+        .size = MON_COORDS_SIZE(56, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_VIBRAVA] =
+    {
+        .size = MON_COORDS_SIZE(56, 32),
+        .y_offset = 17,
+    },
+    [SPECIES_FLYGON] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_CACNEA] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 15,
+    },
+    [SPECIES_CACTURNE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_SWABLU] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_ALTARIA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_ZANGOOSE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_SEVIPER] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_LUNATONE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_SOLROCK] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_BARBOACH] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_WHISCASH] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_CORPHISH] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_CRAWDAUNT] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_BALTOY] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_CLAYDOL] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
     },
     [SPECIES_LILEEP] =
     {
@@ -1960,20 +1789,115 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(56, 56),
         .y_offset = 5,
     },
-    [SPECIES_RALTS] =
+    [SPECIES_FEEBAS] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_MILOTIC] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_CASTFORM_NORMAL] =
     {
         .size = MON_COORDS_SIZE(32, 40),
         .y_offset = 13,
     },
-    [SPECIES_KIRLIA] =
+    [SPECIES_KECLEON] =
     {
-        .size = MON_COORDS_SIZE(40, 56),
+        .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 6,
     },
-    [SPECIES_GARDEVOIR] =
+    [SPECIES_SHUPPET] =
     {
         .size = MON_COORDS_SIZE(56, 56),
-        .y_offset = 4,
+        .y_offset = 6,
+    },
+    [SPECIES_BANETTE] =
+    {
+        .size = MON_COORDS_SIZE(48, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_DUSKULL] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_DUSCLOPS] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_TROPIUS] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_CHIMECHO] =
+    {
+        .size = MON_COORDS_SIZE(32, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_ABSOL] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_WYNAUT] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_SNORUNT] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_GLALIE] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_SPHEAL] =
+    {
+        .size = MON_COORDS_SIZE(48, 32),
+        .y_offset = 18,
+    },
+    [SPECIES_SEALEO] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_WALREIN] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_CLAMPERL] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_HUNTAIL] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_GOREBYSS] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_RELICANTH] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_LUVDISC] =
+    {
+        .size = MON_COORDS_SIZE(32, 48),
+        .y_offset = 10,
     },
     [SPECIES_BAGON] =
     {
@@ -2020,6 +1944,16 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(64, 40),
         .y_offset = 14,
     },
+    [SPECIES_LATIAS] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_LATIOS] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
     [SPECIES_KYOGRE] =
     {
         .size = MON_COORDS_SIZE(64, 32),
@@ -2035,170 +1969,2236 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = MON_COORDS_SIZE(56, 64),
         .y_offset = 0,
     },
-    [SPECIES_LATIAS] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 2,
-    },
-    [SPECIES_LATIOS] =
-    {
-        .size = MON_COORDS_SIZE(64, 64),
-        .y_offset = 3,
-    },
     [SPECIES_JIRACHI] =
     {
         .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 5,
     },
-    [SPECIES_DEOXYS] =
+    [SPECIES_DEOXYS_NORMAL] =
     {
         .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 7,
     },
-    [SPECIES_CHIMECHO] =
-    {
-        .size = MON_COORDS_SIZE(32, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_EGG] =
-    {
-        .size = MON_COORDS_SIZE(24, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_UNOWN_B] =
-    {
-        .size = MON_COORDS_SIZE(40, 48),
-        .y_offset = 9,
-    },
-    [SPECIES_UNOWN_C] =
+    [SPECIES_TURTWIG] =
     {
         .size = MON_COORDS_SIZE(48, 56),
         .y_offset = 6,
     },
-    [SPECIES_UNOWN_D] =
+    [SPECIES_GROTLE] =
     {
-        .size = MON_COORDS_SIZE(40, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_UNOWN_E] =
-    {
-        .size = MON_COORDS_SIZE(40, 48),
+        .size = MON_COORDS_SIZE(64, 48),
         .y_offset = 10,
     },
-    [SPECIES_UNOWN_F] =
+    [SPECIES_TORTERRA] =
     {
-        .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_UNOWN_G] =
-    {
-        .size = MON_COORDS_SIZE(40, 56),
-        .y_offset = 5,
-    },
-    [SPECIES_UNOWN_H] =
-    {
-        .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_UNOWN_I] =
-    {
-        .size = MON_COORDS_SIZE(24, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_UNOWN_J] =
-    {
-        .size = MON_COORDS_SIZE(32, 48),
-        .y_offset = 9,
-    },
-    [SPECIES_UNOWN_K] =
-    {
-        .size = MON_COORDS_SIZE(40, 56),
-        .y_offset = 7,
-    },
-    [SPECIES_UNOWN_L] =
-    {
-        .size = MON_COORDS_SIZE(32, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_UNOWN_M] =
-    {
-        .size = MON_COORDS_SIZE(48, 40),
-        .y_offset = 13,
-    },
-    [SPECIES_UNOWN_N] =
-    {
-        .size = MON_COORDS_SIZE(48, 40),
-        .y_offset = 13,
-    },
-    [SPECIES_UNOWN_O] =
-    {
-        .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 8,
-    },
-    [SPECIES_UNOWN_P] =
-    {
-        .size = MON_COORDS_SIZE(32, 48),
-        .y_offset = 10,
-    },
-    [SPECIES_UNOWN_Q] =
-    {
-        .size = MON_COORDS_SIZE(40, 40),
-        .y_offset = 15,
-    },
-    [SPECIES_UNOWN_R] =
-    {
-        .size = MON_COORDS_SIZE(32, 40),
-        .y_offset = 12,
-    },
-    [SPECIES_UNOWN_S] =
-    {
-        .size = MON_COORDS_SIZE(40, 56),
+        .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 4,
     },
-    [SPECIES_UNOWN_T] =
+    [SPECIES_CHIMCHAR] =
     {
-        .size = MON_COORDS_SIZE(32, 40),
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_MONFERNO] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_INFERNAPE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_PIPLUP] =
+    {
+        .size = MON_COORDS_SIZE(40, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_PRINPLUP] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_EMPOLEON] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_STARLY] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_STARAVIA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_STARAPTOR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_BIDOOF] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
         .y_offset = 13,
     },
-    [SPECIES_UNOWN_U] =
+    [SPECIES_BIBAREL] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_KRICKETOT] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_KRICKETUNE] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_SHINX] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_LUXIO] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_LUXRAY] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_BUDEW] =
+    {
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 11,
+    },
+    [SPECIES_ROSERADE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_CRANIDOS] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_RAMPARDOS] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_SHIELDON] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_BASTIODON] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_BURMY_PLANT_CLOAK] =
+    {
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_WORMADAM_PLANT_CLOAK] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 2,
+    },
+	[SPECIES_MOTHIM] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_COMBEE] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 22,
+    },
+    [SPECIES_VESPIQUEN] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_PACHIRISU] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_BUIZEL] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_FLOATZEL] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_CHERUBI] =
     {
         .size = MON_COORDS_SIZE(48, 40),
         .y_offset = 13,
     },
-    [SPECIES_UNOWN_V] =
+    [SPECIES_CHERRIM_OVERCAST] =
     {
-        .size = MON_COORDS_SIZE(40, 48),
-        .y_offset = 11,
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 9,
     },
-    [SPECIES_UNOWN_W] =
+    [SPECIES_SHELLOS_WEST_SEA] =
     {
-        .size = MON_COORDS_SIZE(40, 40),
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_GASTRODON_WEST_SEA] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_AMBIPOM] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_DRIFLOON] =
+    {
+        .size = MON_COORDS_SIZE(40, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_DRIFBLIM] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_BUNEARY] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_LOPUNNY] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_MISMAGIUS] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_HONCHKROW] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_GLAMEOW] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_PURUGLY] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_CHINGLING] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
         .y_offset = 13,
     },
-    [SPECIES_UNOWN_X] =
+    [SPECIES_STUNKY] =
     {
-        .size = MON_COORDS_SIZE(40, 40),
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_SKUNTANK] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_BRONZOR] =
+    {
+        .size = MON_COORDS_SIZE(40, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_BRONZONG] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_BONSLY] =
+    {
+        .size = MON_COORDS_SIZE(40, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_MIME_JR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_HAPPINY] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_CHATOT] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_SPIRITOMB] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_GIBLE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_GABITE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_GARCHOMP] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_MUNCHLAX] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_RIOLU] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 8,
+    },
+    [SPECIES_LUCARIO] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_HIPPOPOTAS] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_HIPPOWDON] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_SKORUPI] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_DRAPION] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_CROAGUNK] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_TOXICROAK] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_CARNIVINE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_FINNEON] =
+    {
+        .size = MON_COORDS_SIZE(56, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_LUMINEON] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_MANTYKE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_SNOVER] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_ABOMASNOW] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_WEAVILE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_MAGNEZONE] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_LICKILICKY] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_RHYPERIOR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_TANGROWTH] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_ELECTIVIRE] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_MAGMORTAR] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_TOGEKISS] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_YANMEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_LEAFEON] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_GLACEON] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_GLISCOR] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_MAMOSWINE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_PORYGON_Z] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_GALLADE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_PROBOPASS] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_DUSKNOIR] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_FROSLASS] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_ROTOM] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_UXIE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_MESPRIT] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_AZELF] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_DIALGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_PALKIA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_HEATRAN] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_REGIGIGAS] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_GIRATINA_ALTERED] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_CRESSELIA] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_PHIONE] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_MANAPHY] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 10,
+    },
+    [SPECIES_DARKRAI] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SHAYMIN_LAND] =
+    {
+        .size = MON_COORDS_SIZE(56, 40),
         .y_offset = 15,
     },
-    [SPECIES_UNOWN_Y] =
+    [SPECIES_ARCEUS_NORMAL] = ARCEUS_BACK_COORDS,
+    [SPECIES_VICTINI] =
     {
-        .size = MON_COORDS_SIZE(32, 48),
-        .y_offset = 10,
+        .size = MON_COORDS_SIZE(40, 64),
+        .y_offset = 7,
     },
-    [SPECIES_UNOWN_Z] =
+    [SPECIES_SNIVY] =
     {
-        .size = MON_COORDS_SIZE(32, 48),
-        .y_offset = 10,
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 11,
     },
-    [SPECIES_UNOWN_EMARK] =
+    [SPECIES_SERVINE] =
     {
-        .size = MON_COORDS_SIZE(24, 56),
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_SERPERIOR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_TEPIG] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_PIGNITE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 9,
+    },
+    [SPECIES_EMBOAR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
         .y_offset = 6,
     },
-    [SPECIES_UNOWN_QMARK] =
+    [SPECIES_OSHAWOTT] =
+    {
+        .size = MON_COORDS_SIZE(40, 48),
+        .y_offset = 14,
+    },
+    [SPECIES_DEWOTT] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_SAMUROTT] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_PATRAT] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_WATCHOG] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_LILLIPUP] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_HERDIER] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 10,
+    },
+    [SPECIES_STOUTLAND] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_PURRLOIN] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_LIEPARD] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_PANSAGE] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_SIMISAGE] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_PANSEAR] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 10,
+    },
+    [SPECIES_SIMISEAR] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_PANPOUR] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_SIMIPOUR] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_MUNNA] =
+    {
+        .size = MON_COORDS_SIZE(48, 32),
+        .y_offset = 16,
+    },
+    [SPECIES_MUSHARNA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 8,
+    },
+    [SPECIES_PIDOVE] =
+    {
+        .size = MON_COORDS_SIZE(48, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_TRANQUILL] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_UNFEZANT] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_BLITZLE] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_ZEBSTRIKA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_ROGGENROLA] =
+    {
+        .size = MON_COORDS_SIZE(40, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_BOLDORE] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 16,
+    },
+    [SPECIES_GIGALITH] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_WOOBAT] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 16,
+    },
+    [SPECIES_SWOOBAT] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_DRILBUR] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_EXCADRILL] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 11,
+    },
+    [SPECIES_AUDINO] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_TIMBURR] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 15,
+    },
+    [SPECIES_GURDURR] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_CONKELDURR] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 13,
+    },
+    [SPECIES_TYMPOLE] =
+    {
+        .size = MON_COORDS_SIZE(40, 32),
+        .y_offset = 17,
+    },
+    [SPECIES_PALPITOAD] =
+    {
+        .size = MON_COORDS_SIZE(56, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_SEISMITOAD] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_THROH] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_SAWK] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_SEWADDLE] =
+    {
+        .size = MON_COORDS_SIZE(40, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_SWADLOON] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_LEAVANNY] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_VENIPEDE] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_WHIRLIPEDE] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 15,
+    },
+    [SPECIES_SCOLIPEDE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_COTTONEE] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 18,
+    },
+    [SPECIES_WHIMSICOTT] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_PETILIL] =
+    {
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_LILLIGANT] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_BASCULIN_RED_STRIPED] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 16,
+    },
+    [SPECIES_SANDILE] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 18,
+    },
+    [SPECIES_KROKOROK] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_KROOKODILE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_DARUMAKA] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_DARMANITAN_STANDARD_MODE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_MARACTUS] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_DWEBBLE] =
+    {
+        .size = MON_COORDS_SIZE(56, 32),
+        .y_offset = 17,
+    },
+    [SPECIES_CRUSTLE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_SCRAGGY] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_SCRAFTY] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_SIGILYPH] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_YAMASK] =
+    {
+        .size = MON_COORDS_SIZE(40, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_COFAGRIGUS] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_TIRTOUGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 16,
+    },
+    [SPECIES_CARRACOSTA] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_ARCHEN] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 16,
+    },
+    [SPECIES_ARCHEOPS] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_TRUBBISH] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_GARBODOR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_ZORUA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_ZOROARK] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 10,
+    },
+    [SPECIES_MINCCINO] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_CINCCINO] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_GOTHITA] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_GOTHORITA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_GOTHITELLE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SOLOSIS] =
+    {
+        .size = MON_COORDS_SIZE(48, 32),
+        .y_offset = 19,
+    },
+    [SPECIES_DUOSION] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_REUNICLUS] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_DUCKLETT] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_SWANNA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_VANILLITE] =
+    {
+        .size = MON_COORDS_SIZE(40, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_VANILLISH] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_VANILLUXE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_DEERLING_SPRING] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_SAWSBUCK_SPRING] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_EMOLGA] =
+    {
+        .size = MON_COORDS_SIZE(56, 40),
+        .y_offset = 16,
+    },
+    [SPECIES_KARRABLAST] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 14,
+    },
+    [SPECIES_ESCAVALIER] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_FOONGUS] =
+    {
+        .size = MON_COORDS_SIZE(48, 40),
+        .y_offset = 13,
+    },
+    [SPECIES_AMOONGUSS] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_FRILLISH] =
+    {
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_JELLICENT] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_ALOMOMOLA] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_JOLTIK] =
+    {
+        .size = MON_COORDS_SIZE(48, 32),
+        .y_offset = 19,
+    },
+    [SPECIES_GALVANTULA] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 18,
+    },
+    [SPECIES_FERROSEED] =
+    {
+        .size = MON_COORDS_SIZE(48, 40),
+        .y_offset = 15,
+    },
+    [SPECIES_FERROTHORN] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_KLINK] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 17,
+    },
+    [SPECIES_KLANG] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_KLINKLANG] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_TYNAMO] =
+    {
+        .size = MON_COORDS_SIZE(64, 24),
+        .y_offset = 21,
+    },
+    [SPECIES_EELEKTRIK] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_EELEKTROSS] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_ELGYEM] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 10,
+    },
+    [SPECIES_BEHEEYEM] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_LITWICK] =
+    {
+        .size = MON_COORDS_SIZE(40, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_LAMPENT] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_CHANDELURE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_AXEW] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_FRAXURE] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_HAXORUS] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_CUBCHOO] =
+    {
+        .size = MON_COORDS_SIZE(40, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_BEARTIC] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_CRYOGONAL] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_SHELMET] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 19,
+    },
+    [SPECIES_ACCELGOR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_STUNFISK] =
+    {
+        .size = MON_COORDS_SIZE(64, 24),
+        .y_offset = 22,
+    },
+    [SPECIES_MIENFOO] =
+    {
+        .size = MON_COORDS_SIZE(56, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_MIENSHAO] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_DRUDDIGON] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_GOLETT] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_GOLURK] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_PAWNIARD] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_BISHARP] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_BOUFFALANT] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_RUFFLET] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_BRAVIARY] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_VULLABY] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 14,
+    },
+    [SPECIES_MANDIBUZZ] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_HEATMOR] =
+    {
+        .size = MON_COORDS_SIZE(64, 24),
+        .y_offset = 21,
+    },
+    [SPECIES_DURANT] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 17,
+    },
+    [SPECIES_DEINO] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 14,
+    },
+    [SPECIES_ZWEILOUS] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_HYDREIGON] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 11,
+    },
+    [SPECIES_LARVESTA] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_VOLCARONA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_COBALION] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_TERRAKION] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_VIRIZION] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_TORNADUS_INCARNATE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_THUNDURUS_INCARNATE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_RESHIRAM] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_ZEKROM] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_LANDORUS_INCARNATE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_KYUREM] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_KELDEO_ORDINARY] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_MELOETTA_ARIA] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_GENESECT] = GENESECT_BACK_COORDS,
+    [SPECIES_CHESPIN] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_QUILLADIN] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_CHESNAUGHT] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 10,
+    },
+    [SPECIES_FENNEKIN] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_BRAIXEN] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 10,
+    },
+    [SPECIES_DELPHOX] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_FROAKIE] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_FROGADIER] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_GRENINJA] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_BUNNELBY] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_DIGGERSBY] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_FLETCHLING] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 14,
+    },
+    [SPECIES_FLETCHINDER] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_TALONFLAME] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+	[SPECIES_SCATTERBUG] =
+    {
+        .size = MON_COORDS_SIZE(40, 56),
+        .y_offset = 12,
+    },
+	[SPECIES_SPEWPA] =
+    {
+        .size = MON_COORDS_SIZE(48, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_VIVILLON_ICY_SNOW] = VIVILLON_BACK_COORDS,
+    [SPECIES_LITLEO] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_PYROAR] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_FLABEBE_RED_FLOWER] = FLABEBE_BACK_COORDS,
+    [SPECIES_FLOETTE_RED_FLOWER] = FLOETTE_BACK_COORDS,
+    [SPECIES_FLORGES_RED_FLOWER] = FLORGES_BACK_COORDS,
+    [SPECIES_SKIDDO] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_GOGOAT] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_PANCHAM] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_PANGORO] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_FURFROU_NATURAL] = FURFROU_BACK_COORDS(48, 3),
+    [SPECIES_ESPURR] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_MEOWSTIC_MALE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 9,
+    },
+    [SPECIES_HONEDGE] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_DOUBLADE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_AEGISLASH_SHIELD] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 9,
+    },
+    [SPECIES_SPRITZEE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_AROMATISSE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_SWIRLIX] =
+    {
+        .size = MON_COORDS_SIZE(56, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_SLURPUFF] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_INKAY] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 9,
+    },
+    [SPECIES_MALAMAR] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_BINACLE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_BARBARACLE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SKRELP] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_DRAGALGE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_CLAUNCHER] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_CLAWITZER] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_HELIOPTILE] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_HELIOLISK] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_TYRUNT] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_TYRANTRUM] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_AMAURA] =
+    {
+        .size = MON_COORDS_SIZE(40, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_AURORUS] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SYLVEON] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_HAWLUCHA] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_DEDENNE] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_CARBINK] =
+    {
+        .size = MON_COORDS_SIZE(56, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_GOOMY] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_SLIGGOO] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_GOODRA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_KLEFKI] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 8,
+    },
+    [SPECIES_PHANTUMP] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_TREVENANT] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_PUMPKABOO_AVERAGE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_GOURGEIST_AVERAGE] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_BERGMITE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_AVALUGG] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_NOIBAT] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_NOIVERN] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_XERNEAS_NEUTRAL] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_YVELTAL] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_ZYGARDE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_DIANCIE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_HOOPA_CONFINED] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_VOLCANION] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+
+	// Mega Forms
+    [SPECIES_VENUSAUR_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 8,
+    },
+    [SPECIES_CHARIZARD_MEGA_X] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_CHARIZARD_MEGA_Y] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_BLASTOISE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_BEEDRILL_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_PIDGEOT_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 7,
+    },
+    [SPECIES_ALAKAZAM_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SLOWBRO_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 9,
+    },
+    [SPECIES_GENGAR_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_KANGASKHAN_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_PINSIR_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_GYARADOS_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_AERODACTYL_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 8,
+    },
+    [SPECIES_MEWTWO_MEGA_X] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_MEWTWO_MEGA_Y] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_AMPHAROS_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_STEELIX_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SCIZOR_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_HERACROSS_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_HOUNDOOM_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_TYRANITAR_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SCEPTILE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_BLAZIKEN_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SWAMPERT_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_GARDEVOIR_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_SABLEYE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 13,
+    },
+    [SPECIES_MAWILE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 6,
+    },
+    [SPECIES_AGGRON_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_MEDICHAM_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_MANECTRIC_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_SHARPEDO_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_CAMERUPT_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 9,
+    },
+    [SPECIES_ALTARIA_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_BANETTE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_ABSOL_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_GLALIE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_SALAMENCE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_METAGROSS_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 6,
+    },
+    [SPECIES_LATIAS_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_LATIOS_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_RAYQUAZA_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_LOPUNNY_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_GARCHOMP_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_LUCARIO_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_ABOMASNOW_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_GALLADE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_AUDINO_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_DIANCIE_MEGA] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 5,
+    },
+    [SPECIES_KYOGRE_PRIMAL] =
+    {
+        .size = MON_COORDS_SIZE(64, 32),
+        .y_offset = 18,
+    },
+    [SPECIES_GROUDON_PRIMAL] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+
+	// Alt Forms
+    [SPECIES_UNOWN_B] = UNOWN_BACK_COORDS(40, 48, 9),
+    [SPECIES_UNOWN_C] = UNOWN_BACK_COORDS(48, 56, 6),
+    [SPECIES_UNOWN_D] = UNOWN_BACK_COORDS(40, 48, 8),
+    [SPECIES_UNOWN_E] = UNOWN_BACK_COORDS(40, 48, 10),
+    [SPECIES_UNOWN_F] = UNOWN_BACK_COORDS(48, 48, 10),
+    [SPECIES_UNOWN_G] = UNOWN_BACK_COORDS(40, 56, 5),
+    [SPECIES_UNOWN_H] = UNOWN_BACK_COORDS(48, 48, 8),
+    [SPECIES_UNOWN_I] = UNOWN_BACK_COORDS(24, 56, 7),
+    [SPECIES_UNOWN_J] = UNOWN_BACK_COORDS(32, 48, 9),
+    [SPECIES_UNOWN_K] = UNOWN_BACK_COORDS(40, 56, 7),
+    [SPECIES_UNOWN_L] = UNOWN_BACK_COORDS(32, 48, 10),
+    [SPECIES_UNOWN_M] = UNOWN_BACK_COORDS(48, 40, 13),
+    [SPECIES_UNOWN_N] = UNOWN_BACK_COORDS(48, 40, 13),
+    [SPECIES_UNOWN_O] = UNOWN_BACK_COORDS(48, 48, 8),
+    [SPECIES_UNOWN_P] = UNOWN_BACK_COORDS(32, 48, 10),
+    [SPECIES_UNOWN_Q] = UNOWN_BACK_COORDS(40, 40, 15),
+    [SPECIES_UNOWN_R] = UNOWN_BACK_COORDS(32, 40, 12),
+    [SPECIES_UNOWN_S] = UNOWN_BACK_COORDS(40, 56, 4),
+    [SPECIES_UNOWN_T] = UNOWN_BACK_COORDS(32, 40, 13),
+    [SPECIES_UNOWN_U] = UNOWN_BACK_COORDS(48, 40, 13),
+    [SPECIES_UNOWN_V] = UNOWN_BACK_COORDS(40, 48, 11),
+    [SPECIES_UNOWN_W] = UNOWN_BACK_COORDS(40, 40, 13),
+    [SPECIES_UNOWN_X] = UNOWN_BACK_COORDS(40, 40, 15),
+    [SPECIES_UNOWN_Y] = UNOWN_BACK_COORDS(32, 48, 10),
+    [SPECIES_UNOWN_Z] = UNOWN_BACK_COORDS(32, 48, 10),
+    [SPECIES_UNOWN_EMARK] = UNOWN_BACK_COORDS(24, 56, 6),
+    [SPECIES_UNOWN_QMARK] = UNOWN_BACK_COORDS(32, 56, 6),
+    [SPECIES_CASTFORM_SUNNY] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_CASTFORM_RAINY] =
+    {
+        .size = MON_COORDS_SIZE(40, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_CASTFORM_SNOWY] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_DEOXYS_ATTACK] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_DEOXYS_DEFENSE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 8,
+    },
+    [SPECIES_DEOXYS_SPEED] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_BURMY_SANDY_CLOAK] =
     {
         .size = MON_COORDS_SIZE(32, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_BURMY_TRASH_CLOAK] =
+    {
+        .size = MON_COORDS_SIZE(40, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_WORMADAM_SANDY_CLOAK] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_WORMADAM_TRASH_CLOAK] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_CHERRIM_SUNSHINE] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
         .y_offset = 6,
     },
-};
+    [SPECIES_SHELLOS_EAST_SEA] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_GASTRODON_EAST_SEA] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_ROTOM_HEAT] =
+    {
+        .size = MON_COORDS_SIZE(64, 40),
+        .y_offset = 12,
+    },
+    [SPECIES_ROTOM_WASH] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_ROTOM_FROST] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_ROTOM_FAN] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 8,
+    },
+    [SPECIES_ROTOM_MOW] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 10,
+    },
+    [SPECIES_GIRATINA_ORIGIN] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_SHAYMIN_SKY] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_ARCEUS_FIRE] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_WATER] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_ELECTRIC] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_GRASS] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_ICE] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_FIGHTING] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_POISON] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_GROUND] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_FLYING] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_PSYCHIC] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_BUG] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_ROCK] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_GHOST] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_DRAGON] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_DARK] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_STEEL] = ARCEUS_BACK_COORDS,
+    [SPECIES_ARCEUS_FAIRY] = ARCEUS_BACK_COORDS,
+    [SPECIES_BASCULIN_BLUE_STRIPED] =
+    {
+        .size = MON_COORDS_SIZE(64, 48),
+        .y_offset = 16,
+    },
+    [SPECIES_DARMANITAN_ZEN_MODE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 11,
+    },
+    [SPECIES_DEERLING_SUMMER] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_DEERLING_AUTUMN] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_DEERLING_WINTER] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 9,
+    },
+    [SPECIES_SAWSBUCK_SUMMER] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_SAWSBUCK_AUTUMN] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_SAWSBUCK_WINTER] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_TORNADUS_THERIAN] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_THUNDURUS_THERIAN] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 5,
+    },
+    [SPECIES_LANDORUS_THERIAN] =
+    {
+        .size = MON_COORDS_SIZE(64, 56),
+        .y_offset = 7,
+    },
+    [SPECIES_KYUREM_WHITE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_KYUREM_BLACK] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_KELDEO_RESOLUTE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 3,
+    },
+    [SPECIES_MELOETTA_PIROUETTE] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 4,
+    },
+    [SPECIES_GENESECT_DOUSE_DRIVE] = GENESECT_BACK_COORDS,
+    [SPECIES_GENESECT_SHOCK_DRIVE] = GENESECT_BACK_COORDS,
+    [SPECIES_GENESECT_BURN_DRIVE] = GENESECT_BACK_COORDS,
+    [SPECIES_GENESECT_CHILL_DRIVE] = GENESECT_BACK_COORDS,
+    [SPECIES_VIVILLON_POLAR] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_TUNDRA] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_CONTINENTAL] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_GARDEN] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_ELEGANT] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_MEADOW] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_MODERN] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_MARINE] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_ARCHIPELAGO] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_HIGH_PLAINS] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_SANDSTORM] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_RIVER] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_MONSOON] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_SAVANNA] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_SUN] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_OCEAN] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_JUNGLE] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_FANCY] = VIVILLON_BACK_COORDS,
+    [SPECIES_VIVILLON_POKE_BALL] = VIVILLON_BACK_COORDS,
+    [SPECIES_FLABEBE_YELLOW_FLOWER] = FLABEBE_BACK_COORDS,
+    [SPECIES_FLABEBE_ORANGE_FLOWER] = FLABEBE_BACK_COORDS,
+    [SPECIES_FLABEBE_BLUE_FLOWER] = FLABEBE_BACK_COORDS,
+    [SPECIES_FLABEBE_WHITE_FLOWER] = FLABEBE_BACK_COORDS,
+    [SPECIES_FLOETTE_YELLOW_FLOWER] = FLOETTE_BACK_COORDS,
+    [SPECIES_FLOETTE_ORANGE_FLOWER] = FLOETTE_BACK_COORDS,
+    [SPECIES_FLOETTE_BLUE_FLOWER] = FLOETTE_BACK_COORDS,
+    [SPECIES_FLOETTE_WHITE_FLOWER] = FLOETTE_BACK_COORDS,
+    [SPECIES_FLOETTE_ETERNAL_FLOWER] = FLOETTE_BACK_COORDS,
+    [SPECIES_FLORGES_YELLOW_FLOWER] = FLORGES_BACK_COORDS,
+    [SPECIES_FLORGES_ORANGE_FLOWER] = FLORGES_BACK_COORDS,
+    [SPECIES_FLORGES_BLUE_FLOWER] = FLORGES_BACK_COORDS,
+    [SPECIES_FLORGES_WHITE_FLOWER] = FLORGES_BACK_COORDS,
+    [SPECIES_FURFROU_HEART_TRIM] = FURFROU_BACK_COORDS(56, 2),
+    [SPECIES_FURFROU_STAR_TRIM] = FURFROU_BACK_COORDS(56, 2),
+    [SPECIES_FURFROU_DIAMOND_TRIM] = FURFROU_BACK_COORDS(48, 2),
+    [SPECIES_FURFROU_DEBUTANTE_TRIM] = FURFROU_BACK_COORDS(48, 2),
+    [SPECIES_FURFROU_MATRON_TRIM] = FURFROU_BACK_COORDS(48, 2),
+    [SPECIES_FURFROU_DANDY_TRIM] = FURFROU_BACK_COORDS(48, 2),
+    [SPECIES_FURFROU_LA_REINE_TRIM] = FURFROU_BACK_COORDS(48, 2),
+    [SPECIES_FURFROU_KABUKI_TRIM] = FURFROU_BACK_COORDS(56, 2),
+    [SPECIES_FURFROU_PHARAOH_TRIM] = FURFROU_BACK_COORDS(48, 2),
+    [SPECIES_MEOWSTIC_FEMALE] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 9,
+    },
+    [SPECIES_AEGISLASH_BLADE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 9,
+    },
+    [SPECIES_PUMPKABOO_SMALL] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 14,
+    },
+    [SPECIES_PUMPKABOO_LARGE] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 13,
+    },
+    [SPECIES_PUMPKABOO_SUPER] =
+    {
+        .size = MON_COORDS_SIZE(56, 48),
+        .y_offset = 12,
+    },
+    [SPECIES_GOURGEIST_SMALL] =
+    {
+        .size = MON_COORDS_SIZE(48, 56),
+        .y_offset = 4,
+    },
+    [SPECIES_GOURGEIST_LARGE] =
+    {
+        .size = MON_COORDS_SIZE(48, 64),
+        .y_offset = 2,
+    },
+    [SPECIES_GOURGEIST_SUPER] =
+    {
+        .size = MON_COORDS_SIZE(56, 64),
+        .y_offset = 1,
+    },
+    [SPECIES_XERNEAS_ACTIVE] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
+    [SPECIES_HOOPA_UNBOUND] =
+    {
+        .size = MON_COORDS_SIZE(64, 64),
+        .y_offset = 0,
+    },
 
+	// Egg
+	[SPECIES_EGG] =
+    {
+        .size = MON_COORDS_SIZE(24, 48),
+        .y_offset = 10,
+    },
+};

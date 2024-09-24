@@ -1086,6 +1086,7 @@ static void SetPokedudeMonData(u8 monId)
     case REQUEST_ALL_BATTLE:
     {
         u8 iv;
+		u8 lvl;
 
         SetMonData(mon, MON_DATA_SPECIES, &battlePokemon->species);
         SetMonData(mon, MON_DATA_HELD_ITEM, &battlePokemon->item);
@@ -1111,7 +1112,8 @@ static void SetPokedudeMonData(u8 monId)
         SetMonData(mon, MON_DATA_SPDEF_IV, &iv);
         SetMonData(mon, MON_DATA_PERSONALITY, &battlePokemon->personality);
         SetMonData(mon, MON_DATA_STATUS, &battlePokemon->status1);
-        SetMonData(mon, MON_DATA_LEVEL, &battlePokemon->level);
+		lvl = battlePokemon->level;
+        SetMonData(mon, MON_DATA_LEVEL, &lvl);
         SetMonData(mon, MON_DATA_HP, &battlePokemon->hp);
         SetMonData(mon, MON_DATA_MAX_HP, &battlePokemon->maxHP);
         SetMonData(mon, MON_DATA_ATK, &battlePokemon->attack);

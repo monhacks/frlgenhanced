@@ -101,17 +101,15 @@ enum {
 
 struct PokedexEntry
 {
-    /*0x00*/ u8 categoryName[12];
-    /*0x0C*/ u16 height; //in decimeters
-    /*0x0E*/ u16 weight; //in hectograms
-    /*0x10*/ const u8 *description;
-    /*0x14*/ const u8 *unusedDescription;
-    /*0x18*/ u16 unused;
-    /*0x1A*/ u16 pokemonScale;
-    /*0x1C*/ u16 pokemonOffset;
-    /*0x1E*/ u16 trainerScale;
-    /*0x20*/ u16 trainerOffset;
-};  /*size = 0x24*/
+    /*0x00*/ u16 height; //in decimeters
+    /*0x02*/ u16 weight; //in hectograms
+    /*0x04*/ const u8 *description;
+    /*0x08*/ u16 pokemonScale;
+    /*0x0A*/ u16 pokemonOffset;
+    /*0x0C*/ u16 trainerScale;
+    /*0x0E*/ u16 trainerOffset;
+    /*0x10*/ u8 categoryName[14];
+};  /*size = 0x20*/
 
 void ResetPokedex(void);
 void CopyMonCategoryText(u16 species, u8 *dst);
@@ -124,6 +122,7 @@ s8 GetSetPokedexFlag(u16 nationalNum, u8 caseId);
 u16 GetNationalPokedexCount(u8);
 u16 GetKantoPokedexCount(u8);
 bool16 HasAllHoennMons(void);
+bool16 HasAllExpandedKantoMons(void);
 bool16 HasAllKantoMons(void);
 bool16 HasAllMons(void);
 

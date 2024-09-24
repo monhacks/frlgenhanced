@@ -109,7 +109,7 @@ struct BoxPokemon
     u32 personality;
     u32 otId;
     u8 nickname[POKEMON_NAME_LENGTH];
-    u8 language;
+	u8 language;
     u8 isBadEgg:1;
     u8 hasSpecies:1;
     u8 isEgg:1;
@@ -117,8 +117,9 @@ struct BoxPokemon
     u8 unused:4;
     u8 otName[PLAYER_NAME_LENGTH];
     u8 markings;
-    u16 checksum;
-    u16 unknown;
+    // u8 filler[2];
+	u16 checksum;
+    // u16 unknown;
 
     union
     {
@@ -162,10 +163,9 @@ struct BattleTowerPokemon
              u32 speedIV:5;
              u32 spAttackIV:5;
              u32 spDefenseIV:5;
-             u32 gap:1;
-             u32 abilityNum:1;
+             u32 abilityNum:2;
     /*0x1C*/ u32 personality;
-    /*0x20*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
+    /*0x20*/ u8 nickname[POKEMON_NAME_LENGTH_BATTLE_TOWER + 1];
     /*0x2B*/ u8 friendship;
 };
 
@@ -175,31 +175,31 @@ struct BattlePokemon
     /*0x02*/ u16 attack;
     /*0x04*/ u16 defense;
     /*0x06*/ u16 speed;
-    /*0x08*/ u16 spAttack;
+	/*0x08*/ u16 spAttack;
     /*0x0A*/ u16 spDefense;
-    /*0x0C*/ u16 moves[MAX_MON_MOVES];
-    /*0x14*/ u32 hpIV:5;
+	/*0x0C*/ u16 moves[MAX_MON_MOVES];
+	/*0x14*/ u32 hpIV:5;
     /*0x14*/ u32 attackIV:5;
     /*0x15*/ u32 defenseIV:5;
     /*0x15*/ u32 speedIV:5;
     /*0x16*/ u32 spAttackIV:5;
     /*0x17*/ u32 spDefenseIV:5;
-    /*0x17*/ u32 isEgg:1;
-    /*0x17*/ u32 abilityNum:1;
-    /*0x18*/ s8 statStages[NUM_BATTLE_STATS];
-    /*0x20*/ u8 ability;
+    /*0x17*/ u32 abilityNum:2;
+	/*0x18*/ s8 statStages[NUM_BATTLE_STATS];
+	/*0x20*/ u8 ability;
     /*0x21*/ u8 type1;
     /*0x22*/ u8 type2;
-    /*0x23*/ u8 unknown;
+	/*0x23*/ u8 unknown;
     /*0x24*/ u8 pp[MAX_MON_MOVES];
     /*0x28*/ u16 hp;
-    /*0x2A*/ u8 level;
+    /*0x2A*/ u8 level:7;
+	/*0x2A*/ u8 isEgg:1;
     /*0x2B*/ u8 friendship;
     /*0x2C*/ u16 maxHP;
     /*0x2E*/ u16 item;
-    /*0x30*/ u8 nickname[POKEMON_NAME_LENGTH + 1];
-    /*0x3B*/ u8 ppBonuses;
-    /*0x3C*/ u8 otName[PLAYER_NAME_LENGTH + 1];
+    /*0x30*/ u8 nickname[POKEMON_NAME_LENGTH];
+    /*0x3C*/ u8 ppBonuses;
+    /*0x3D*/ u8 otName[PLAYER_NAME_LENGTH];
     /*0x44*/ u32 experience;
     /*0x48*/ u32 personality;
     /*0x4C*/ u32 status1;
@@ -209,33 +209,33 @@ struct BattlePokemon
 
 struct SpeciesInfo
 {
- /* 0x00 */ u8 baseHP;
- /* 0x01 */ u8 baseAttack;
- /* 0x02 */ u8 baseDefense;
- /* 0x03 */ u8 baseSpeed;
- /* 0x04 */ u8 baseSpAttack;
- /* 0x05 */ u8 baseSpDefense;
- /* 0x06 */ u8 types[2];
- /* 0x08 */ u8 catchRate;
- /* 0x09 */ u8 expYield;
- /* 0x0A */ u16 evYield_HP:2;
- /* 0x0A */ u16 evYield_Attack:2;
- /* 0x0A */ u16 evYield_Defense:2;
- /* 0x0A */ u16 evYield_Speed:2;
- /* 0x0B */ u16 evYield_SpAttack:2;
- /* 0x0B */ u16 evYield_SpDefense:2;
- /* 0x0C */ u16 itemCommon;
- /* 0x0E */ u16 itemRare;
- /* 0x10 */ u8 genderRatio;
- /* 0x11 */ u8 eggCycles;
- /* 0x12 */ u8 friendship;
- /* 0x13 */ u8 growthRate;
- /* 0x14 */ u8 eggGroups[2];
- /* 0x16 */ u8 abilities[3];
- /* 0x18 */ u8 safariZoneFleeRate;
- /* 0x19 */ u8 bodyColor : 7;
-            u8 noFlip : 1;
-};
+	/*0x00*/ u8 baseHP;
+	/*0x01*/ u8 baseAttack;
+	/*0x02*/ u8 baseDefense;
+	/*0x03*/ u8 baseSpeed;
+	/*0x04*/ u8 baseSpAttack;
+	/*0x05*/ u8 baseSpDefense;
+	/*0x06*/ u8 types[2];
+	/*0x08*/ u16 expYield;
+	/*0x0A*/ u16 evYield_HP:2;
+	/*0x0A*/ u16 evYield_Attack:2;
+	/*0x0A*/ u16 evYield_Defense:2;
+	/*0x0A*/ u16 evYield_Speed:2;
+	/*0x0B*/ u16 evYield_SpAttack:2;
+	/*0x0B*/ u16 evYield_SpDefense:2;
+	/*0x0B*/ u16 growthRate:4;	// max value is 6, can safely be placed here
+	/*0x0C*/ u16 itemCommon;
+	/*0x0E*/ u16 itemRare;
+	/*0x10*/ u8 genderRatio;
+	/*0x11*/ u8 eggCycles;
+	/*0x12*/ u8 eggGroups[2];
+	/*0x14*/ u8 friendship;
+	/*0x15*/ u8 abilities[3];
+	/*0x18*/ u8 catchRate;
+	/*0x19*/ u8 safariZoneFleeRate;
+	/*0x1A*/ u8 bodyColor:7;
+	/*0x1A*/ u8 noFlip:1;
+}; // size: 0x1C
 
 #define MOVE_CATEGORY_PHYSICAL  0
 #define MOVE_CATEGORY_SPECIAL   1
@@ -380,7 +380,7 @@ u8 GetNature(struct Pokemon *mon, bool32 checkHidden);
 u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 type, u16 evolutionItem);
 u16 NationalPokedexNumToSpecies(u16 nationalNum);
 u16 SpeciesToNationalPokedexNum(u16 species);
-u16 HoennToNationalOrder(u16 hoennNum);
+u16 ExpandedKantoToNationalOrder(u16 expKantoNum);
 u16 SpeciesToCryId(u16 species);
 void DrawSpindaSpots(u16 species, u32 personality, u8 *dest, bool8 isFrontPic);
 void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies);

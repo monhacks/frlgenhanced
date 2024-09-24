@@ -802,6 +802,7 @@ static void SetOpponentMonData(u8 monId)
     case REQUEST_ALL_BATTLE:
         {
             u8 iv;
+			u8 lvl;
 
             SetMonData(&gEnemyParty[monId], MON_DATA_SPECIES, &battlePokemon->species);
             SetMonData(&gEnemyParty[monId], MON_DATA_HELD_ITEM, &battlePokemon->item);
@@ -827,7 +828,8 @@ static void SetOpponentMonData(u8 monId)
             SetMonData(&gEnemyParty[monId], MON_DATA_SPDEF_IV, &iv);
             SetMonData(&gEnemyParty[monId], MON_DATA_PERSONALITY, &battlePokemon->personality);
             SetMonData(&gEnemyParty[monId], MON_DATA_STATUS, &battlePokemon->status1);
-            SetMonData(&gEnemyParty[monId], MON_DATA_LEVEL, &battlePokemon->level);
+			lvl = battlePokemon->level;
+            SetMonData(&gEnemyParty[monId], MON_DATA_LEVEL, &lvl);
             SetMonData(&gEnemyParty[monId], MON_DATA_HP, &battlePokemon->hp);
             SetMonData(&gEnemyParty[monId], MON_DATA_MAX_HP, &battlePokemon->maxHP);
             SetMonData(&gEnemyParty[monId], MON_DATA_ATK, &battlePokemon->attack);

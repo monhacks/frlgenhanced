@@ -771,6 +771,7 @@ static void SetLinkPartnerMonData(u8 monId)
     case REQUEST_ALL_BATTLE:
         {
             u8 iv;
+			u8 lvl;
 
             SetMonData(&gPlayerParty[monId], MON_DATA_SPECIES, &battlePokemon->species);
             SetMonData(&gPlayerParty[monId], MON_DATA_HELD_ITEM, &battlePokemon->item);
@@ -796,7 +797,8 @@ static void SetLinkPartnerMonData(u8 monId)
             SetMonData(&gPlayerParty[monId], MON_DATA_SPDEF_IV, &iv);
             SetMonData(&gPlayerParty[monId], MON_DATA_PERSONALITY, &battlePokemon->personality);
             SetMonData(&gPlayerParty[monId], MON_DATA_STATUS, &battlePokemon->status1);
-            SetMonData(&gPlayerParty[monId], MON_DATA_LEVEL, &battlePokemon->level);
+			lvl = battlePokemon->level;
+            SetMonData(&gPlayerParty[monId], MON_DATA_LEVEL, &lvl);
             SetMonData(&gPlayerParty[monId], MON_DATA_HP, &battlePokemon->hp);
             SetMonData(&gPlayerParty[monId], MON_DATA_MAX_HP, &battlePokemon->maxHP);
             SetMonData(&gPlayerParty[monId], MON_DATA_ATK, &battlePokemon->attack);
