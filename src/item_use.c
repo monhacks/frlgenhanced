@@ -951,7 +951,22 @@ void FieldUseFunc_Mint(u8 taskId)
     SetUpItemUseCallback(taskId);
 }
 
+void FieldUseFunc_Honey(u8 taskId)
+{
+
+}
+
 void FieldUseFunc_ReduceEV(u8 taskId)
 {
     
+}
+
+void FieldUseFunc_FormChange(u8 taskId)
+{
+
+}
+
+void FieldUseFunc_Fusion(u8 taskId)
+{
+	
 }

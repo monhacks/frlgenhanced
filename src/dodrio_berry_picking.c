@@ -648,7 +648,7 @@ ALIGNED(4)
 static const u8 sDifficultyThresholds[NUM_DIFFICULTIES] = {5, 10, 20, 30, 50, 70, 100};
 
 ALIGNED(4)
-static const u8 sPrizeBerryIds[][10] =
+static const u16 sPrizeBerryIds[][10] =
 {
     { // Possible prizes with 3 players
         ITEM_TO_BERRY(ITEM_RAZZ_BERRY) - 1,

@@ -9,17 +9,18 @@ struct Item
 {
     u8 name[ITEM_NAME_LENGTH];
     u16 itemId;
-    u16 price;
     u8 holdEffect;
     u8 holdEffectParam;
-    const u8 *description;
     u8 importance;
     u8 registrability;
+    u32 price;
+    const u8 *description;
     u8 pocket;
     u8 type; // unused for balls
     ItemUseFunc fieldUseFunc;
     u8 battleUsage;
     ItemUseFunc battleUseFunc;
+	u8 flingPower; // if 0, Fling will fail
     u8 secondaryId; // only used for fishing rods
 };
 

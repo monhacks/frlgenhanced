@@ -28,7 +28,7 @@ enum
 void ClearEnigmaBerries(void);
 void SetEnigmaBerry(u8 *src);
 bool32 IsEnigmaBerryValid(void);
-const struct Berry *GetBerryInfo(u8 berry);
+const struct Berry *GetBerryInfo(u16 berry);
 u8 ItemIdToBerryType(u16 item);
 void GetBerryNameByBerryType(u8 berry, u8 *string);
 

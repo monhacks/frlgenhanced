@@ -214,13 +214,13 @@ static const u8 sItemEffect_ResistFeather[10] = {
 };
 
 static const u8 sItemEffect_GeniusFeather[10] = {
-    [5] = ITEM5_EV_SP_ATK | ITEM5_FRIENDSHIP_ALL,
+    [5] = ITEM5_EV_SPATK | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_ADD_EV_MINOR,
     FEATHER_FRIENDSHIP_CHANGE(7),
 };
 
 static const u8 sItemEffect_CleverFeather[10] = {
-    [5] = ITEM5_EV_SP_DEF | ITEM5_FRIENDSHIP_ALL,
+    [5] = ITEM5_EV_SPDEF | ITEM5_FRIENDSHIP_ALL,
     [6] = ITEM6_ADD_EV_MINOR,
     FEATHER_FRIENDSHIP_CHANGE(7),
 };

@@ -875,7 +875,7 @@ static void DebugPkmnCreator_PopulateDataStruct(void)
             sDebugPkmnCreatorData.data[i] = data;
             break;
         case VAL_NATURE:
-            sDebugPkmnCreatorData.data[i] = GetNature(mons);
+            sDebugPkmnCreatorData.data[i] = GetNature(mons, FALSE);
             break;
         case VAL_PKRUS_STRAIN:
             data = GetMonData(mons, DebugPkmnCreator_Options[i].SetMonDataParam, NULL);

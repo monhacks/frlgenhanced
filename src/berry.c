@@ -993,12 +993,12 @@ bool32 IsEnigmaBerryValid(void)
     return TRUE;
 }
 
-const struct Berry * GetBerryInfo(u8 berryIdx)
+const struct Berry * GetBerryInfo(u16 berryIdx)
 {
-    if (berryIdx == ITEM_TO_BERRY(ITEM_ENIGMA_BERRY) && IsEnigmaBerryValid())
+    if (berryIdx == ITEM_TO_BERRY(ITEM_ENIGMA_BERRY_E_READER) && IsEnigmaBerryValid())
         return (struct Berry *)&gSaveBlock1Ptr->enigmaBerry.berry;
 
-    if (berryIdx == 0 || berryIdx > ITEM_TO_BERRY(ITEM_ENIGMA_BERRY))
+    if (berryIdx == 0 || berryIdx > ITEM_TO_BERRY(ITEM_ENIGMA_BERRY_E_READER))
         berryIdx = 1;
 
     return &gBerries[berryIdx - 1];

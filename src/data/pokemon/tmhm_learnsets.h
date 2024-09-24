@@ -1,5 +1,6 @@
-#define TMHM_LEARNSET(moves) {(u32)(moves), ((u64)(moves) >> 32)}
-#define TMHM(tmhm) ((u64)1 << (ITEM_##tmhm - ITEM_TM01_FOCUS_PUNCH))
+#define TMHM_LEARNSET(...)	{(u32)0, ((u64)0) >> 32}
+// #define TMHM_LEARNSET(moves) {(u32)(moves), ((u64)(moves) >> 32)}
+#define TMHM(tmhm) ((u64)1 << (ITEM_##tmhm - ITEM_TM_HONE_CLAWS))
 
 // This table determines which TMs and HMs a species is capable of learning.
 // Each entry is a 64-bit bit array spread across two 32-bit values, with
@@ -6054,56 +6055,6 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM48_SKILL_SWAP)
                                         | TMHM(HM01_CUT)
                                         | TMHM(HM05_FLASH)),
-
-    [SPECIES_OLD_UNOWN_B] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_C] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_D] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_E] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_F] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_G] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_H] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_I] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_J] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_K] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_L] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_M] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_N] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_O] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_P] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_Q] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_R] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_S] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_T] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_U] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_V] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_W] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_X] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_Y] = TMHM_LEARNSET(0),
-
-    [SPECIES_OLD_UNOWN_Z] = TMHM_LEARNSET(0),
 
     [SPECIES_TREECKO]     = TMHM_LEARNSET(TMHM(TM01_FOCUS_PUNCH)
                                         | TMHM(TM06_TOXIC)

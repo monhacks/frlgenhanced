@@ -26,6 +26,7 @@ const struct Item gItems[] = {
         .fieldUseFunc = {{ item.fieldUseFunc }},
         .battleUsage = {{ item.battleUsage }},
         .battleUseFunc = {{ item.battleUseFunc }},
+        .flingPower = {{ item.flingPower }},
         .secondaryId = {{ item.secondaryId }}
     }, {% endfor %}
 };

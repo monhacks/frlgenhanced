@@ -255,7 +255,7 @@ SilphCo_6F_EventScript_ItemHPUp::
 	end
 
 SilphCo_6F_EventScript_ItemXSpecial::
-	finditem ITEM_X_SPECIAL
+	finditem ITEM_X_SP_ATK
 	end
 
 SilphCo_7F_EventScript_ItemCalcium::
@@ -423,7 +423,7 @@ MtMoon_B2F_EventScript_ItemAntidote::
 	end
 
 Route11_EventScript_ItemXDefend::
-	finditem ITEM_X_DEFEND
+	finditem ITEM_X_DEFENSE
 	end
 
 Route9_EventScript_ItemBurnHeal::
@@ -639,7 +639,7 @@ FiveIsland_RocketWarehouse_EventScript_ItemPearl::
 	end
 
 FiveIsland_RocketWarehouse_EventScript_ItemUpGrade::
-	finditem ITEM_UP_GRADE
+	finditem ITEM_UPGRADE
 	end
 
 FiveIsland_LostCave_Room10_EventScript_ItemSilkScarf::

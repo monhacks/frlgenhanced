@@ -60,10 +60,9 @@ struct MailViewResources {
     struct Mail * mail;
     bool8 messageExists;
     u8 nameX;
-    u8 mailType;
+    u16 mailType;
     u8 monIconType;
     u8 monIconSpriteId;
-    u8 unused;
     u8 mailArrangementType;
     u8 *(*copyEasyChatWord)(u8 *dest, u16 word);
     u8 *(*convertEasyChatWordsToString)(u8 *dest, const u16 *src, u16 length1, u16 length2);
@@ -442,7 +441,7 @@ void ReadMail(struct Mail * mail, void (*savedCallback)(void), bool8 messageExis
     u16 sp0;
     u16 species;
     sMailViewResources = AllocZeroed(sizeof(struct MailViewResources));
-    sMailViewResources->unused = 2;
+    // sMailViewResources->unused = 2;
     sMailViewResources->mailArrangementType = 1;
     sMailViewResources->copyEasyChatWord = CopyEasyChatWord;
     sMailViewResources->convertEasyChatWordsToString = ConvertEasyChatWordsToString;

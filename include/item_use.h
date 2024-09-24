@@ -44,6 +44,9 @@ u8 CheckIfItemIsTMHMOrEvolutionStone(u16 itemId);
 void FieldUseFunc_AbilityCapsule(u8 taskId);
 void FieldUseFunc_AbilityPatch(u8 taskId);
 void FieldUseFunc_Mint(u8 taskId);
+void FieldUseFunc_Honey(u8 taskId);
 void FieldUseFunc_ReduceEV(u8 taskId);
+void FieldUseFunc_FormChange(u8 taskId);
+void FieldUseFunc_Fusion(u8 taskId);
 
 #endif //GUARD_ITEM_USE_H

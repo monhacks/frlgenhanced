@@ -72,9 +72,9 @@ void SetBagPocketsPointers(void)
 
 void CopyItemName(u16 itemId, u8 * dest)
 {
-    if (itemId == ITEM_ENIGMA_BERRY)
+    if (itemId == ITEM_ENIGMA_BERRY_E_READER)
     {
-        StringCopy(dest, GetBerryInfo(ITEM_TO_BERRY(ITEM_ENIGMA_BERRY))->name);
+        StringCopy(dest, GetBerryInfo(ITEM_TO_BERRY(ITEM_ENIGMA_BERRY_E_READER))->name);
         StringAppend(dest, gText_Berry);
     }
     else
@@ -141,7 +141,7 @@ bool8 CheckBagHasItem(u16 itemId, u16 count)
 
 bool8 HasAtLeastOneBerry(void)
 {
-    u8 itemId;
+    u16 itemId;
     bool8 exists;
 
     exists = CheckBagHasItem(ITEM_BERRY_POUCH, 1);
