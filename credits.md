@@ -29,6 +29,9 @@ geajack
 ColonelSalt
 * [Remove all use of FRLG item animation screens](https://pokecommunity.com/showpost.php?p=10335920)
 
+Lioniac
+* [Skip Controls Intro, First Battle Tutorial, Viridian Old Man, Flashbacks](https://pokecommunity.com/showpost.php?p=10320876)
+
 pokefirered(FR) and pokeemerald(EM) tutorials on the github wikis
 * (EM) [Add Physical Special Split](https://github.com/pret/pokeemerald/wiki/add-physical-special-split)
 * (EM) [Update Sitrrus Berry's effect to Gen 4 standard](https://github.com/pret/pokeemerald/wiki/Update-Sitrus-Berry's-effect-to-Gen-4-standard)
