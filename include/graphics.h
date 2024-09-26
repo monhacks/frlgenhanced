@@ -879,6 +879,19 @@ extern const u32 gItemIconPalette_PowderJar[];
 extern const u32 gItemIcon_Gem[];
 extern const u32 gItemIconPalette_Ruby[];
 extern const u32 gItemIconPalette_Sapphire[];
+// EV Feathers
+extern const u32 gItemIcon_HealthFeather[];
+extern const u32 gItemIconPalette_HealthFeather[];
+extern const u32 gItemIcon_MuscleFeather[];
+extern const u32 gItemIconPalette_MuscleFeather[];
+extern const u32 gItemIcon_ResistFeather[];
+extern const u32 gItemIconPalette_ResistFeather[];
+extern const u32 gItemIcon_GeniusFeather[];
+extern const u32 gItemIconPalette_GeniusFeather[];
+extern const u32 gItemIcon_CleverFeather[];
+extern const u32 gItemIconPalette_CleverFeather[];
+extern const u32 gItemIcon_SwiftFeather[];
+extern const u32 gItemIconPalette_SwiftFeather[];
 // Mints
 extern const u32 gItemIcon_Mint[];
 extern const u32 gItemIconPalette_RedMint[];
@@ -887,8 +900,10 @@ extern const u32 gItemIconPalette_PinkMint[];
 extern const u32 gItemIconPalette_GreenMint[];
 extern const u32 gItemIconPalette_LightBlueMint[];
 extern const u32 gItemIconPalette_YellowMint[];
+// Evo Items
 extern const u32 gItemIcon_LinkingCord[];
 extern const u32 gItemIconPalette_LinkingCord[];
+// Return to Field Arrow
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 

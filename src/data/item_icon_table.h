@@ -73,12 +73,12 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_PP_UP]            = {gItemIcon_PPUp, gItemIconPalette_PPUp},
     [ITEM_PP_MAX]           = {gItemIcon_PPMax, gItemIconPalette_PPMax},
     // EV Feathers
-    [ITEM_HEALTH_FEATHER]   = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_MUSCLE_FEATHER]   = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_RESIST_FEATHER]   = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_GENIUS_FEATHER]   = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_CLEVER_FEATHER]   = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_SWIFT_FEATHER]    = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_HEALTH_FEATHER]   = {gItemIcon_HealthFeather, gItemIconPalette_HealthFeather},
+    [ITEM_MUSCLE_FEATHER]   = {gItemIcon_MuscleFeather, gItemIconPalette_MuscleFeather},
+    [ITEM_RESIST_FEATHER]   = {gItemIcon_ResistFeather, gItemIconPalette_ResistFeather},
+    [ITEM_GENIUS_FEATHER]   = {gItemIcon_GeniusFeather, gItemIconPalette_GeniusFeather},
+    [ITEM_CLEVER_FEATHER]   = {gItemIcon_CleverFeather, gItemIconPalette_CleverFeather},
+    [ITEM_SWIFT_FEATHER]    = {gItemIcon_SwiftFeather, gItemIconPalette_SwiftFeather},
     // Ability Modifiers
     [ITEM_ABILITY_CAPSULE]  = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_ABILITY_PATCH]    = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
