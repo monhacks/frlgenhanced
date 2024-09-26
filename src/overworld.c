@@ -20,7 +20,6 @@
 #include "fieldmap.h"
 #include "fldeff.h"
 #include "heal_location.h"
-#include "help_system.h"
 #include "link.h"
 #include "link_rfu.h"
 #include "load_save.h"
@@ -1784,7 +1783,6 @@ static bool32 LoadMapInStepsLink(u8 *state)
         InitObjectEventsLink();
         SpawnLinkPlayers();
         SetCameraToTrackGuestPlayer();
-        SetHelpContextForMap();
         (*state)++;
         break;
     case 4:
@@ -1869,7 +1867,6 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 inLink)
             QuestLog_CheckDepartingIndoorsMap();
             QuestLog_TryRecordDepartedLocation();
         }
-        SetHelpContextForMap();
         (*state)++;
         break;
     case 5:
@@ -1943,7 +1940,6 @@ static bool32 ReturnToFieldLocal(u8 *state)
         break;
     case 2:
         InitViewGraphics();
-        SetHelpContextForMap();
         (*state)++;
         break;
     case 3:
@@ -1974,7 +1970,6 @@ static bool32 ReturnToFieldLink(u8 *state)
         CreateLinkPlayerSprites();
         ReloadObjectsAndRunReturnToFieldMapScript();
         SetCameraToTrackGuestPlayer_2();
-        SetHelpContextForMap();
         (*state)++;
         break;
     case 3:
