@@ -3507,7 +3507,7 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) // https://gith
 
 static void DebugAction_Give_MaxMoney(u8 taskId)
 {
-    SetMoney(&gSaveBlock1Ptr->money, 999999);
+    SetMoney(&gSaveBlock1Ptr->money, 9999999);
 }
 
 static void DebugAction_Give_MaxCoins(u8 taskId)

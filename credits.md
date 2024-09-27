@@ -32,6 +32,7 @@ ColonelSalt
 
 Lioniac
 * [Skip Controls Intro, First Battle Tutorial, Viridian Old Man, Flashbacks](https://pokecommunity.com/showpost.php?p=10320876)
+* [Increase Money Limit](https://www.pokecommunity.com/showpost.php?p=10320889)
 
 pokefirered(FR) and pokeemerald(EM) tutorials on the github wikis
 * (EM) [Add Physical Special Split](https://github.com/pret/pokeemerald/wiki/add-physical-special-split)
