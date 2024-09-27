@@ -4284,7 +4284,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         if (evCount >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
-                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
+						if (itemEffect[idx] == ITEM6_ADD_EV && data >= EV_ITEM_RAISE_LIMIT)
+							return TRUE;
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT)
+						 || (itemEffect[idx] == ITEM6_ADD_EV_MINOR && data < MAX_PER_STAT_EVS))
                         {
                             // Limit the increase
                             if ((itemEffect[idx] == ITEM6_ADD_EV) && (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT))
@@ -4496,7 +4499,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         if (evCount >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
-                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
+						if (itemEffect[idx] == ITEM6_ADD_EV && data >= EV_ITEM_RAISE_LIMIT)
+							return TRUE;
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT)
+						 || (itemEffect[idx] == ITEM6_ADD_EV_MINOR && data < MAX_PER_STAT_EVS))
                         {
                             // Limit the increase
                             if ((itemEffect[idx] == ITEM6_ADD_EV) && (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT))
@@ -4760,7 +4766,10 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
                         if (GetMonEVCount(mon) >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
-                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
+						if (itemEffect[idx] == ITEM6_ADD_EV && data >= EV_ITEM_RAISE_LIMIT)
+							return TRUE;
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT)
+						 || (itemEffect[idx] == ITEM6_ADD_EV_MINOR && data < MAX_PER_STAT_EVS))
                         {
                             idx++;
                             retVal = FALSE;
@@ -4844,7 +4853,10 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
                         if (GetMonEVCount(mon) >= MAX_TOTAL_EVS)
                             return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
-                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT) || (data < MAX_PER_STAT_EVS))
+						if (itemEffect[idx] == ITEM6_ADD_EV && data >= EV_ITEM_RAISE_LIMIT)
+							return TRUE;
+                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT)
+						 || (itemEffect[idx] == ITEM6_ADD_EV_MINOR && data < MAX_PER_STAT_EVS))
                         {
                             retVal = FALSE;
                             idx++;

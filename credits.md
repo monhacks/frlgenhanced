@@ -19,6 +19,7 @@ Zeturic
 
 ghoulslash
 * [Nature Mints](https://www.pokecommunity.com/showpost.php?p=10245635&postcount=191)
+* [Repeated Field Medicine Use](https://pokecommunity.com/showpost.php?p=10206290)
 
 TheXaman, Ketsuban, Pyredrid, AsparagusEduardo, Ghoulslash, ExboSeed, Sierraffinity, Jaizu
 * [Fully functional debug menu with Flags, Vars, Items, custom scripts, Pokemon and more!](https://www.pokecommunity.com/showpost.php?p=10220970&postcount=175)
@@ -43,6 +44,7 @@ pokefirered(FR) and pokeemerald(EM) tutorials on the github wikis
 * (EM) [Push B in wild battle moves to Run](https://github.com/pret/pokeemerald/wiki/Push-B-in-wild-battle-moves-to-Run)
 * (EM) [Prompt for reusing Repels](https://github.com/pret/pokeemerald/wiki/Prompt-for-reusing-Repels)
 * (EM) [Physical Special Split Icons In Battle](https://github.com/Jaizu/pokeemerald-public/commit/7eafd6e150ddfc91b2ea2cb52a18b5141a61d46e)
+* (EM) [Repeated Field Medicine Use (original post by ghoulslash)](https://github.com/pret/pokeemerald/wiki/Repeated-Field-Medicine-Use)
 
 Everyone who contributed to pokeemerald-expansion
 [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
