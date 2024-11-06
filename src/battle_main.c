@@ -4177,7 +4177,7 @@ static void HandleAction_UseItem(void)
     {
         gBattlescriptCurrInstr = gBattlescriptsForBallThrow[gLastUsedItem];
     }
-    else if (gLastUsedItem == ITEM_POKE_DOLL || gLastUsedItem == ITEM_FLUFFY_TAIL)
+    else if (gLastUsedItem == ITEM_POKE_DOLL || gLastUsedItem == ITEM_FLUFFY_TAIL || gLastUsedItem == ITEM_POKE_TOY)
     {
         gBattlescriptCurrInstr = gBattlescriptsForRunningByItem[0];
     }

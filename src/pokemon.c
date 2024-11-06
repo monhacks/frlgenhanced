@@ -1663,9 +1663,19 @@ static const u8 sGetMonDataEVConstants[] =
 };
 
 // For stat-raising items
-static const u8 sStatsToRaise[] = 
-{
-    STAT_ATK, STAT_ATK, STAT_SPEED, STAT_DEF, STAT_SPATK, STAT_ACC
+static const u8 sStatsToRaise[][0xFF] = {
+	[0] = {
+		[ITEM0_X_ATTACK] = STAT_ATK,
+	},
+	[1] = {
+		[ITEM1_X_DEFENSE] = STAT_DEF,
+		[ITEM1_X_SPEED] = STAT_SPEED,
+	},
+	[2] = {
+		[ITEM2_X_SPATK] = STAT_SPATK,
+		[ITEM2_X_SPDEF] = STAT_SPDEF,
+		[ITEM2_X_ACCURACY] = STAT_ACC,
+	},
 };
 
 // 3 modifiers each for how much to change friendship for different ranges
@@ -5025,10 +5035,10 @@ u8 GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit)
     return offset;
 }
 
-static void BufferStatRoseMessage(int statIdx)
+static void BufferStatRoseMessage(u8 itemEffectIdx, int statIdx)
 {
     gBattlerTarget = gBattlerInMenuId;
-    StringCopy(gBattleTextBuff1, gStatNamesTable[sStatsToRaise[statIdx]]);
+    StringCopy(gBattleTextBuff1, gStatNamesTable[sStatsToRaise[itemEffectIdx][statIdx]]);
     StringCopy(gBattleTextBuff2, gBattleText_Rose);
     BattleStringExpandPlaceholdersToDisplayedString(gText_DefendersStatRose);
 }
@@ -5056,24 +5066,23 @@ const u8 *Battle_PrintStatBoosterEffectMessage(u16 itemId)
 
     gPotentialItemEffectBattler = gBattlerInMenuId;
 
-    for (i = 0; i < 3; i++)
-    {
-        if (itemEffect[i] & (ITEM0_X_ATTACK | ITEM1_X_SPEED | ITEM2_X_SPATK))
-            BufferStatRoseMessage(i * 2);
-        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFENSE | ITEM2_X_ACCURACY))
-        {
-            if (i != 0) // Dire Hit is the only ITEM0 above
-            {
-                BufferStatRoseMessage(i * 2 + 1);
-            }
-            else
-            {
-                gBattlerAttacker = gBattlerInMenuId;
-                BattleStringExpandPlaceholdersToDisplayedString(gBattleText_GetPumped);
-            }
-        }
-    }
-
+	if (itemEffect[0] & ITEM0_X_ATTACK)
+		BufferStatRoseMessage(0, ITEM0_X_ATTACK);
+	if (itemEffect[0] & ITEM0_DIRE_HIT)
+	{
+		gBattlerAttacker = gBattlerInMenuId;
+		BattleStringExpandPlaceholdersToDisplayedString(gBattleText_GetPumped);
+	}
+	if (itemEffect[1] & ITEM1_X_SPEED)
+		BufferStatRoseMessage(1, ITEM1_X_SPEED);
+	if (itemEffect[1] & ITEM1_X_DEFENSE)
+		BufferStatRoseMessage(1, ITEM1_X_DEFENSE);
+	if (itemEffect[2] & ITEM2_X_SPATK)
+		BufferStatRoseMessage(2, ITEM2_X_SPATK);
+	if (itemEffect[2] & ITEM2_X_SPDEF)
+		BufferStatRoseMessage(2, ITEM2_X_SPDEF);
+	if (itemEffect[2] & ITEM2_X_ACCURACY)
+		BufferStatRoseMessage(2, ITEM2_X_ACCURACY);
     if (itemEffect[3] & ITEM3_GUARD_SPEC)
     {
         gBattlerAttacker = gBattlerInMenuId;
