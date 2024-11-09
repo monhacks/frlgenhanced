@@ -14,6 +14,7 @@
 #include "field_specials.h"
 #include "field_weather.h"
 #include "fieldmap.h"
+#include "fldeff.h"
 #include "item.h"
 #include "item_menu.h"
 #include "item_use.h"
@@ -951,9 +952,27 @@ void FieldUseFunc_Mint(u8 taskId)
     SetUpItemUseCallback(taskId);
 }
 
+void Task_UseHoneyOnField(u8 taskId)
+{
+	// ResetInitalPlayerAvatarState();
+	StartSweetScentFieldEffect();
+	DestroyTask(taskId);
+}
+static void ItemUseOnFieldCB_Honey(u8 taskId)
+{
+	Overworld_ResetStateAfterDigEscRope();
+	RemoveBagItem(gSpecialVar_ItemId, 1);
+	CopyItemName(gSpecialVar_ItemId, gStringVar2);
+	StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
+	gTasks[taskId].data[0] = 0;
+	DisplayItemMessageOnField(taskId, FONT_NORMAL, gStringVar4, Task_UseHoneyOnField);
+}
 void FieldUseFunc_Honey(u8 taskId)
 {
-
+	sItemUseOnFieldCB = ItemUseOnFieldCB_Honey;
+	gFieldCallback = FieldCB_FadeInFromBlack;
+    ItemMenu_SetExitCallback(CB2_ReturnToField);
+    ItemMenu_StartFadeToExitCallback(taskId);
 }
 
 void FieldUseFunc_ReduceEV(u8 taskId)

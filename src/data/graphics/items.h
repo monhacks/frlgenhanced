@@ -295,8 +295,8 @@ const u32 gItemIconPalette_GreenShard[] = INCBIN_U32("graphics/items/icon_palett
 const u32 gItemIcon_HeartScale[] = INCBIN_U32("graphics/items/icons/heart_scale.4bpp.lz");
 const u32 gItemIconPalette_HeartScale[] = INCBIN_U32("graphics/items/icon_palettes/heart_scale.gbapal.lz");
 
-// const u32 gItemIcon_Honey[] = INCBIN_U32("graphics/items/icons/honey.4bpp.lz");
-// const u32 gItemIconPalette_Honey[] = INCBIN_U32("graphics/items/icon_palettes/honey.gbapal.lz");
+const u32 gItemIcon_Honey[] = INCBIN_U32("graphics/items/icons/honey.4bpp.lz");
+const u32 gItemIconPalette_Honey[] = INCBIN_U32("graphics/items/icon_palettes/honey.gbapal.lz");
 
 const u32 gItemIcon_RareBone[] = INCBIN_U32("graphics/items/icons/rare_bone.4bpp.lz");
 const u32 gItemIconPalette_RareBone[] = INCBIN_U32("graphics/items/icon_palettes/rare_bone.gbapal.lz");

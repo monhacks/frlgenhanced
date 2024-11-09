@@ -292,8 +292,8 @@ extern const u32 gItemIconPalette_GreenShard[];
 extern const u32 gItemIcon_HeartScale[];
 extern const u32 gItemIconPalette_HeartScale[];
 
-// extern const u32 gItemIcon_Honey[];
-// extern const u32 gItemIconPalette_Honey[];
+extern const u32 gItemIcon_Honey[];
+extern const u32 gItemIconPalette_Honey[];
 
 extern const u32 gItemIcon_RareBone[];
 extern const u32 gItemIconPalette_RareBone[];
