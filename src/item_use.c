@@ -979,7 +979,8 @@ void FieldUseFunc_Honey(u8 taskId)
 
 void FieldUseFunc_ReduceEV(u8 taskId)
 {
-    
+    gItemUseCB = ItemUseCB_ReduceEV;
+	SetUpItemUseCallback(taskId);
 }
 
 void FieldUseFunc_FormChange(u8 taskId)

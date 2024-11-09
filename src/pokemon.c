@@ -78,6 +78,7 @@ static void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon);
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
 static u8 GetLevelFromMonExp(struct Pokemon *mon);
 static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon);
+static bool8 ShouldSkipFriendshipChange(void);
 
 #include "data/battle_moves.h"
 
@@ -4022,34 +4023,36 @@ bool8 ExecuteTableBasedItemEffect(struct Pokemon *mon, u16 item, u8 partyIndex, 
     return PokemonUseItemEffects(mon, item, partyIndex, moveIndex, 0);
 }
 
-#define UPDATE_FRIENDSHIP_FROM_ITEM()                                                                   \
-{                                                                                                       \
-    if (retVal == 0 && friendshipChange == 0)                                                           \
-    {                                                                                                   \
-        friendshipChange = itemEffect[idx];                                                             \
-        friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);                                        \
-        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)                            \
-            friendship += 150 * friendshipChange / 100;                                                 \
-        else                                                                                            \
-            friendship += friendshipChange;                                                             \
-        if (friendshipChange > 0)                                                                       \
-        {                                                                                               \
-            if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)                           \
-                friendship++;                                                                           \
-            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())         \
-                friendship++;                                                                           \
-        }                                                                                               \
-        if (friendship < 0)                                                                             \
-            friendship = 0;                                                                             \
-        if (friendship > MAX_FRIENDSHIP)                                                                \
-            friendship = MAX_FRIENDSHIP;                                                                \
-        SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);                                              \
-    }                                                                                                   \
+#define UPDATE_FRIENDSHIP_FROM_ITEM()                                                               \
+{                                                                                                   \
+    if ((retVal == 0 || friendshipOnly) && !ShouldSkipFriendshipChange() && friendshipChange == 0)  \
+    {                                                                                               \
+        friendshipChange = itemEffect[idx];                                                         \
+        friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);                                    \
+        if (friendshipChange > 0 && holdEffect == HOLD_EFFECT_FRIENDSHIP_UP)                        \
+            friendship += 150 * friendshipChange / 100;                                             \
+        else                                                                                        \
+            friendship += friendshipChange;                                                         \
+        if (friendshipChange > 0)                                                                   \
+        {                                                                                           \
+            if (GetMonData(mon, MON_DATA_POKEBALL, NULL) == ITEM_LUXURY_BALL)                       \
+                friendship++;                                                                       \
+            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == GetCurrentRegionMapSectionId())     \
+                friendship++;                                                                       \
+        }                                                                                           \
+        if (friendship < 0)                                                                         \
+            friendship = 0;                                                                         \
+        if (friendship > MAX_FRIENDSHIP)                                                            \
+            friendship = MAX_FRIENDSHIP;                                                            \
+        SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);                                          \
+		retVal = FALSE;                                                                             \
+    }                                                                                               \
 }
 
 bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 moveIndex, bool8 usedByAI)
 {
-    u32 data;
+    u32 dataUnsigned;
+	s32 dataSigned, evCap;
     s32 friendship;
     s32 cmdIndex;
     bool8 retVal = TRUE;
@@ -4059,9 +4062,11 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     s8 friendshipChange = 0;
     u8 holdEffect;
     u8 battleMonId = MAX_BATTLERS_COUNT;
+	u32 friendshipOnly = FALSE;
     u16 heldItem;
     u8 val;
-    u32 evDelta;
+    s8 evChange;
+	u16 evCount;
 
     // Get item hold effect
     heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
@@ -4223,8 +4228,8 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
             if ((itemEffect[cmdIndex] & ITEM3_LEVEL_UP)
              && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
             {
-                data = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
-                SetMonData(mon, MON_DATA_EXP, &data);
+                dataUnsigned = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES, NULL)].growthRate][GetMonData(mon, MON_DATA_LEVEL, NULL) + 1];
+                SetMonData(mon, MON_DATA_EXP, &dataUnsigned);
                 CalculateMonStats(mon);
                 retVal = FALSE;
             }
@@ -4261,16 +4266,16 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
             if (val & ITEM4_PP_UP)
             {
                 val &= ~ITEM4_PP_UP;
-                data = (GetMonData(mon, MON_DATA_PP_BONUSES, NULL) & gPPUpGetMask[moveIndex]) >> (moveIndex * 2);
+                dataUnsigned = (GetMonData(mon, MON_DATA_PP_BONUSES, NULL) & gPPUpGetMask[moveIndex]) >> (moveIndex * 2);
                 i = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex);
-                if (data < 3 && i > 4)
+                if (dataUnsigned < 3 && i > 4)
                 {
-                    data = GetMonData(mon, MON_DATA_PP_BONUSES, NULL) + gPPUpAddValues[moveIndex];
-                    SetMonData(mon, MON_DATA_PP_BONUSES, &data);
+                    dataUnsigned = GetMonData(mon, MON_DATA_PP_BONUSES, NULL) + gPPUpAddValues[moveIndex];
+                    SetMonData(mon, MON_DATA_PP_BONUSES, &dataUnsigned);
 
-                    data = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), data, moveIndex) - i;
-                    data = GetMonData(mon, MON_DATA_PP1 + moveIndex, NULL) + data;
-                    SetMonData(mon, MON_DATA_PP1 + moveIndex, &data);
+                    dataUnsigned = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), dataUnsigned, moveIndex) - i;
+                    dataUnsigned = GetMonData(mon, MON_DATA_PP1 + moveIndex, NULL) + dataUnsigned;
+                    SetMonData(mon, MON_DATA_PP1 + moveIndex, &dataUnsigned);
                     retVal = FALSE;
                 }
             }
@@ -4281,7 +4286,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
             {
                 if (val & 1)
                 {
-                    u16 evCount;
+					u32 temp;
                     s32 r5;
      
                     switch (i)
@@ -4289,32 +4294,61 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     case 0: // ITEM4_EV_HP
                     case 1: // ITEM4_EV_ATK
                         evCount = GetMonEVCount(mon);
+						temp = itemEffect[idx];
+						dataSigned = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
+						evChange = temp;
 
-                        // Has EV increase limit already been reached?
-                        if (evCount >= MAX_TOTAL_EVS)
-                            return TRUE;
-                        data = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
-						if (itemEffect[idx] == ITEM6_ADD_EV && data >= EV_ITEM_RAISE_LIMIT)
-							return TRUE;
-                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT)
-						 || (itemEffect[idx] == ITEM6_ADD_EV_MINOR && data < MAX_PER_STAT_EVS))
-                        {
-                            // Limit the increase
-                            if ((itemEffect[idx] == ITEM6_ADD_EV) && (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT))
-                                evDelta = EV_ITEM_RAISE_LIMIT - (data + itemEffect[idx]) + itemEffect[idx];
-                            else
-                                evDelta = itemEffect[idx];
-                            if (evCount + evDelta > MAX_TOTAL_EVS)
-                                evDelta += MAX_TOTAL_EVS - (evCount + evDelta);
+						if (evChange > 0)	// Increasing EV (HP or Atk)
+						{
+							// Has EV increase limit already been reached?
+							if (evCount >= MAX_TOTAL_EVS)
+								return TRUE;
+							
+							if (itemEffect[idx] == ITEM6_ADD_EV)
+								evCap = EV_ITEM_RAISE_LIMIT;
+							else
+								evCap = MAX_PER_STAT_EVS;
+							
+							if (dataSigned >= evCap)
+								break;
+							
+							// Limit the increase
+							if (dataSigned + evChange > evCap)
+								temp = evCap - (dataSigned + evChange) + evChange;
+							else
+								temp = evChange;
+							
+							if (evCount + temp > MAX_TOTAL_EVS)
+								temp += MAX_TOTAL_EVS - (evCount + temp);
+							
+							dataSigned += temp;
+						}
+						else if (evChange < 0)	// Decreasing EV (HP or Atk)
+						{
+							if (dataSigned == 0)
+							{
+								// no EVs to lose, but make sure friendship updates anyway
+								friendshipOnly = TRUE;
+								idx++;
+								break;
+							}
+							dataSigned += evChange;
+							if (dataSigned < 0)
+								dataSigned = 0;
+						}
+						else
+						{
+							if (dataSigned == 0)
+								break;
+							dataSigned = 0;
+						}
 
-                            // Update EVs and stats
-                            data += evDelta;
-                            SetMonData(mon, sGetMonDataEVConstants[i], &data);
-                            CalculateMonStats(mon);
-                            idx++;
-                            retVal = FALSE;
-                        }
-                        break;
+						// Update EV (HP or Atk)
+						SetMonData(mon, sGetMonDataEVConstants[i], &dataSigned);
+						CalculateMonStats(mon);
+						idx++;
+						retVal = FALSE;
+						break;
                     case 2: // ITEM4_HEAL_HP
                         // If Revive, update number of times revive has been used
                         if (val & (ITEM4_REVIVE >> 2))
@@ -4351,24 +4385,24 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         }
 
                         // Get amount of HP to restore
-                        data = itemEffect[idx++];
-                        switch (data)
+                        dataUnsigned = itemEffect[idx++];
+                        switch (dataUnsigned)
                         {
                         case ITEM6_HEAL_HP_FULL:
-                            data = GetMonData(mon, MON_DATA_MAX_HP, NULL) - GetMonData(mon, MON_DATA_HP, NULL);
+                            dataUnsigned = GetMonData(mon, MON_DATA_MAX_HP, NULL) - GetMonData(mon, MON_DATA_HP, NULL);
                             break;
                         case ITEM6_HEAL_HP_HALF:
-                            data = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 2;
-                            if (data == 0)
-                                data = 1;
+                            dataUnsigned = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 2;
+                            if (dataUnsigned == 0)
+                                dataUnsigned = 1;
                             break;
                         case ITEM6_HEAL_QUARTER:
-                            data = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 4;
-                            if (data == 0)
-                                data = 1;
+                            dataUnsigned = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 4;
+                            if (dataUnsigned == 0)
+                                dataUnsigned = 1;
                             break;
                         case ITEM6_HEAL_HP_LVL_UP:
-                            data = gBattleScripting.levelUpHP;
+                            dataUnsigned = gBattleScripting.levelUpHP;
                             break;
                         }
 
@@ -4378,15 +4412,15 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             if (!usedByAI)
                             {
                                 // Restore HP
-                                data = GetMonData(mon, MON_DATA_HP, NULL) + data;
-                                if (data > GetMonData(mon, MON_DATA_MAX_HP, NULL))
-                                    data = GetMonData(mon, MON_DATA_MAX_HP, NULL);
-                                SetMonData(mon, MON_DATA_HP, &data);
+                                dataUnsigned = GetMonData(mon, MON_DATA_HP, NULL) + dataUnsigned;
+                                if (dataUnsigned > GetMonData(mon, MON_DATA_MAX_HP, NULL))
+                                    dataUnsigned = GetMonData(mon, MON_DATA_MAX_HP, NULL);
+                                SetMonData(mon, MON_DATA_HP, &dataUnsigned);
                                 
                                 // Update battler (if applicable)
                                 if (gMain.inBattle && battleMonId != MAX_BATTLERS_COUNT)
                                 {
-                                    gBattleMons[battleMonId].hp = data;
+                                    gBattleMons[battleMonId].hp = dataUnsigned;
                                     if (!(val & (ITEM4_REVIVE >> 2)) && GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
                                     {
                                         if (gBattleResults.numHealingItemsUsed < 255)
@@ -4402,7 +4436,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             }
                             else
                             {
-                                gBattleMoveDamage = -data;
+                                gBattleMoveDamage = -dataUnsigned;
                             }
                             retVal = FALSE;
                         }
@@ -4416,22 +4450,22 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                             {
                                 u16 move_id;
 
-                                data = GetMonData(mon, MON_DATA_PP1 + r5, NULL);
+                                dataUnsigned = GetMonData(mon, MON_DATA_PP1 + r5, NULL);
                                 move_id = GetMonData(mon, MON_DATA_MOVE1 + r5, NULL);
-                                if (data != CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), r5))
+                                if (dataUnsigned != CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), r5))
                                 {
-                                    data += itemEffect[idx];
+                                    dataUnsigned += itemEffect[idx];
                                     move_id = GetMonData(mon, MON_DATA_MOVE1 + r5, NULL);
-                                    if (data > CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), r5))
+                                    if (dataUnsigned > CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), r5))
                                     {
                                         move_id = GetMonData(mon, MON_DATA_MOVE1 + r5, NULL);
-                                        data = CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), r5);
+                                        dataUnsigned = CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), r5);
                                     }
-                                    SetMonData(mon, MON_DATA_PP1 + r5, &data);
+                                    SetMonData(mon, MON_DATA_PP1 + r5, &dataUnsigned);
                                     
                                     // Heal battler PP too (if applicable)
                                     if (gMain.inBattle && battleMonId != MAX_BATTLERS_COUNT && MOVE_IS_PERMANENT(battleMonId, r5))
-                                        gBattleMons[battleMonId].pp[r5] = data;
+                                        gBattleMons[battleMonId].pp[r5] = dataUnsigned;
 
                                     retVal = FALSE;
                                 }
@@ -4442,22 +4476,22 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         {
                             // Heal PP for one move
                             u16 move_id;
-                            data = GetMonData(mon, MON_DATA_PP1 + moveIndex, NULL);
+                            dataUnsigned = GetMonData(mon, MON_DATA_PP1 + moveIndex, NULL);
                             move_id = GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL);
-                            if (data != CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex))
+                            if (dataUnsigned != CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex))
                             {
-                                data += itemEffect[idx++];
+                                dataUnsigned += itemEffect[idx++];
                                 move_id = GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL);
-                                if (data > CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex))
+                                if (dataUnsigned > CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex))
                                 {
                                     move_id = GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL);
-                                    data = CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex);
+                                    dataUnsigned = CalculatePPWithBonus(move_id, GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex);
                                 }
-                                SetMonData(mon, MON_DATA_PP1 + moveIndex, &data);
+                                SetMonData(mon, MON_DATA_PP1 + moveIndex, &dataUnsigned);
                                 
                                 // Heal battler PP too (if applicable)
                                 if (gMain.inBattle && battleMonId != MAX_BATTLERS_COUNT && MOVE_IS_PERMANENT(battleMonId, moveIndex))
-                                    gBattleMons[battleMonId].pp[moveIndex] = data;
+                                    gBattleMons[battleMonId].pp[moveIndex] = dataUnsigned;
 
                                 retVal = FALSE;
                             }
@@ -4495,7 +4529,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
             {
                 if (val & 1)
                 {
-                    u16 evCount;
+                    u32 temp;
 
                     switch (i)
                     {
@@ -4504,47 +4538,76 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     case 2: // ITEM5_EV_SPDEF
                     case 3: // ITEM5_EV_SPATK
                         evCount = GetMonEVCount(mon);
-                        
-                        // Has EV increase limit already been reached?
-                        if (evCount >= MAX_TOTAL_EVS)
-                            return TRUE;
-                        data = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
-						if (itemEffect[idx] == ITEM6_ADD_EV && data >= EV_ITEM_RAISE_LIMIT)
-							return TRUE;
-                        if ((itemEffect[idx] == ITEM6_ADD_EV && data < EV_ITEM_RAISE_LIMIT)
-						 || (itemEffect[idx] == ITEM6_ADD_EV_MINOR && data < MAX_PER_STAT_EVS))
-                        {
-                            // Limit the increase
-                            if ((itemEffect[idx] == ITEM6_ADD_EV) && (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT))
-                                evDelta = EV_ITEM_RAISE_LIMIT - (data + itemEffect[idx]) + itemEffect[idx];
-                            else
-                                evDelta = itemEffect[idx];
-                            if (evCount + evDelta > MAX_TOTAL_EVS)
-                                evDelta += MAX_TOTAL_EVS - (evCount + evDelta);
-                            
-                            // Update EVs and stats
-                            data += evDelta;
-                            SetMonData(mon, sGetMonDataEVConstants[i + 2], &data);
-                            CalculateMonStats(mon);
-                            retVal = FALSE;
-                            idx++;
-                        }
+						temp = itemEffect[idx];
+                        dataSigned = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
+						evChange = temp;
+
+						if (evChange > 0)	// Increasing EV
+						{
+							// Has EV increase limit already been reached?
+							if (evCount >= MAX_TOTAL_EVS)
+								return TRUE;
+							
+							if (itemEffect[idx] == ITEM6_ADD_EV)
+								evCap = EV_ITEM_RAISE_LIMIT;
+							else
+								evCap = MAX_PER_STAT_EVS;
+							
+							if (dataSigned >= evCap)
+								break;
+							
+							// Limit the increase
+							if (dataSigned + evChange > evCap)
+								temp = evCap - (dataSigned + evChange) + evChange;
+							else
+								temp = evChange;
+							
+							if (evCount + temp > MAX_TOTAL_EVS)
+								temp += MAX_TOTAL_EVS - (evCount + temp);
+							
+							dataSigned += temp;
+						}
+						else if (evChange < 0)	// Decreasing EV
+						{
+							if (dataSigned == 0)
+							{
+								// No EVs to lose, but make sure friendship updates anyway
+								friendshipOnly = TRUE;
+								idx++;
+								break;
+							}
+							dataSigned += evChange;
+							if (dataSigned < 0)
+								dataSigned = 0;
+						}
+						else
+						{
+							if (dataSigned == 0)
+								break;
+							dataSigned = 0;
+						}
+
+						// Update EVs and stats
+						SetMonData(mon, sGetMonDataEVConstants[i + 2], &dataSigned);
+						CalculateMonStats(mon);
+						retVal = FALSE;
+						idx++;
                         break;
                     case 4: // ITEM5_PP_MAX
-                        data = (GetMonData(mon, MON_DATA_PP_BONUSES, NULL) & gPPUpGetMask[moveIndex]) >> (moveIndex * 2);
+                        dataUnsigned = (GetMonData(mon, MON_DATA_PP_BONUSES, NULL) & gPPUpGetMask[moveIndex]) >> (moveIndex * 2);
+                        temp = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex);
                         
-                        // Check if 3 PP Ups have been applied already
-                        if (data < 3)
+                        // Check if 3 PP Ups have been applied already, and that the move has a total PP of at least 5 (excludes Sketch)
+                        if (dataUnsigned < 3 && temp >= 5)
                         {
-                            evDelta = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), GetMonData(mon, MON_DATA_PP_BONUSES, NULL), moveIndex);
-                            data = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
-                            data &= gPPUpClearMask[moveIndex];
-                            data += gPPUpAddValues[moveIndex] * 3; // Apply 3 PP Ups (max)
+                            dataUnsigned = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
+                            dataUnsigned &= gPPUpClearMask[moveIndex];
+                            dataUnsigned += gPPUpAddValues[moveIndex] * 3; // Apply 3 PP Ups (max)
 
-                            SetMonData(mon, MON_DATA_PP_BONUSES, &data);
-                            data = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), data, moveIndex) - evDelta;
-                            data = GetMonData(mon, MON_DATA_PP1 + moveIndex, NULL) + data;
-                            SetMonData(mon, MON_DATA_PP1 + moveIndex, &data);
+                            SetMonData(mon, MON_DATA_PP_BONUSES, &dataUnsigned);
+                            dataUnsigned = CalculatePPWithBonus(GetMonData(mon, MON_DATA_MOVE1 + moveIndex, NULL), dataUnsigned, moveIndex) - temp;
+                            dataUnsigned = GetMonData(mon, MON_DATA_PP1 + moveIndex, NULL) + dataUnsigned;
+                            SetMonData(mon, MON_DATA_PP1 + moveIndex, &dataUnsigned);
                             retVal = FALSE;
                         }
                         break;
@@ -5474,6 +5537,9 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
     u16 heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     u8 holdEffect;
 
+	if (ShouldSkipFriendshipChange())
+		return;
+
     if (heldItem == ITEM_ENIGMA_BERRY)
     {
         if (gMain.inBattle)
@@ -6357,6 +6423,13 @@ bool8 CheckBattleTypeGhost(struct Pokemon *mon, u8 battlerId)
             return TRUE;
     }
     return FALSE;
+}
+
+static bool8 ShouldSkipFriendshipChange(void)
+{
+	if (gMain.inBattle && (gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER))
+		return TRUE;
+	return FALSE;
 }
 
 #define ALLOC_FAIL_BUFFER (1 << 0)
