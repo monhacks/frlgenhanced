@@ -190,11 +190,11 @@ extern const u32 gItemIcon_SwiftFeather[];
 extern const u32 gItemIconPalette_SwiftFeather[];
 
 // Ability Modifiers
-// extern const u32 gItemIcon_AbilityCapsule[];
-// extern const u32 gItemIconPalette_AbilityCapsule[];
+extern const u32 gItemIcon_AbilityCapsule[];
+extern const u32 gItemIconPalette_AbilityCapsule[];
 
-// extern const u32 gItemIcon_AbilityPatch[];
-// extern const u32 gItemIconPalette_AbilityPatch[];
+extern const u32 gItemIcon_AbilityPatch[];
+extern const u32 gItemIconPalette_AbilityPatch[];
 
 // Mints
 extern const u32 gItemIcon_Mint[];

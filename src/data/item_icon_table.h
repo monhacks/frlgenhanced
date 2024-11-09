@@ -80,8 +80,8 @@ static const u32 *const sItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_CLEVER_FEATHER]   = {gItemIcon_CleverFeather, gItemIconPalette_CleverFeather},
     [ITEM_SWIFT_FEATHER]    = {gItemIcon_SwiftFeather, gItemIconPalette_SwiftFeather},
     // Ability Modifiers
-    [ITEM_ABILITY_CAPSULE]  = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_ABILITY_PATCH]    = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_ABILITY_CAPSULE]  = {gItemIcon_AbilityCapsule, gItemIconPalette_AbilityCapsule},
+    [ITEM_ABILITY_PATCH]    = {gItemIcon_AbilityPatch, gItemIconPalette_AbilityPatch},
     // Mints
     [ITEM_LONELY_MINT]      = {gItemIcon_Mint, gItemIconPalette_RedMint},
     [ITEM_ADAMANT_MINT]     = {gItemIcon_Mint, gItemIconPalette_RedMint},
