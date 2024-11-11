@@ -847,7 +847,7 @@ const struct Berry gBerries[] = {
             .smoothness = 30
         },
 
-    [ITEM_ENIGMA_BERRY - FIRST_BERRY_INDEX] =
+    [ITEM_ENIGMA_BERRY_E_READER - FIRST_BERRY_INDEX] =
         {
             .name = _("ENIGMA"),
             .firmness = BERRY_FIRMNESS_UNKNOWN,
@@ -910,7 +910,7 @@ const struct BerryCrushStats gBerryCrush_BerryData[] = {
     [ITEM_APICOT_BERRY - FIRST_BERRY_INDEX] = {180, 500},
     [ITEM_LANSAT_BERRY - FIRST_BERRY_INDEX] = {200, 750},
     [ITEM_STARF_BERRY  - FIRST_BERRY_INDEX] = {200, 750},
-    [ITEM_ENIGMA_BERRY - FIRST_BERRY_INDEX] = {150, 200}
+    [ITEM_ENIGMA_BERRY_E_READER - FIRST_BERRY_INDEX] = {150, 200}
 };
 
 // Leftover from R/S
@@ -918,7 +918,7 @@ const struct BerryTree gBlankBerryTree = {};
 
 #define ENIGMA_BERRY_STRUCT ({ \
     const struct Berry2 * berries = (const struct Berry2 *)gBerries; \
-    berries[ITEM_ENIGMA_BERRY - FIRST_BERRY_INDEX]; \
+    berries[ITEM_ENIGMA_BERRY_E_READER - FIRST_BERRY_INDEX]; \
 })
 
 static u32 GetEnigmaBerryChecksum(struct EnigmaBerry *);
@@ -1006,7 +1006,7 @@ const struct Berry * GetBerryInfo(u16 berryIdx)
 
 u8 ItemIdToBerryType(u16 itemId)
 {
-    if (itemId - FIRST_BERRY_INDEX < 0 || itemId - FIRST_BERRY_INDEX > ITEM_ENIGMA_BERRY - FIRST_BERRY_INDEX)
+    if (itemId - FIRST_BERRY_INDEX < 0 || itemId - FIRST_BERRY_INDEX > ITEM_ENIGMA_BERRY_E_READER - FIRST_BERRY_INDEX)
         return 1;
 
     return ITEM_TO_BERRY(itemId);
@@ -1014,7 +1014,7 @@ u8 ItemIdToBerryType(u16 itemId)
 
 u16 BerryTypeToItemId(u16 berryType)
 {
-    if (berryType - 1 < 0 || berryType - 1 > ITEM_ENIGMA_BERRY - FIRST_BERRY_INDEX)
+    if (berryType - 1 < 0 || berryType - 1 > ITEM_ENIGMA_BERRY_E_READER - FIRST_BERRY_INDEX)
         return FIRST_BERRY_INDEX;
 
     return berryType + FIRST_BERRY_INDEX - 1;

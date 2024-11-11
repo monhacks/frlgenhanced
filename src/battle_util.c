@@ -335,7 +335,7 @@ u8 TrySetCantSelectMoveBattleScript(void)
         limitations++;
     }
 
-    if (gBattleMons[gActiveBattler].item == ITEM_ENIGMA_BERRY)
+    if (gBattleMons[gActiveBattler].item == ITEM_ENIGMA_BERRY_E_READER)
         holdEffect = gEnigmaBerries[gActiveBattler].holdEffect;
     else
         holdEffect = ItemId_GetHoldEffect(gBattleMons[gActiveBattler].item);
@@ -364,7 +364,7 @@ u8 CheckMoveLimitations(u8 battlerId, u8 unusableMoves, u8 check)
     u16 *choicedMove = &gBattleStruct->choicedMove[battlerId];
     s32 i;
 
-    if (gBattleMons[battlerId].item == ITEM_ENIGMA_BERRY)
+    if (gBattleMons[battlerId].item == ITEM_ENIGMA_BERRY_E_READER)
         holdEffect = gEnigmaBerries[battlerId].holdEffect;
     else
         holdEffect = ItemId_GetHoldEffect(gBattleMons[battlerId].item);
@@ -2491,7 +2491,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
     u16 atkItem, defItem;
 
     gLastUsedItem = gBattleMons[battlerId].item;
-    if (gLastUsedItem == ITEM_ENIGMA_BERRY)
+    if (gLastUsedItem == ITEM_ENIGMA_BERRY_E_READER)
     {
         battlerHoldEffect = gEnigmaBerries[battlerId].holdEffect;
         battlerHoldEffectParam = gEnigmaBerries[battlerId].holdEffectParam;
@@ -2503,7 +2503,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
     }
 
     atkItem = gBattleMons[gBattlerAttacker].item;
-    if (atkItem == ITEM_ENIGMA_BERRY)
+    if (atkItem == ITEM_ENIGMA_BERRY_E_READER)
     {
         atkHoldEffect = gEnigmaBerries[gBattlerAttacker].holdEffect;
         atkHoldEffectParam = gEnigmaBerries[gBattlerAttacker].holdEffectParam;
@@ -2516,7 +2516,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
 
     // def variables are unused
     defItem = gBattleMons[gBattlerTarget].item;
-    if (defItem == ITEM_ENIGMA_BERRY)
+    if (defItem == ITEM_ENIGMA_BERRY_E_READER)
     {
         defHoldEffect = gEnigmaBerries[gBattlerTarget].holdEffect;
         defHoldEffectParam = gEnigmaBerries[gBattlerTarget].holdEffectParam;
@@ -2863,7 +2863,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
         for (battlerId = 0; battlerId < gBattlersCount; battlerId++)
         {
             gLastUsedItem = gBattleMons[battlerId].item;
-            if (gBattleMons[battlerId].item == ITEM_ENIGMA_BERRY)
+            if (gBattleMons[battlerId].item == ITEM_ENIGMA_BERRY_E_READER)
             {
                 battlerHoldEffect = gEnigmaBerries[battlerId].holdEffect;
                 battlerHoldEffectParam = gEnigmaBerries[battlerId].holdEffectParam;
