@@ -136,27 +136,27 @@ extern const u32 gItemIconPalette_BerryJuice[];
 extern const u32 gItemIcon_SacredAsh[];
 extern const u32 gItemIconPalette_SacredAsh[];
 
-// extern const u32 gItemIcon_SweetHeart[];
-// extern const u32 gItemIconPalette_SweetHeart[];
+extern const u32 gItemIcon_SweetHeart[];
+extern const u32 gItemIconPalette_SweetHeart[];
 
 // Regional Specialties
-// extern const u32 gItemIcon_RageCandyBar[];
-// extern const u32 gItemIconPalette_RageCandyBar[];
+extern const u32 gItemIcon_RageCandyBar[];
+extern const u32 gItemIconPalette_RageCandyBar[];
 
 extern const u32 gItemIcon_LavaCookie[];
 extern const u32 gItemIconPalette_LavaCookieAndLetter[];
 
-// extern const u32 gItemIcon_OldGateau[];
-// extern const u32 gItemIconPalette_OldGateau[];
+extern const u32 gItemIcon_OldGateau[];
+extern const u32 gItemIconPalette_OldGateau[];
 
-// extern const u32 gItemIcon_Casteliacone[];
-// extern const u32 gItemIconPalette_Casteliacone[];
+extern const u32 gItemIcon_Casteliacone[];
+extern const u32 gItemIconPalette_Casteliacone[];
 
-// extern const u32 gItemIcon_LumioseGalette[];
-// extern const u32 gItemIconPalette_LumioseGalette[];
+extern const u32 gItemIcon_LumioseGalette[];
+extern const u32 gItemIconPalette_LumioseGalette[];
 
-// extern const u32 gItemIcon_ShalourSable[];
-// extern const u32 gItemIconPalette_ShalourSable[];
+extern const u32 gItemIcon_ShalourSable[];
+extern const u32 gItemIconPalette_ShalourSable[];
 
 // Vitamins
 extern const u32 gItemIcon_HPUp[];

@@ -139,27 +139,27 @@ const u32 gItemIconPalette_BerryJuice[] = INCBIN_U32("graphics/items/icon_palett
 const u32 gItemIcon_SacredAsh[] = INCBIN_U32("graphics/items/icons/sacred_ash.4bpp.lz");
 const u32 gItemIconPalette_SacredAsh[] = INCBIN_U32("graphics/items/icon_palettes/sacred_ash.gbapal.lz");
 
-// const u32 gItemIcon_SweetHeart[] = INCBIN_U32("graphics/items/icons/sweet_heart.4bpp.lz");
-// const u32 gItemIconPalette_SweetHeart[] = INCBIN_U32("graphics/items/icon_palettes/sweet_heart.gbapal.lz");
+const u32 gItemIcon_SweetHeart[] = INCBIN_U32("graphics/items/icons/sweet_heart.4bpp.lz");
+const u32 gItemIconPalette_SweetHeart[] = INCBIN_U32("graphics/items/icon_palettes/sweet_heart.gbapal.lz");
 
 // Regional Specialties
-// const u32 gItemIcon_RageCandyBar[] = INCBIN_U32("graphics/items/icons/rage_candy_bar.4bpp.lz");
-// const u32 gItemIconPalette_RageCandyBar[] = INCBIN_U32("graphics/items/icon_palettes/rage_candy_bar.gbapal.lz");
+const u32 gItemIcon_RageCandyBar[] = INCBIN_U32("graphics/items/icons/rage_candy_bar.4bpp.lz");
+const u32 gItemIconPalette_RageCandyBar[] = INCBIN_U32("graphics/items/icon_palettes/rage_candy_bar.gbapal.lz");
 
 const u32 gItemIcon_LavaCookie[] = INCBIN_U32("graphics/items/icons/lava_cookie.4bpp.lz");
 const u32 gItemIconPalette_LavaCookieAndLetter[] = INCBIN_U32("graphics/items/icon_palettes/lava_cookie_and_letter.gbapal.lz");
 
-// const u32 gItemIcon_OldGateau[] = INCBIN_U32("graphics/items/icons/old_gateau.4bpp.lz");
-// const u32 gItemIconPalette_OldGateau[] = INCBIN_U32("graphics/items/icon_palettes/old_gateau.gbapal.lz");
+const u32 gItemIcon_OldGateau[] = INCBIN_U32("graphics/items/icons/old_gateau.4bpp.lz");
+const u32 gItemIconPalette_OldGateau[] = INCBIN_U32("graphics/items/icon_palettes/old_gateau.gbapal.lz");
 
-// const u32 gItemIcon_Casteliacone[] = INCBIN_U32("graphics/items/icons/casteliacone.4bpp.lz");
-// const u32 gItemIconPalette_Casteliacone[] = INCBIN_U32("graphics/items/icon_palettes/casteliacone.gbapal.lz");
+const u32 gItemIcon_Casteliacone[] = INCBIN_U32("graphics/items/icons/casteliacone.4bpp.lz");
+const u32 gItemIconPalette_Casteliacone[] = INCBIN_U32("graphics/items/icon_palettes/casteliacone.gbapal.lz");
 
-// const u32 gItemIcon_LumioseGalette[] = INCBIN_U32("graphics/items/icons/lumiose_galette.4bpp.lz");
-// const u32 gItemIconPalette_LumioseGalette[] = INCBIN_U32("graphics/items/icon_palettes/lumiose_galette.gbapal.lz");
+const u32 gItemIcon_LumioseGalette[] = INCBIN_U32("graphics/items/icons/lumiose_galette.4bpp.lz");
+const u32 gItemIconPalette_LumioseGalette[] = INCBIN_U32("graphics/items/icon_palettes/lumiose_galette.gbapal.lz");
 
-// const u32 gItemIcon_ShalourSable[] = INCBIN_U32("graphics/items/icons/shalour_sable.4bpp.lz");
-// const u32 gItemIconPalette_ShalourSable[] = INCBIN_U32("graphics/items/icon_palettes/shalour_sable.gbapal.lz");
+const u32 gItemIcon_ShalourSable[] = INCBIN_U32("graphics/items/icons/shalour_sable.4bpp.lz");
+const u32 gItemIconPalette_ShalourSable[] = INCBIN_U32("graphics/items/icon_palettes/shalour_sable.gbapal.lz");
 
 // Vitamins
 const u32 gItemIcon_HPUp[] = INCBIN_U32("graphics/items/icons/hp_up.4bpp.lz");
